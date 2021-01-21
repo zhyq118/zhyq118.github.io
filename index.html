@@ -219,14 +219,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -267,6 +267,106 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2021/01/20/%E8%A7%A3%E5%86%B3%E4%B8%89%E6%98%9F960-EVO-%E5%9C%A8%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%B8%8B%E8%A2%AB%E8%AF%86%E5%88%AB%E4%B8%BA%E5%A4%96%E7%BD%AE%E7%A1%AC%E7%9B%98%EF%BC%88%E6%A9%99%E8%89%B2%E5%9B%BE%E6%A0%87%EF%BC%89%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhyq118">
+      <meta itemprop="description" content="我见青山多妩媚，料青山见我应如是。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZHYQ118">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/20/%E8%A7%A3%E5%86%B3%E4%B8%89%E6%98%9F960-EVO-%E5%9C%A8%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%B8%8B%E8%A2%AB%E8%AF%86%E5%88%AB%E4%B8%BA%E5%A4%96%E7%BD%AE%E7%A1%AC%E7%9B%98%EF%BC%88%E6%A9%99%E8%89%B2%E5%9B%BE%E6%A0%87%EF%BC%89%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决三星960 EVO 在黑苹果下被识别为外置硬盘（橙色图标）的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-20 20:48:33" itemprop="dateCreated datePublished" datetime="2021-01-20T20:48:33+08:00">2021-01-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-21 22:27:48" itemprop="dateModified" datetime="2021-01-21T22:27:48+08:00">2021-01-21</time>
+      </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/01/20/%E8%A7%A3%E5%86%B3%E4%B8%89%E6%98%9F960-EVO-%E5%9C%A8%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%B8%8B%E8%A2%AB%E8%AF%86%E5%88%AB%E4%B8%BA%E5%A4%96%E7%BD%AE%E7%A1%AC%E7%9B%98%EF%BC%88%E6%A9%99%E8%89%B2%E5%9B%BE%E6%A0%87%EF%BC%89%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/01/20/解决三星960-EVO-在黑苹果下被识别为外置硬盘（橙色图标）的问题/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在Clover时代，被这个问题困扰已久，搜了无数解决方案都没成功，偶然看到一个叫做innie.kext，然后竟然神奇地发生了作用，可惜，升到macos11 big sur后，可能由于安全方面的原因，这个第三方kext不能被注入，所以，硬盘又重新被识别成了外置硬盘，好在现在终于也解决了，不过<a target="_blank" rel="noopener" href="https://www.reddit.com/r/hackintosh/comments/f0cc4t/internal_drives_shown_as_external_opencore_amd/">原教程</a>是英文的，我就用中文转述一下，方便有同类问题的爱好者参考。</p>
+<p>实际测试的是三星960 EVO NVME硬盘，其它同样问题的可以参考，不保证有效性。</p>
+<p>操作步骤如下：</p>
+<h3 id="查找设备地址"><a href="#查找设备地址" class="headerlink" title="查找设备地址"></a>查找设备地址</h3><p>1.下载<a target="_blank" rel="noopener" href="https://github.com/headkaze/Hackintool/releases">hackintool</a>，</p>
+<p>2.打开并找到PCIe标签，</p>
+<p>3.查找设备名称，找到相应的设备地址，然后右击，选择*<em>“Copy Device Path”**，就像这样的内容：</em>“PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x0)”。</p>
+<h3 id="OpenCore中内建"><a href="#OpenCore中内建" class="headerlink" title="OpenCore中内建"></a>OpenCore中内建</h3><p>1.挂载EFI分区，并用<a target="_blank" rel="noopener" href="https://github.com/corpnewt/ProperTree">ProperTree</a>打开config.plist，</p>
+<p>2.找到<strong>DeviceProperties/Add</strong></p>
+<p>​    · 右键点击Add增加一个子项目</p>
+<p>​    · 名字命名为刚才拷贝的设备路径，如*”PciRoot(0x0)/Pci(0x1,0x1)/Pci(0x0,0x0)”.*</p>
+<p>​    · Type类型选择**”Dictionary”.**</p>
+<p>​    · 右键增加一个子项目，命名为**”built-in”<strong>, type改为</strong>“Data”<strong>, 并且把value值设为</strong>“01000000”**</p>
+<p>3.至于Kernel-Quirks中的**”ExternalDiskIcons”**是否有必要设置成true请自己尝试，我是之前已经为true，也就懒得再取消了。</p>
+<p>最终效果如下：<img src="https://i.loli.net/2021/01/21/hD4zIG1ubL9UPBp.png" alt="截屏2021-01-21 22.23.22.png"></p>
+<p>4.记得保存config.plist，然后重启设备应该就生效了。</p>
+<p>这就是所有步骤。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1346,99 +1446,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
-    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2018/12/09/%E6%9A%82%E6%97%B6%E4%B8%8D%E6%8A%98%E8%85%BE%E4%BA%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhyq118">
-      <meta itemprop="description" content="我见青山多妩媚，料青山见我应如是。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZHYQ118">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/12/09/%E6%9A%82%E6%97%B6%E4%B8%8D%E6%8A%98%E8%85%BE%E4%BA%86/" class="post-title-link" itemprop="url">暂时不折腾了</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2018-12-09 22:20:28 / 修改时间：23:01:37" itemprop="dateCreated datePublished" datetime="2018-12-09T22:20:28+08:00">2018-12-09</time>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2018/12/09/%E6%9A%82%E6%97%B6%E4%B8%8D%E6%8A%98%E8%85%BE%E4%BA%86/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/09/暂时不折腾了/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>半个月来，深深陷入对黑苹果的“研究”中不能自拔，可以说充分利用了工作之余的所有时间，然而却并没有“研究”出任何成果来，挫败感因此产生，所以决定暂时不折腾了，把时间放在更加有意义的事情上去。</p>
-<p>然而，时间究竟浪费在了什么地方，还是有必要记录一下的：</p>
-<p>1、由于在之前的摸索阶段，装了多个系统，两块硬盘上也分别有了efi分区，当然这也许并不影响什么，但是有几点时间看不下去：一是ssd上的efi分区竟然不是在起始分区，担心影响开机速度，不能忍；二是macos和win竟然在同一块硬盘，而win数据盘和Linux系统中间我又格出了一个apfs分区，总担心有一天会出现某个分区或系统突然消失的状况，所以，决定重新规划安装三个系统。如下：</p>
-<ul>
-<li>SSD：MacOS</li>
-<li>HDD: win(C+D) + Ubuntu(/+home+efi)</li>
-</ul>
-<p>如此，看起来就整齐多了，而且应该也相对安全了。</p>
-<p>2、各个系统分别安装常用软件，没难度，但耗费时间。</p>
-<p>3、学会升级clover。</p>
-<p>4、用AppleALC代替了voodoohda万能声卡，也正确找出了注入id（5），兴奋。</p>
-<p>5、动过购买bcm943602cs的念头，但考虑到还要拆机安装，遂暂时搁置。</p>
-<p>6、尝试用fbpatcher内建USB端口，可惜效果不好，暂时还是采用补丁方式，目前所有端口可用。</p>
-<p>其实，最耗时间的是难以搞定的部分，目前对我来说主要是睡眠和唤醒的问题了。翻遍了资料，甚至还上了英文的tonymacx86，然而最终还是没能解决问题，所谓的受挫也指这件事。然而，回头想想，即便在Windows下，使用睡眠功能的时候也不多，台式机基本上都是离开时随时关机，现在这样做无非是一种追求完美的心理罢了。</p>
-<p>所以，总结下来，正常使用已完全不成问题，那暂时就先不折腾了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1473,7 +1480,7 @@
 
 
 <div class="copyright">
-  &copy; 2018 – 
+  &copy; 2017 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
