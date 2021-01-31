@@ -986,4 +986,543 @@
         <tag>opencore</tag>
       </tags>
   </entry>
+  <entry>
+    <title>群晖默认常用端口大全</title>
+    <url>/2020/11/08/%E7%BE%A4%E6%99%96%E9%BB%98%E8%AE%A4%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<p>原文链接：<a href="https://wp.gxnas.com/202.html">https://wp.gxnas.com/202.html</a></p>
+<p>请参见下表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">设置实用程序</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Synology Assistant</td>
+<td>9999、9998、9997</td>
+<td>UDP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">备份</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Data Replicator、Data Replicator II、Data Replicator III</td>
+<td>9999、9998、9997、137、138、139、445</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DSM 5.2 数据备份、rsync、共享文件夹同步、远程 Time Backup</td>
+<td>873、22（如果通过 SSH 加密）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Hyper Backup（目标）</td>
+<td>6281（多版本备份）、22（如果通过 SSH 加密）、873（远程数据复制）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Hyper Backup Vault、DSM 5.2 Archiving Backup</td>
+<td>6281</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">LUN 备份</td>
+<td>3260 (iSCSI)、873、22（如果通过 SSH 加密）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Snapshot Replication</td>
+<td>3261 (iSCSI LUN)、5566（共享文件夹）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Active Backup for Business</td>
+<td>5510、443（vCenter Server 和 ESXi 主机）、902（ESXi 主机）</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">下载</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">BT</td>
+<td>6890 ~ 6999（用于固件版本早于 v2.0.1-3.0401 的型号）； 16881（用于 DSM 版本 v2.0.1 及以上的型号）</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">eMule</td>
+<td>4662 (TCP)、4672 (UDP)</td>
+<td>TCP/UDP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Web 应用程序</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">DSM</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">File Station</td>
+<td>5000（HTTP，可添加其它端口）、5001（HTTPS，可添加其它端口）</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Mail Server</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">IMAP</td>
+<td>143</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">通过 SSL/TLS 的 IMAP</td>
+<td>993</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">POP3</td>
+<td>110</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">通过 SSL/TLS 的 POP3</td>
+<td>995</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">文件传输</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">AFP</td>
+<td>548</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">CIFS</td>
+<td>smbd：139 (netbios-ssn)、445 (microsoft-ds)</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">Nmbd：137、138</td>
+<td>UDP</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">FTP、通过 SSL 的 FTP、通过 TLS 的 FTP</td>
+<td>21（命令）、20（主动模式的数据连接）、1025-65535（被动模式的数据连接；但默认范围因型号而异）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">iSCSI</td>
+<td>3260</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">NFS</td>
+<td>111、892、2049</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">TFTP</td>
+<td>69</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">WebDAV、CalDAV</td>
+<td>5005、5006 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">套件</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Audio Station</td>
+<td>1900 (UDP)、5000（HTTP，可添加其它端口）、5001（HTTPS，可添加其它端口）、5353（Bonjour 服务）、6001-6010（AirPlay 控制/定时）</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">日历</td>
+<td>38008、38443</td>
+<td>CalDAV</td>
+</tr>
+<tr>
+<td align="left">CardDAV</td>
+<td>8008 (HTTP)、8443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">集中化管理系统 (CMS)</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">CIFS 向外延展集群</td>
+<td>49152-49252 仅 TCP：17909、17913、19998、24007、24008、24009-24045、38465-38501、4379</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">Cloud Station</td>
+<td>6690</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DHCP Server</td>
+<td>67、68</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">LDAP Server（前身为 Directory Server）</td>
+<td>389 (LDAP)、636（LDAP 含 SSL）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Download Station</td>
+<td>5000</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Drive</td>
+<td>5000 (HTTP)、5001 (HTTPS)、6690</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">iTunes Server</td>
+<td>3689</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Logitech® Media Server</td>
+<td>3483、9002</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Mail Station</td>
+<td>80 (HTTP)、443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">媒体服务器</td>
+<td>1900 (UPnP)、50001（内容浏览）、50002（内容串流）</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">Moments</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Note Station</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Photo Station、Web Station</td>
+<td>80（可添加其它端口）、443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Presto File Server</td>
+<td>3360 (TCP/UDP)、3361 (TCP/UDP)</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">代理服务器</td>
+<td>3128</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Surveillance Station</td>
+<td>9900 (HTTP)、9901 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Syslog Server</td>
+<td>514（可添加其它端口）</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">Video Station</td>
+<td>1900 (UDP)、5000 (HTTP)、5001 (HTTPS)、9025-9040、 5002、5004、65001（使用 HDHomeRun 网络调谐器的型号）</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">Virtual Machine Manager</td>
+<td>2379-2382（集群网络）、3260-3264 (iSCSI)、16509、16514、30200-30300</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">VPN Server (OpenVPN)</td>
+<td>1194</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">VPN Server (PPTP)</td>
+<td>1723</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">VPN Server (L2TP/IPSec)</td>
+<td>500、1701、4500</td>
+<td>UDP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">移动应用程序</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Drive</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS audio</td>
+<td>5000、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS cam</td>
+<td>5000、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS cloud</td>
+<td>6690</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS download</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS file</td>
+<td><strong>Android</strong>：DS file 4.x 和运行 DSM 4.3 或更新版本的 DiskStation：5000、5001 (HTTPS)DS file 4.0 之前的版本和运行 DSM 4.2 或更早版本的 DiskStation：5005、5006 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left"><strong>iOS</strong>：DS file 5.x 和运行 DSM 4.3 或更新版本的 DiskStation：5000、5001 (HTTPS)DS file 4.0 之前的版本和运行 DSM 4.2 或更早版本的 DiskStation：5005、5006 (HTTPS)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><strong>Windows Phone</strong>：5000、5001 (HTTPS)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">群晖管家</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS note</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS photo</td>
+<td>80、443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS video</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Moments</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">打印机、UPS 和外围设备</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Bonjour</td>
+<td>5353</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">LPR</td>
+<td>515</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">网络打印机 (IPP)/CUPS</td>
+<td>631</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">网络 MFP</td>
+<td>3240-3259</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">UPS</td>
+<td>3493</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">系统</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">LDAP</td>
+<td>389、636 (SLAPD)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">MySQL</td>
+<td>3306</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">资源监视器/SNMP</td>
+<td>161</td>
+<td>TCP/UDP</td>
+</tr>
+<tr>
+<td align="left">SSH/SFTP</td>
+<td>22</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Telnet</td>
+<td>23</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>nas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决N1-OpenWrt在Win10下不能正常使用SMB共享服务的问题</title>
+    <url>/2020/07/27/%E8%A7%A3%E5%86%B3N1-OpenWrt%E5%9C%A8Win10%E4%B8%8B%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8SMB%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>N1打开smb共享服务，在mac及linux下皆能正常访问，偏偏在win10中打不开，百思不得其解，经过搜索，最终解决。</p>
+<p>原来，win10 1809及以上处于安全考虑，默认关闭了SMBv1服务，所以，只要打开就好了。</p>
+<h2 id="打开smb功能"><a href="#打开smb功能" class="headerlink" title="打开smb功能"></a>打开smb功能</h2><p>控制面板中找到“程序和功能”，或者直接在Cortana搜索框中搜“功能”，打开即可。</p>
+<p><img src="https://s1.ax1x.com/2020/07/27/aPc87F.jpg" alt="1.jpg"></p>
+<p>确定，然后重启。</p>
+<h2 id="修改本地组策略"><a href="#修改本地组策略" class="headerlink" title="修改本地组策略"></a>修改本地组策略</h2><p>重启后再次 <code>Win+R</code> 打开“运行”，输入 <code>gpedit.msc</code>，“确定”以打开“本地组策略编辑器”。</p>
+<p>按 计算机配置→管理模板→网络 的顺序，依次展开左侧目录树。</p>
+<p>点击“Lanman工作站”，右侧会显示该项目的详细设置。</p>
+<p>点击里面的“启用不安全的来宾登录”，将它由“未配置”改为“已启用”，应用并重启电脑。</p>
+<p><img src="https://s1.ax1x.com/2020/07/27/aPcJk4.jpg" alt="2.jpg"></p>
+<p>最后打开PowerShell，输入以下命令查看SMBv1的开启状态：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Get-SmbServerConfiguration | Select EnableSMB1Protocol</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2020/07/27/aPc30U.jpg" alt="3.jpg"></p>
+<p>现在，一切正常了，可以访问N1-OpenWrt上的资源了。</p>
+<p><a href="https://pockies.github.io/2019/01/19/fix-win10-smb/">本文参考链接</a></p>
+]]></content>
+      <tags>
+        <tag>nas</tag>
+        <tag>n1</tag>
+      </tags>
+  </entry>
 </search>
