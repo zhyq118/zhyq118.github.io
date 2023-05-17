@@ -83,6 +83,18 @@
       </tags>
   </entry>
   <entry>
+    <title>U盘制作系统镜像后恢复容量的方法（win）</title>
+    <url>/2019/01/24/U%E7%9B%98%E5%88%B6%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E5%90%8E%E6%81%A2%E5%A4%8D%E5%AE%B9%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88win%EF%BC%89/</url>
+    <content><![CDATA[<p>Windows下使用diskpart命令即可，具体操作如下：</p>
+<p>1、win+R，cmd进入命令行界面，输入diskpart回车。</p>
+<p>2、进入diskpart后列出所有磁盘：list disk。</p>
+<p>3、选中U盘，一定看仔细，别选错：select disk x。</p>
+<p>4、清除：clean。</p>
+<p>此时，在磁盘管理界面会发现U盘已经变成黑色的未分配状态。</p>
+<p>下面新建简单卷即可。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</title>
     <url>/2019/04/26/Ubuntu19-04%E5%AE%89%E8%A3%85%E4%B8%AD%E5%87%BA%E7%8E%B0Pcie-Bus-Error%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<p>Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</p>
@@ -94,18 +106,6 @@
         <tag>操作系统</tag>
         <tag>ubuntu</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>U盘制作系统镜像后恢复容量的方法（win）</title>
-    <url>/2019/01/24/U%E7%9B%98%E5%88%B6%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E5%90%8E%E6%81%A2%E5%A4%8D%E5%AE%B9%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88win%EF%BC%89/</url>
-    <content><![CDATA[<p>Windows下使用diskpart命令即可，具体操作如下：</p>
-<p>1、win+R，cmd进入命令行界面，输入diskpart回车。</p>
-<p>2、进入diskpart后列出所有磁盘：list disk。</p>
-<p>3、选中U盘，一定看仔细，别选错：select disk x。</p>
-<p>4、清除：clean。</p>
-<p>此时，在磁盘管理界面会发现U盘已经变成黑色的未分配状态。</p>
-<p>下面新建简单卷即可。</p>
-]]></content>
   </entry>
   <entry>
     <title>Vim Cheat Sheet(转载）</title>
@@ -331,86 +331,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo deploy配置免输入github账号密码</title>
-    <url>/2020/12/26/hexo-deploy%E9%85%8D%E7%BD%AE%E5%85%8D%E8%BE%93%E5%85%A5github%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<h2 id="使用-SSH-连接"><a href="#使用-SSH-连接" class="headerlink" title="使用 SSH 连接"></a>使用 SSH 连接</h2><p>1.进入 ssh 目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
-
-<p>2.生成 SSH key (文件名：id_rsa, id_rsa.pub)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxxxxx@yy.com&quot;  #填写自己真实有效的邮箱地址</span><br></pre></td></tr></table></figure>
-
-<p>3.文本编辑器打开公钥 <code>id_rsa.pub</code> 复制内容，添加到 Github setting。</p>
-<p>4.测试</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</blockquote>
-<h2 id="hexo配置文件中选择git协议，不能用https"><a href="#hexo配置文件中选择git协议，不能用https" class="headerlink" title="hexo配置文件中选择git协议，不能用https"></a>hexo配置文件中选择git协议，不能用https</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: &#x27;git@github.com:xxx/xxx.github.io.git&#x27;</span><br><span class="line">  branch: &#x27;master&#x27;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo从Ubuntu迁移至Mac OS</title>
-    <url>/2018/11/04/hexo%E4%BB%8EUbuntu%E8%BF%81%E7%A7%BB%E8%87%B3Mac-OS/</url>
-    <content><![CDATA[<p>黑苹果的安装与折腾基本算是告一段落了，接下来就是尝试真正使用全新的系统了，今天成功把Hexo从Ubuntu迁移到了OS X。</p>
-<p>对于那些会各种命令的大牛来说，这不过是一件再简单不过的事了，但是对于我这样一个半路出家的文科生来说，有些时候却不得不“曲线救国”了。</p>
-<p>下面记下自己迁移的过程，下次如果再折腾也可以省点事。</p>
-<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>OS X自带，用以下命令确认一下即可</p>
-<p><code>git --version</code></p>
-<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p><a href="https://nodejs.org/en/">官网</a>直接下载mac os版本安装即可，自带安装npm。安装完成，输入命令检查确认：</p>
-<p><code>node -v</code></p>
-<p><code>npm -v</code></p>
-<p>有版本信息即为安装成功。</p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>条件满足后就可以开始安装了</p>
-<p><code>sudo npm install -g hexo</code></p>
-<p>结束后，输入命令查看</p>
-<p><code>hexo -v</code></p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>创建目录</p>
-<p><code>mkdir hexo</code></p>
-<p>进入目录</p>
-<p><code>cd hexo</code></p>
-<p>初始化</p>
-<p><code>hexo init</code></p>
-<p>这样就完成hexo的安装与初始化了。</p>
-<p>有些教程上说还需要安装依赖</p>
-<p><code>npm install</code></p>
-<p>不妨执行一下。</p>
-<h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p>由于我不是第一次安装，所以不敢直接往GitHub上部署，担心毁掉之前的数据，而自己又不会用git pull，所以，先把Ubuntu上的hexo文件夹压缩上传至Dropbox，回到Mac上，解压并替换掉之前新建的hexo目录中的所有文件。</p>
-<p>可以说是最没技术含量的数据迁移方法了，无奈。</p>
-<h2 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h2><p>由于是迁移，所以省了不少事，这里直接连到GitHub即可。</p>
-<p>1、创建新的ssh key</p>
-<p><code>cd ~/.ssh</code></p>
-<p><code>ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; </code></p>
-<p>一路enter即可。</p>
-<p>2、添加ssh key 至GitHub中：</p>
-<p>打开ssh key</p>
-<p><code>vim ~/.ssh/id_rsa.pub</code></p>
-<p>拷贝至Account Settings–&gt;SSH Keys。</p>
-<p>3、设置本地git个人信息</p>
-<p><code>git config --global user.name &quot;your real name&quot;</code><br><code>git config --global user.email &quot;xxxxx@gmail.com&quot;</code></p>
-<p>4、验证GitHub链接</p>
-<p><code>ssh -T git@github.com</code></p>
-<p>5、部署</p>
-<p>万事俱备</p>
-<p><code>cd hexo</code></p>
-<p><code>hexo g</code></p>
-<p><code>hexo s</code></p>
-<p>本地查看没有问题的话就可以部署了</p>
-<p><code>hexo d</code></p>
-<h2 id="搞定"><a href="#搞定" class="headerlink" title="搞定"></a>搞定</h2><p>可以在新系统上写作了。</p>
-]]></content>
-      <tags>
-        <tag>ubuntu</tag>
-        <tag>hexo</tag>
-        <tag>macos</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo command</title>
     <url>/2018/10/07/hexo%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
@@ -538,27 +458,83 @@
 ]]></content>
   </entry>
   <entry>
-    <title>ubuntu ss 全局</title>
-    <url>/2018/02/04/ubuntu-ss-%E5%85%A8%E5%B1%80/</url>
-    <content><![CDATA[<p>shadowsocks 是走的socks5协议，需要搭配浏览器插件使用，如果想要在系统全局使用，需要使用polipo进行二次转发</p>
-<h3 id="安装polipo"><a href="#安装polipo" class="headerlink" title="安装polipo"></a>安装polipo</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install polipo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>配置<br><code>sudo gedit /etc/polipo/config</code><br>复制文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># This file only needs to list configuration variables that deviate</span><br><span class="line"># from the default values.  See /usr/share/doc/polipo/examples/config.sample</span><br><span class="line"># and &quot;polipo -v&quot; for variables you can tweak and further information.</span><br><span class="line"></span><br><span class="line">logSyslog = true</span><br><span class="line">logFile = /var/log/polipo/polipo.log</span><br><span class="line"></span><br><span class="line">proxyAddress = &quot;0.0.0.0&quot;</span><br><span class="line"></span><br><span class="line">socksParentProxy = &quot;127.0.0.1:1080&quot;</span><br><span class="line">socksProxyType = socks5</span><br><span class="line"></span><br><span class="line">chunkHighMark = 50331648</span><br><span class="line">objectHighMark = 16384</span><br><span class="line"></span><br><span class="line">serverMaxSlots = 64</span><br><span class="line">serverSlots = 16</span><br><span class="line">serverSlots1 = 32</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="重启polipo服务"><a href="#重启polipo服务" class="headerlink" title="重启polipo服务"></a>重启polipo服务</h3><p><code>sudo /etc/init.d/polipo restart</code></p>
-<p>测试<br><code>export http_proxy=&quot;http://127.0.0.1:8123/&quot; curl ifconfig.me</code><br>如果成功就会返回代理服务器地址</p>
-<h3 id="设置全局代理"><a href="#设置全局代理" class="headerlink" title="设置全局代理"></a>设置全局代理</h3><p>一般是在<code>系统设置-&gt;网络代理-&gt;socks主机-&gt;127.0.0.1:1080</code><br>这样就启用系统全局代理了。</p>
-<p>如果只是用Chrome，就没必要这么设置，直接用SwitchyOmega就好了。</p>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>也可以写个脚本，开机执行</p>
-<p>&#96;#!&#x2F;bin&#x2F;sh</p>
-<p>nohup sslocal -c &#x2F;file_path&#x2F;file_name.json &amp;<br><code>添加进开机执行脚本</code>sudo vi &#x2F;etc&#x2F;rc.local&#96;</p>
-<p>添加</p>
-<p><code>sudo sh file_path/file_name.sh</code></p>
-<p>下次重启就会自启动了，如果没有自启动，排查下执行路径及权限是否正确，还有1080端口是否被占用,最好是自己配置一个指定端口，默认的1080可能会与其他程序冲突，比如xware,<br>如果与xware冲突，重新配置端口即可解决</p>
+    <title>Hexo从Ubuntu迁移至Mac OS</title>
+    <url>/2018/11/04/hexo%E4%BB%8EUbuntu%E8%BF%81%E7%A7%BB%E8%87%B3Mac-OS/</url>
+    <content><![CDATA[<p>黑苹果的安装与折腾基本算是告一段落了，接下来就是尝试真正使用全新的系统了，今天成功把Hexo从Ubuntu迁移到了OS X。</p>
+<p>对于那些会各种命令的大牛来说，这不过是一件再简单不过的事了，但是对于我这样一个半路出家的文科生来说，有些时候却不得不“曲线救国”了。</p>
+<p>下面记下自己迁移的过程，下次如果再折腾也可以省点事。</p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>OS X自带，用以下命令确认一下即可</p>
+<p><code>git --version</code></p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p><a href="https://nodejs.org/en/">官网</a>直接下载mac os版本安装即可，自带安装npm。安装完成，输入命令检查确认：</p>
+<p><code>node -v</code></p>
+<p><code>npm -v</code></p>
+<p>有版本信息即为安装成功。</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>条件满足后就可以开始安装了</p>
+<p><code>sudo npm install -g hexo</code></p>
+<p>结束后，输入命令查看</p>
+<p><code>hexo -v</code></p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>创建目录</p>
+<p><code>mkdir hexo</code></p>
+<p>进入目录</p>
+<p><code>cd hexo</code></p>
+<p>初始化</p>
+<p><code>hexo init</code></p>
+<p>这样就完成hexo的安装与初始化了。</p>
+<p>有些教程上说还需要安装依赖</p>
+<p><code>npm install</code></p>
+<p>不妨执行一下。</p>
+<h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p>由于我不是第一次安装，所以不敢直接往GitHub上部署，担心毁掉之前的数据，而自己又不会用git pull，所以，先把Ubuntu上的hexo文件夹压缩上传至Dropbox，回到Mac上，解压并替换掉之前新建的hexo目录中的所有文件。</p>
+<p>可以说是最没技术含量的数据迁移方法了，无奈。</p>
+<h2 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h2><p>由于是迁移，所以省了不少事，这里直接连到GitHub即可。</p>
+<p>1、创建新的ssh key</p>
+<p><code>cd ~/.ssh</code></p>
+<p><code>ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; </code></p>
+<p>一路enter即可。</p>
+<p>2、添加ssh key 至GitHub中：</p>
+<p>打开ssh key</p>
+<p><code>vim ~/.ssh/id_rsa.pub</code></p>
+<p>拷贝至Account Settings–&gt;SSH Keys。</p>
+<p>3、设置本地git个人信息</p>
+<p><code>git config --global user.name &quot;your real name&quot;</code><br><code>git config --global user.email &quot;xxxxx@gmail.com&quot;</code></p>
+<p>4、验证GitHub链接</p>
+<p><code>ssh -T git@github.com</code></p>
+<p>5、部署</p>
+<p>万事俱备</p>
+<p><code>cd hexo</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo s</code></p>
+<p>本地查看没有问题的话就可以部署了</p>
+<p><code>hexo d</code></p>
+<h2 id="搞定"><a href="#搞定" class="headerlink" title="搞定"></a>搞定</h2><p>可以在新系统上写作了。</p>
 ]]></content>
       <tags>
         <tag>ubuntu</tag>
+        <tag>hexo</tag>
+        <tag>macos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo deploy配置免输入github账号密码</title>
+    <url>/2020/12/26/hexo-deploy%E9%85%8D%E7%BD%AE%E5%85%8D%E8%BE%93%E5%85%A5github%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<h2 id="使用-SSH-连接"><a href="#使用-SSH-连接" class="headerlink" title="使用 SSH 连接"></a>使用 SSH 连接</h2><p>1.进入 ssh 目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<p>2.生成 SSH key (文件名：id_rsa, id_rsa.pub)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxxxxx@yy.com&quot;  #填写自己真实有效的邮箱地址</span><br></pre></td></tr></table></figure>
+
+<p>3.文本编辑器打开公钥 <code>id_rsa.pub</code> 复制内容，添加到 Github setting。</p>
+<p>4.测试</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<h2 id="hexo配置文件中选择git协议，不能用https"><a href="#hexo配置文件中选择git协议，不能用https" class="headerlink" title="hexo配置文件中选择git协议，不能用https"></a>hexo配置文件中选择git协议，不能用https</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: &#x27;git@github.com:xxx/xxx.github.io.git&#x27;</span><br><span class="line">  branch: &#x27;master&#x27;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -646,6 +622,30 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu ss 全局</title>
+    <url>/2018/02/04/ubuntu-ss-%E5%85%A8%E5%B1%80/</url>
+    <content><![CDATA[<p>shadowsocks 是走的socks5协议，需要搭配浏览器插件使用，如果想要在系统全局使用，需要使用polipo进行二次转发</p>
+<h3 id="安装polipo"><a href="#安装polipo" class="headerlink" title="安装polipo"></a>安装polipo</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install polipo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置<br><code>sudo gedit /etc/polipo/config</code><br>复制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># This file only needs to list configuration variables that deviate</span><br><span class="line"># from the default values.  See /usr/share/doc/polipo/examples/config.sample</span><br><span class="line"># and &quot;polipo -v&quot; for variables you can tweak and further information.</span><br><span class="line"></span><br><span class="line">logSyslog = true</span><br><span class="line">logFile = /var/log/polipo/polipo.log</span><br><span class="line"></span><br><span class="line">proxyAddress = &quot;0.0.0.0&quot;</span><br><span class="line"></span><br><span class="line">socksParentProxy = &quot;127.0.0.1:1080&quot;</span><br><span class="line">socksProxyType = socks5</span><br><span class="line"></span><br><span class="line">chunkHighMark = 50331648</span><br><span class="line">objectHighMark = 16384</span><br><span class="line"></span><br><span class="line">serverMaxSlots = 64</span><br><span class="line">serverSlots = 16</span><br><span class="line">serverSlots1 = 32</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="重启polipo服务"><a href="#重启polipo服务" class="headerlink" title="重启polipo服务"></a>重启polipo服务</h3><p><code>sudo /etc/init.d/polipo restart</code></p>
+<p>测试<br><code>export http_proxy=&quot;http://127.0.0.1:8123/&quot; curl ifconfig.me</code><br>如果成功就会返回代理服务器地址</p>
+<h3 id="设置全局代理"><a href="#设置全局代理" class="headerlink" title="设置全局代理"></a>设置全局代理</h3><p>一般是在<code>系统设置-&gt;网络代理-&gt;socks主机-&gt;127.0.0.1:1080</code><br>这样就启用系统全局代理了。</p>
+<p>如果只是用Chrome，就没必要这么设置，直接用SwitchyOmega就好了。</p>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>也可以写个脚本，开机执行</p>
+<p>&#96;#!&#x2F;bin&#x2F;sh</p>
+<p>nohup sslocal -c &#x2F;file_path&#x2F;file_name.json &amp;<br><code>添加进开机执行脚本</code>sudo vi &#x2F;etc&#x2F;rc.local&#96;</p>
+<p>添加</p>
+<p><code>sudo sh file_path/file_name.sh</code></p>
+<p>下次重启就会自启动了，如果没有自启动，排查下执行路径及权限是否正确，还有1080端口是否被占用,最好是自己配置一个指定端口，默认的1080可能会与其他程序冲突，比如xware,<br>如果与xware冲突，重新配置端口即可解决</p>
+]]></content>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一行命令解决ubuntu下解压文件乱码的问题</title>
     <url>/2020/12/26/%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A7%A3%E5%86%B3ubuntu%E4%B8%8B%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>在windows上压缩的文件，是以系统的默认编码中文来压缩文件的。由于zip文件中没有声明其编码，所以linux上的unzip一般以默认编码解压，因此中文文件名会出现乱码。</p>
@@ -713,6 +713,17 @@
       </tags>
   </entry>
   <entry>
+    <title>徐志摩《偶然》</title>
+    <url>/2018/10/18/%E5%81%B6%E7%84%B6/</url>
+    <content><![CDATA[<p>我是天空裏的一片雲，<br>偶爾投影在你的波心<br>你不必訝異，<br>更無須歡喜，<br>在轉瞬間消滅了蹤影。</p>
+<p>你我相逢在黑夜的海上，<br>你有你的，我有我的，方向；<br>你記得也好，<br>最好你忘掉，<br>在這交會時互放的光亮！</p>
+]]></content>
+      <tags>
+        <tag>诗歌</tag>
+        <tag>经典</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初尝黑苹果</title>
     <url>/2018/10/27/%E5%88%9D%E5%B0%9D%E9%BB%91%E8%8B%B9%E6%9E%9C/</url>
     <content><![CDATA[<p>从昨晚到现在，在vmware虚拟机上接连安装了两个黑苹果，就是同样的东西安装了两次。</p>
@@ -725,17 +736,6 @@
         <tag>操作系统</tag>
         <tag>macos</tag>
         <tag>黑苹果</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>徐志摩《偶然》</title>
-    <url>/2018/10/18/%E5%81%B6%E7%84%B6/</url>
-    <content><![CDATA[<p>我是天空裏的一片雲，<br>偶爾投影在你的波心<br>你不必訝異，<br>更無須歡喜，<br>在轉瞬間消滅了蹤影。</p>
-<p>你我相逢在黑夜的海上，<br>你有你的，我有我的，方向；<br>你記得也好，<br>最好你忘掉，<br>在這交會時互放的光亮！</p>
-]]></content>
-      <tags>
-        <tag>诗歌</tag>
-        <tag>经典</tag>
       </tags>
   </entry>
   <entry>
@@ -764,18 +764,6 @@
 ]]></content>
       <tags>
         <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>天逸510 Pro启动</title>
-    <url>/2018/03/22/%E5%A4%A9%E9%80%B8510-Pro%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<ul>
-<li>进入BIOS按F1</li>
-<li>选择启动项按F12</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>PC</tag>
       </tags>
   </entry>
   <entry>
@@ -915,6 +903,18 @@
       </tags>
   </entry>
   <entry>
+    <title>天逸510 Pro启动</title>
+    <url>/2018/03/22/%E5%A4%A9%E9%80%B8510-Pro%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<ul>
+<li>进入BIOS按F1</li>
+<li>选择启动项按F12</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>PC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>我的黑苹果必备应用列表</title>
     <url>/2018/11/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%BF%85%E5%A4%87%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/</url>
     <content><![CDATA[<p>除去各种需要完善的驱动，下面是必备软件列表及官网</p>
@@ -1010,33 +1010,6 @@
         <tag>操作系统</tag>
         <tag>macos</tag>
         <tag>黑苹果</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>罗振宇跨年演讲中引用的名人名言</title>
-    <url>/2019/01/18/%E7%BD%97%E6%8C%AF%E5%AE%87%E8%B7%A8%E5%B9%B4%E6%BC%94%E8%AE%B2%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E5%90%8D%E4%BA%BA%E5%90%8D%E8%A8%80/</url>
-    <content><![CDATA[<ul>
-<li>木心：岁月不饶人，我亦未曾饶过岁月。</li>
-<li>海子：今夜我不关心人类，我只关心你。</li>
-<li>罗曼罗兰：世界上只有一种真正的英雄主义，就是认清了生活的真相，还仍然热爱它。</li>
-<li>《兄弟连》：我们是伞兵，伞兵天生就是被包围的。</li>
-<li>尼采：凡杀不死我的，都让我更强大。  |  罗振宇改编：凡我赶不上的，我就在未来等它。</li>
-<li>富兰克林罗斯福：你一心想领导人们前进，回头一看，跟着的人却一个都没有，真可怕。</li>
-<li>菲茨杰拉德：一个人能同时保有全然相反的两种观念，还能正常行事，是第一流智慧的标志。</li>
-<li>查理芒格：宏观是我们必须接受的，微观才是我们可以有所作为的。</li>
-<li>温斯顿丘吉尔：这不是结束，甚至不是结束的开始，而可能是开始的结束。</li>
-<li>泰森：每个人都有一个计划，直到被一拳打到脸上。</li>
-<li>约翰列侬：所有事到最后都会是好事，如果还不是，那它就是还没到最后。</li>
-<li>阿尔贝加缪：对未来最大的慷慨，是把一切献给现在。</li>
-</ul>
-<p>原链接 <a href="http://pic1cdn.luojilab.com/html/poster/picYwlEOLr5NZiv6QyLLpk1.html?ts=1547037636572">在此</a></p>
-<hr>
-<h2 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h2><p>海子</p>
-<p>姐姐，今夜我在德令哈，夜色笼罩<br>姐姐，我今夜只有戈壁<br>草原尽头我两手空空<br>悲痛时握不住一颗泪滴<br>姐姐，今夜我在德令哈<br>这是雨水中一座荒凉的城<br>除了那些路过的和居住的<br>德令哈……今夜<br>这是唯一的，最后的，抒情<br>这是唯一的，最后的，草原<br>我把石头还给石头<br>让胜利的胜利<br>今夜青稞只属于他自己<br>一切都在生长<br>今夜我只有美丽的戈壁空空<br>姐姐，今夜我不关心人类，我只想你</p>
-]]></content>
-      <tags>
-        <tag>转载</tag>
-        <tag>经典</tag>
       </tags>
   </entry>
   <entry>
@@ -1577,6 +1550,33 @@
       <tags>
         <tag>nas</tag>
         <tag>n1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>罗振宇跨年演讲中引用的名人名言</title>
+    <url>/2019/01/18/%E7%BD%97%E6%8C%AF%E5%AE%87%E8%B7%A8%E5%B9%B4%E6%BC%94%E8%AE%B2%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E5%90%8D%E4%BA%BA%E5%90%8D%E8%A8%80/</url>
+    <content><![CDATA[<ul>
+<li>木心：岁月不饶人，我亦未曾饶过岁月。</li>
+<li>海子：今夜我不关心人类，我只关心你。</li>
+<li>罗曼罗兰：世界上只有一种真正的英雄主义，就是认清了生活的真相，还仍然热爱它。</li>
+<li>《兄弟连》：我们是伞兵，伞兵天生就是被包围的。</li>
+<li>尼采：凡杀不死我的，都让我更强大。  |  罗振宇改编：凡我赶不上的，我就在未来等它。</li>
+<li>富兰克林罗斯福：你一心想领导人们前进，回头一看，跟着的人却一个都没有，真可怕。</li>
+<li>菲茨杰拉德：一个人能同时保有全然相反的两种观念，还能正常行事，是第一流智慧的标志。</li>
+<li>查理芒格：宏观是我们必须接受的，微观才是我们可以有所作为的。</li>
+<li>温斯顿丘吉尔：这不是结束，甚至不是结束的开始，而可能是开始的结束。</li>
+<li>泰森：每个人都有一个计划，直到被一拳打到脸上。</li>
+<li>约翰列侬：所有事到最后都会是好事，如果还不是，那它就是还没到最后。</li>
+<li>阿尔贝加缪：对未来最大的慷慨，是把一切献给现在。</li>
+</ul>
+<p>原链接 <a href="http://pic1cdn.luojilab.com/html/poster/picYwlEOLr5NZiv6QyLLpk1.html?ts=1547037636572">在此</a></p>
+<hr>
+<h2 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h2><p>海子</p>
+<p>姐姐，今夜我在德令哈，夜色笼罩<br>姐姐，我今夜只有戈壁<br>草原尽头我两手空空<br>悲痛时握不住一颗泪滴<br>姐姐，今夜我在德令哈<br>这是雨水中一座荒凉的城<br>除了那些路过的和居住的<br>德令哈……今夜<br>这是唯一的，最后的，抒情<br>这是唯一的，最后的，草原<br>我把石头还给石头<br>让胜利的胜利<br>今夜青稞只属于他自己<br>一切都在生长<br>今夜我只有美丽的戈壁空空<br>姐姐，今夜我不关心人类，我只想你</p>
+]]></content>
+      <tags>
+        <tag>转载</tag>
+        <tag>经典</tag>
       </tags>
   </entry>
   <entry>
