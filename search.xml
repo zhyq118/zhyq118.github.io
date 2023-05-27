@@ -1772,4 +1772,51 @@
         <tag>git</tag>
       </tags>
   </entry>
+  <entry>
+    <title>ubuntu安装docker和portainer</title>
+    <url>/2023/05/27/ubuntu%E5%AE%89%E8%A3%85docker%E5%92%8Cportainer/</url>
+    <content><![CDATA[<h2 id="ubuntu安装docker"><a href="#ubuntu安装docker" class="headerlink" title="ubuntu安装docker"></a>ubuntu安装docker</h2><p>官方文档[在此](<a href="https://docs.docker.com/engine/install/ubuntu/">Install Docker Engine on Ubuntu | Docker Documentation</a>)</p>
+<h3 id="Set-up-the-repository"><a href="#Set-up-the-repository" class="headerlink" title="Set up the repository"></a>Set up the repository</h3><ol>
+<li><p>Update the <code>apt</code> package index and install packages to allow <code>apt</code> to use a repository over HTTPS:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install ca-certificates curl gnupg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Add Docker’s official GPG key:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line">$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line">$ sudo chmod a+r /etc/apt/keyrings/docker.gpg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use the following command to set up the repository:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ echo \</span><br><span class="line"> &quot;deb [arch=&quot;$(dpkg --print-architecture)&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="line"> &quot;$(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)&quot; stable&quot; | \</span><br><span class="line"> sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note</strong></p>
+<p>If you use an Ubuntu derivative distro, such as Linux Mint, you may need to use <code>UBUNTU_CODENAME</code> instead of <code>VERSION_CODENAME</code>.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="Install-Docker-Engine"><a href="#Install-Docker-Engine" class="headerlink" title="Install Docker Engine"></a>Install Docker Engine</h3><ol>
+<li><p>Update the <code>apt</code> package index:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Install Docker Engine, containerd, and Docker Compose.</p>
+<ul>
+<li>Latest</li>
+<li>Specific version</li>
+</ul>
+</li>
+</ol>
+<p>  To install the latest version, run:</p>
+<p> $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">3. Verify that the Docker Engine installation is successful by running the `hello-world` image.</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+<p>   $ sudo docker run hello-world<br>   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   </span><br><span class="line">   This command downloads a test image and runs it in a container. When the container runs, it prints a confirmation message and exits.</span><br><span class="line"></span><br><span class="line">You have now successfully installed and started Docker Engine.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 解决“Got permission denied while trying to connect to the Docker daemon socket at unix“问题</span><br><span class="line"></span><br><span class="line">出现此问题说明当前用户没有权限，官方解决方案[在此](https://docs.docker.com/engine/install/linux-postinstall/))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">To create the `docker` group and add your user:</span><br><span class="line"></span><br><span class="line">1. Create the `docker` group.</span><br><span class="line">   </span><br></pre></td></tr></table></figure><br>   $ sudo groupadd docker<br>   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">2. Add your user to the `docker` group.</span><br><span class="line">   </span><br></pre></td></tr></table></figure><br>   $ sudo usermod -aG docker $USER<br>   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">3. Log out and log back in so that your group membership is re-evaluated.</span><br><span class="line">   </span><br><span class="line">   &gt; If you’re running Linux in a virtual machine, it may be necessary to restart the virtual machine for changes to take effect.</span><br><span class="line">   </span><br><span class="line">   You can also run the following command to activate the changes to groups:</span><br><span class="line">   </span><br></pre></td></tr></table></figure><br>   $ newgrp docker<br>   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">4. restart docker service</span><br><span class="line">   </span><br></pre></td></tr></table></figure><br>   $ sudo systemctl restart docker<br>   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   </span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">## 安装运行Portainer</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /home/username/portainer/data:/data portainer/portainer</span><br></pre></td></tr></table></figure></p>
+<p>以上面的配置为例，直接打开本地的<code>9000</code>端口地址就可以进入管理后台。</p>
+<ul>
+<li><a href="http://localhost:9000/">http://localhost:9000</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
 </search>
