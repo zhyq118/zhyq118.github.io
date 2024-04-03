@@ -611,7 +611,7 @@
 <p>根据官方文档在hexo配置文件和next配置文件中做相应设置</p>
 <h1 id="上传到GitHub的补充设置"><a href="#上传到GitHub的补充设置" class="headerlink" title="上传到GitHub的补充设置"></a>上传到GitHub的补充设置</h1><p>前面在安装好已经设置好git和GitHub，需要注意现在GitHub授权不要用token方式，太麻烦，可以直接采用GitHub CLI的方式进行认证。</p>
 <p>想要使<code>hexo d</code> 成功运行，需要</p>
-<pre><code>1、在`_config.yml` 中添加以下内容
+<pre><code>1、在_config.yml中添加以下内容
 </code></pre>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line">  <span class="attr">type:</span> <span class="string">&#x27;git&#x27;</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">&#x27;url&#x27;</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">&#x27;master&#x27;</span></span><br></pre></td></tr></table></figure>
 <pre><code>2、安装相应插件
