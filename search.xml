@@ -1780,4 +1780,16 @@
         <tag>输入法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>重置windows网络命令</title>
+    <url>/2024/09/26/%E9%87%8D%E7%BD%AEwindows%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>保存备用<br><code>netsh int ip reset</code><br><code>netsh winsock reset</code><br><code>ipconfig /flushdns</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+      </tags>
+  </entry>
 </search>
