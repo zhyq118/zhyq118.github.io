@@ -1792,4 +1792,45 @@
         <tag>windows</tag>
       </tags>
   </entry>
+  <entry>
+    <title>N1 OpenWrt Docker 安装 Homeassistant 教程</title>
+    <url>/2024/10/09/N1%20OpenWrt%20Docker%20%E5%AE%89%E8%A3%85%20Home%20Assistant%20%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="获取docker镜像"><a href="#获取docker镜像" class="headerlink" title="获取docker镜像"></a>获取docker镜像</h2><p>拉取homeassistant最新docker镜像<br>终端登入执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull homeassistant/home-assistant:latest</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建docker容器"><a href="#创建docker容器" class="headerlink" title="创建docker容器"></a>创建docker容器</h2><p>创建homeassistant的docker容器<br>点击Docker&gt;容器菜单，然后 点击添加按钮  </p>
+<p>点击 命令行 按钮  </p>
+<p>在弹出的弹窗中 准备输入以下代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -d --name=&quot;hass&quot; -v 你的挂载点/hassistant:/config -p 8123:8123 homeassistant/home-assistant:latest</span><br></pre></td></tr></table></figure>
+
+<p>挂在点在 openwrt&gt;系统&gt;挂载点 查看,就是结尾带docker字样的那个</p>
+<p>由此最终得出 弹窗中需要输入的命令行 即为</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -d --name=&quot;hass&quot; -v /mnt/mmcblk2p4/docker/hassistant:/config -p 8123:8123 homeassistant/home-assistant:latest</span><br></pre></td></tr></table></figure>
+
+
+<p>然后在创建docker容器处，配置以下两项：</p>
+<ul>
+<li>docker镜像：选择homeassistant&#x2F;home-assistant:latest</li>
+<li>网络：选择host | host</li>
+</ul>
+<h2 id="启动docker容器"><a href="#启动docker容器" class="headerlink" title="启动docker容器"></a>启动docker容器</h2><p>找到容器，点击启动，稍微等待一会儿</p>
+<p>最后在浏览器 输入你的<code>http://软路由IP地址:8123</code>就可以登录homeassistant后台  </p>
+<h2 id="安装hacs"><a href="#安装hacs" class="headerlink" title="安装hacs"></a>安装hacs</h2><p>到现在为止，我们的Home Assistant系统已经安装完毕并正常运行了，但它仍然是一个空壳子。本质上，现在的Home Assistant，就相当于刚刚买回来的手机或者笔记本电脑，只有操作系统，还需要安装各种软件(应用&#x2F;App)，才能够真正满足日常使用需求。<br>HACS(Home Assistant Community Store，HA社区商店) 是一个应用商店，我们推荐安装！</p>
+<p>网上找到的教程基本都是针对国内访问优化过的商店，不放心，我找到了官方原版，安装步骤也很详细，姑且复制过来。<br><a href="https://hacs.xyz/docs/use/download/download/#to-download-hacs-container">官方地址</a><br>1、进入终端<br>2、进入容器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker exec -it &lt;name of container running homeassistant&gt; bash</span><br></pre></td></tr></table></figure>
+<p>上面创建的容器名称为hass,所以最终命令应为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker exec -it hass bash</span><br></pre></td></tr></table></figure>
+<p>3、下载运行bash脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O - https://get.hacs.xyz | bash -`</span><br></pre></td></tr></table></figure>
+<p>4、重启homeassistant</p>
+<p>最后你的homeassistant的左侧就多出了 hacs 的菜单，就可以使用了。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>n1</tag>
+      </tags>
+  </entry>
 </search>
