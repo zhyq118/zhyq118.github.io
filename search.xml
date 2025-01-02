@@ -601,9 +601,9 @@
     <title>hexo安装及next主题个人配置</title>
     <url>/2023/04/10/hexo%E5%AE%89%E8%A3%85%E5%8F%8Anext%E4%B8%BB%E9%A2%98%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>本篇内容纯粹为了个人安装方便，并非完整的安装教程。因为太喜欢装系统，所以hexo也要不断安装，写下这篇之后希望可以加速安装时间，不用再到处查看文档。</p>
-<h1 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h1><h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>Linux（DEB&#x2F;RPM-based）：从 <a href="https://github.com/nodesource/distributions">NodeSource</a> 安装<br>Ubuntu:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_19.x | <span class="built_in">sudo</span> -E bash - &amp;&amp;\</span><br><span class="line"><span class="built_in">sudo</span> apt install -y nodejs</span><br></pre></td></tr></table></figure>
-
+<h1 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h1><h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>Linux（DEB&#x2F;RPM-based）：从 <a href="https://github.com/nodesource/distributions">NodeSource</a> 安装</p>
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu:"></a>Ubuntu:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_19.x | <span class="built_in">sudo</span> -E bash - &amp;&amp;\</span><br><span class="line"><span class="built_in">sudo</span> apt install -y nodejs</span><br></pre></td></tr></table></figure>
+<h3 id="Arch-Linux"><a href="#Arch-Linux" class="headerlink" title="Arch Linux"></a>Arch Linux</h3><p><code>sudo pacman -S nodejs</code><br><code>sudo pacman -S npm</code></p>
 <h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>Ubuntu</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install git</span><br></pre></td></tr></table></figure>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
