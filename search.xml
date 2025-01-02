@@ -706,18 +706,6 @@
       </tags>
   </entry>
   <entry>
-    <title>一行命令解决ubuntu下解压文件乱码的问题</title>
-    <url>/2020/12/26/%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A7%A3%E5%86%B3ubuntu%E4%B8%8B%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>在windows上压缩的文件，是以系统的默认编码中文来压缩文件的。由于zip文件中没有声明其编码，所以linux上的unzip一般以默认编码解压，因此中文文件名会出现乱码。</p>
-<p>所以解决方法很简单，可以使用终端解压缩zip文件时指定解压的编码：</p>
-<p><code>unzip -O GBK xxx.zip</code>‘ </p>
-<p>解压后的文件路径为当前终端所在的路径。</p>
-]]></content>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>余华《语文和文学之间》读后</title>
     <url>/2018/11/20/%E4%BD%99%E5%8D%8E%E3%80%8A%E8%AF%AD%E6%96%87%E5%92%8C%E6%96%87%E5%AD%A6%E4%B9%8B%E9%97%B4%E3%80%8B%E8%AF%BB%E5%90%8E/</url>
     <content><![CDATA[<p>在读这篇文章之前，我并没有查看目录，只是读完之后，在意犹未尽之余才意识到我今晚的时间好像全都用来读它了，打开目录，嚯，竟然有39页，真庆幸！</p>
@@ -796,6 +784,18 @@
         <tag>操作系统</tag>
         <tag>macos</tag>
         <tag>黑苹果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一行命令解决ubuntu下解压文件乱码的问题</title>
+    <url>/2020/12/26/%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A7%A3%E5%86%B3ubuntu%E4%B8%8B%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>在windows上压缩的文件，是以系统的默认编码中文来压缩文件的。由于zip文件中没有声明其编码，所以linux上的unzip一般以默认编码解压，因此中文文件名会出现乱码。</p>
+<p>所以解决方法很简单，可以使用终端解压缩zip文件时指定解压的编码：</p>
+<p><code>unzip -O GBK xxx.zip</code>‘ </p>
+<p>解压后的文件路径为当前终端所在的路径。</p>
+]]></content>
+      <tags>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
