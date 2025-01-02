@@ -83,7 +83,7 @@
       </tags>
   </entry>
   <entry>
-    <title>git和github设置</title>
+    <title>Git和GitHub设置</title>
     <url>/2024/04/03/Git%E5%92%8CGitHub%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h2><h3 id="debian系"><a href="#debian系" class="headerlink" title="debian系"></a>debian系</h3><p><code>sudo apt install git</code></p>
 <h3 id="arch-linux"><a href="#arch-linux" class="headerlink" title="arch linux"></a>arch linux</h3><p><code>sudo pacman -S git</code></p>
