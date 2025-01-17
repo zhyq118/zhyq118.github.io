@@ -1893,10 +1893,10 @@
 <h3 id="全量包解包"><a href="#全量包解包" class="headerlink" title="全量包解包"></a>全量包解包</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python payload_dumper.py payload.bin</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>andriod</category>
+        <category>技术</category>
       </categories>
       <tags>
-        <tag>技术</tag>
+        <tag>android</tag>
       </tags>
   </entry>
 </search>
