@@ -921,142 +921,6 @@
       </tags>
   </entry>
   <entry>
-    <title>我的黑苹果完美记(一)</title>
-    <url>/2018/12/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%AE%8C%E7%BE%8E%E8%AE%B0(%E4%B8%80)/</url>
-    <content><![CDATA[<p>从10月26号在Windows下的VMWare上首次成功安装macOS到12月21日凌晨成功解决实体机上的睡眠问题为止，我的黑苹果折腾过程差不多已经有了两个月的时间了。这段时间除了工作，剩下的时间全都用在了这上面，甚至连正常的生活都受到了影响（心不在焉），虽然中间有几次因遇到难题想暂停下来，但只要一想到还有未解决的问题，就总是不放心，只好继续下去，好在目前都已解决。所以，写这样一篇记录性质的文章，算是一个总结，接下来把时间放在更有价值的事情上去，好好利用新系统。</p>
-<h2 id="我的配置单"><a href="#我的配置单" class="headerlink" title="我的配置单"></a>我的配置单</h2><p>非组装机，而是购买的联想品牌台式机，型号为天逸510pro，配置如下：</p>
-<ul>
-<li>主板：Lenovo 36C5 （Intel B250 芯片组）</li>
-<li>CPU: i5-7400 3 GHz</li>
-<li>内存：8 GB 2667 MHz DDR4</li>
-<li>硬盘：Samsung SSD 960 EVO 250GB</li>
-<li>显卡：NVIDIA GeForce GT 730</li>
-<li>无线网卡：BCM943602CS（后加的，原声Intel，无解）</li>
-</ul>
-<h2 id="硬盘规划"><a href="#硬盘规划" class="headerlink" title="硬盘规划"></a>硬盘规划</h2><p>由于完美主义作祟，看不得之前硬盘上无数的凌乱的分区，所以，毁掉之前win、mac和Ubuntu三系统并存在同一块硬盘上的分区状况，重新规划，最终分区如下：</p>
-<ul>
-<li>SSD：格掉其它系统，全盘保留给macOS</li>
-<li>1T HDD：Win10 （C盘+ D盘）+ Ubuntu</li>
-</ul>
-<p>其它，efi分区放在ssd上，且放在起始扇区上。</p>
-<h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>先装Windows，再装macOS。</p>
-<p>在我重新调整系统规划之前，Windows实际上是安装在ssd上的，所以，首先迁移系统，当然最大的问题是完整保留数据。</p>
-<p>大致步骤是先用diskgenius调整数据盘分区，在D盘之前腾出一块空间安装新Windows，安装之后居然直接变成了C盘，而之前的C盘（系统盘）则变成了普通的数据盘，所以，原系统盘直接格式化，倒也省事，软件再装就是。中间也是遇到了一些问题，好在都顺利解决，不再赘述。</p>
-<p>重点是macOS的安装过程，教程用的@黑果小兵的 <a href="https://blog.daliansky.net/MacOS-installation-tutorial-XiaoMi-Pro-installation-process-records.html">这一篇</a>，简述如下：</p>
-<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>方法一（省事）：下载 <a href="https://www.balena.io/etcher/">etcher</a>，打开镜像（黑果小兵网站上有提供下载），选择U盘，点击Flash即可。</p>
-<p>方法二：如果自己对从第三方网站上下载的镜像不放心，那么可以到官网下载所需的系统镜像，用unibeast制作完成，教程在 <a href="https://www.tonymacx86.com/threads/unibeast-install-macos-mojave-on-any-supported-intel-based-pc.259381/">这</a>，只是相对复杂一些，但也不算难。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>插入制作好的带clover的启动盘，开机按F12选择从U盘启动，跑完代码，顺利进入clover界面，选择Boot OS X Install from…（就是U盘所在位置），然后开始引导macOS系统，顺利的话会很快进入安装设置选项。</p>
-<h4 id="抹盘"><a href="#抹盘" class="headerlink" title="抹盘"></a>抹盘</h4><p>选择简体中文</p>
-<p>出现macOS实用工具界面,选择磁盘工具</p>
-<p>选择<code>显示所有设备</code></p>
-<p>选择你要安装的磁盘或者分区，点击<code>抹掉</code>按钮,选择格式，将名称修改为你想要的,点击<code>抹掉</code>按钮，请注意：</p>
-<p><strong>选择格式的时候很多教程上都说应该选择HFS+，但是我查了一下APFS是苹果最新的文件系统，我想既然用了最新的Mojave系统，只有搭配最新的文件系统或许才最能发挥系统系能，所以，直接选了APFS。</strong></p>
-<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><p>然后退出磁盘工具进入安装界面,选择安装，进行各种设置，确定安装。</p>
-<p>然后它会把USB安装盘上的安装文件预复制到要安装的系统分区里，之后系统会自动进行重启，进入第二阶段的安装。时间长短取决于你的硬盘速度，耐心等待即可。</p>
-<p><strong>重启时要注意，如果是在bios中选择的优盘为第一启动项，应该会直接进入macOS安装界面，但是如果像我的电脑可以直接从F12选择启动项的，重启的时候也要记得按F12选择启动项，免得直接进入默认的windows中了。</strong></p>
-<p>整个安装过程需要重启一次还是两次我已经记不清了，需要留意的是每次重启后要在clover中选择不同的选项，重复选择可能会重复安装，另外不要选择带有FileVault的选项，这个给磁盘加密用的，黑苹果还是不用为上吧。</p>
-<p>经过一到三次重启后，选择boot macOS from mac（名字取决于你的硬盘分区名称），进入设置向导，设置完成后进入桌面，黑苹果的初步安装可以说已经大功告成了。</p>
-<h2 id="合并EFI，设置多系统并存"><a href="#合并EFI，设置多系统并存" class="headerlink" title="合并EFI，设置多系统并存"></a>合并EFI，设置多系统并存</h2><p>到正式进入桌面为止，macOS算是安装成功了，但是真正的折腾才刚刚开始，难道你没发现之前的安装过程可以说是傻瓜式的，如果真这么简单，黑苹果恐怕早就流行起来了。</p>
-<p>下面直接复制@黑果小兵的帖子，图片也不做修改了，我这里算是做个备份，也方便自己查看。</p>
-<h3 id="教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇"><a href="#教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇" class="headerlink" title="教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]"></a>教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]</h3><p>新的系统安装成功后，EFI还位于U盘里，总不能一直挂着U盘使用系统吧。这个时候如果你想将U盘里的EFI复制到磁盘的EFI分区里，却苦于找不到看不见EFI分区，这个时候是该让diskutil登场了。</p>
-<p>diskutil命令的基本用法：</p>
-<p>查看磁盘分区表: <code>diskutil list</code></p>
-<p>&#x2F;dev&#x2F;disk0(internal, physical):</p>
-<table>
-<thead>
-<tr>
-<th>#:</th>
-<th>TYPE</th>
-<th>NAME</th>
-<th>SIZE</th>
-<th align="center">IDENTIFIER</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0:</td>
-<td>GUID_partition_scheme</td>
-<td></td>
-<td>256 GB</td>
-<td align="center">disk0</td>
-</tr>
-<tr>
-<td>1:</td>
-<td>EFI</td>
-<td>EFI</td>
-<td>200 MB</td>
-<td align="center">disk0s1</td>
-</tr>
-<tr>
-<td>2:</td>
-<td>Apple_HFS</td>
-<td>MAC</td>
-<td>128 GB</td>
-<td align="center">disk0s2</td>
-</tr>
-<tr>
-<td>3:</td>
-<td>Microsoft Basic Data</td>
-<td>WIN10</td>
-<td>127.7 GB</td>
-<td align="center">disk0s3</td>
-</tr>
-</tbody></table>
-<p>&#x2F;dev&#x2F;disk1(internal, physical):</p>
-<table>
-<thead>
-<tr>
-<th>#:</th>
-<th>TYPE</th>
-<th>NAME</th>
-<th>SIZE</th>
-<th>IDENTIFIER</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0:</td>
-<td>GUID_partition_scheme</td>
-<td></td>
-<td>16 GB</td>
-<td>disk1</td>
-</tr>
-<tr>
-<td>1:</td>
-<td>EFI</td>
-<td>EFI</td>
-<td>200 MB</td>
-<td>disk1s1</td>
-</tr>
-<tr>
-<td>2:</td>
-<td>Apple_HFS</td>
-<td>Install macOS Sierra</td>
-<td>15.8 GB</td>
-<td>disk1s2</td>
-</tr>
-</tbody></table>
-<h4 id="挂载磁盘EFI分区"><a href="#挂载磁盘EFI分区" class="headerlink" title="挂载磁盘EFI分区"></a>挂载磁盘EFI分区</h4><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">sudo diskutil mount disk0s1</span><br></pre></td></tr></table></figure>
-
-<h4 id="挂载U盘EFI分区"><a href="#挂载U盘EFI分区" class="headerlink" title="挂载U盘EFI分区"></a>挂载U盘EFI分区</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo diskutil mount disk1s1</span><br></pre></td></tr></table></figure>
-
-<h4 id="打开Finder，注意后面有个"><a href="#打开Finder，注意后面有个" class="headerlink" title="打开Finder，注意后面有个."></a>打开Finder，注意后面有个<code>.</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">open .</span><br></pre></td></tr></table></figure>
-
-<p>左侧会显示挂载了两个EFI分区，将U盘EFI目录全部复制到磁盘的EFI分区即可。</p>
-<h4 id="合并EFI分区"><a href="#合并EFI分区" class="headerlink" title="合并EFI分区"></a>合并EFI分区</h4><p><strong>这里有一点需要注意</strong>:<em>如果之前安装过Windows系统的话,会存在EFI的目录,只是EFI的目录下面只有BOOT和Microsoft这两个目录,如果希望添加macOS的Clover引导的话,可以将USB的EFI分区里面的EFI目录下面的CLOVER复制到磁盘里的EFI目录下,也就是执行的是</em><strong>合并</strong><em>的操作,让EFI同时支持WINDOWS和macOS的引导.千万不要全部复制,否则有可能造成EFI无法启动Windows.</em></p>
-<h2 id="添加UEFI引导选项"><a href="#添加UEFI引导选项" class="headerlink" title="添加UEFI引导选项"></a>添加UEFI引导选项</h2><p>使用工具:BOOTICE</p>
-<h3 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程:"></a>操作过程:</h3><ol>
-<li>打开BOOTICE软件,选择<code>物理磁盘</code>,选择欲操作的目标磁盘,点击<code>分区管理</code>,弹出分区管理的窗口,点击<code>分配盘符</code>,为<code>ESP</code>分区分配一个盘符,点击确定<br><img src="http://7.daliansky.net/BOOTICE1.jpg" alt="BOOTICE1"></li>
-<li>选择<code>UEFI</code>,点击<code>修改启动序列</code>,点击<code>添加</code>按钮,菜单标题填写:<code>CLOVER</code>,选择<code>启动文件</code>,在打开的窗口里选择<code>ESP</code>分区下的目录<code>\EFI\CLOVER\CLOVERX64.EFI</code>,点击<code>保存当前启动项设置</code><br><img src="http://7.daliansky.net/BOOTICE2.jpg" alt="BOOTICE2"></li>
-</ol>
-<p>不得不说，黑果小兵推荐的这个bootice软件非常实用，一般都推荐用easyuefi之类的，但是这是收费软件，试用版在企业版的win10上是不让用的，所以基本上没用，当然，破解版就算了。</p>
-<p>至此，可以拔掉优盘，开机进入clover界面选择想要启动的系统了。</p>
-<p>接下来就是进行各种功能的完善了。</p>
-]]></content>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>黑苹果</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>我的黑苹果必备应用列表</title>
     <url>/2018/11/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%BF%85%E5%A4%87%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/</url>
     <content><![CDATA[<p>除去各种需要完善的驱动，下面是必备软件列表及官网</p>
@@ -1697,29 +1561,139 @@
       </tags>
   </entry>
   <entry>
-    <title>解决Hexo下标签无法显示的问题</title>
-    <url>/2018/11/17/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>Hexo下标签无法显示的问题真的把我折腾惨了，耗费了无数的精力和时间，最终在虾哔哔的<a href="https://blog.mrcxt.com/hexo/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">这篇文章</a> 中才找到解决方案，记录备用。具体如下：</p>
-<h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><p>在 hexo 根目录的 source 文件夹下新建一个 tags 文件夹，然后在 tags 文件夹里面新建一个 index.md 文件，命令为：</p>
-<p><code>hexo new page &quot;tags&quot;</code></p>
-<h2 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h2><p>编辑 index.md 文件，内容如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+    <title>我的黑苹果完美记(一)</title>
+    <url>/2018/12/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%AE%8C%E7%BE%8E%E8%AE%B0(%E4%B8%80)/</url>
+    <content><![CDATA[<p>从10月26号在Windows下的VMWare上首次成功安装macOS到12月21日凌晨成功解决实体机上的睡眠问题为止，我的黑苹果折腾过程差不多已经有了两个月的时间了。这段时间除了工作，剩下的时间全都用在了这上面，甚至连正常的生活都受到了影响（心不在焉），虽然中间有几次因遇到难题想暂停下来，但只要一想到还有未解决的问题，就总是不放心，只好继续下去，好在目前都已解决。所以，写这样一篇记录性质的文章，算是一个总结，接下来把时间放在更有价值的事情上去，好好利用新系统。</p>
+<h2 id="我的配置单"><a href="#我的配置单" class="headerlink" title="我的配置单"></a>我的配置单</h2><p>非组装机，而是购买的联想品牌台式机，型号为天逸510pro，配置如下：</p>
+<ul>
+<li>主板：Lenovo 36C5 （Intel B250 芯片组）</li>
+<li>CPU: i5-7400 3 GHz</li>
+<li>内存：8 GB 2667 MHz DDR4</li>
+<li>硬盘：Samsung SSD 960 EVO 250GB</li>
+<li>显卡：NVIDIA GeForce GT 730</li>
+<li>无线网卡：BCM943602CS（后加的，原声Intel，无解）</li>
+</ul>
+<h2 id="硬盘规划"><a href="#硬盘规划" class="headerlink" title="硬盘规划"></a>硬盘规划</h2><p>由于完美主义作祟，看不得之前硬盘上无数的凌乱的分区，所以，毁掉之前win、mac和Ubuntu三系统并存在同一块硬盘上的分区状况，重新规划，最终分区如下：</p>
+<ul>
+<li>SSD：格掉其它系统，全盘保留给macOS</li>
+<li>1T HDD：Win10 （C盘+ D盘）+ Ubuntu</li>
+</ul>
+<p>其它，efi分区放在ssd上，且放在起始扇区上。</p>
+<h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>先装Windows，再装macOS。</p>
+<p>在我重新调整系统规划之前，Windows实际上是安装在ssd上的，所以，首先迁移系统，当然最大的问题是完整保留数据。</p>
+<p>大致步骤是先用diskgenius调整数据盘分区，在D盘之前腾出一块空间安装新Windows，安装之后居然直接变成了C盘，而之前的C盘（系统盘）则变成了普通的数据盘，所以，原系统盘直接格式化，倒也省事，软件再装就是。中间也是遇到了一些问题，好在都顺利解决，不再赘述。</p>
+<p>重点是macOS的安装过程，教程用的@黑果小兵的 <a href="https://blog.daliansky.net/MacOS-installation-tutorial-XiaoMi-Pro-installation-process-records.html">这一篇</a>，简述如下：</p>
+<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>方法一（省事）：下载 <a href="https://www.balena.io/etcher/">etcher</a>，打开镜像（黑果小兵网站上有提供下载），选择U盘，点击Flash即可。</p>
+<p>方法二：如果自己对从第三方网站上下载的镜像不放心，那么可以到官网下载所需的系统镜像，用unibeast制作完成，教程在 <a href="https://www.tonymacx86.com/threads/unibeast-install-macos-mojave-on-any-supported-intel-based-pc.259381/">这</a>，只是相对复杂一些，但也不算难。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>插入制作好的带clover的启动盘，开机按F12选择从U盘启动，跑完代码，顺利进入clover界面，选择Boot OS X Install from…（就是U盘所在位置），然后开始引导macOS系统，顺利的话会很快进入安装设置选项。</p>
+<h4 id="抹盘"><a href="#抹盘" class="headerlink" title="抹盘"></a>抹盘</h4><p>选择简体中文</p>
+<p>出现macOS实用工具界面,选择磁盘工具</p>
+<p>选择<code>显示所有设备</code></p>
+<p>选择你要安装的磁盘或者分区，点击<code>抹掉</code>按钮,选择格式，将名称修改为你想要的,点击<code>抹掉</code>按钮，请注意：</p>
+<p><strong>选择格式的时候很多教程上都说应该选择HFS+，但是我查了一下APFS是苹果最新的文件系统，我想既然用了最新的Mojave系统，只有搭配最新的文件系统或许才最能发挥系统系能，所以，直接选了APFS。</strong></p>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><p>然后退出磁盘工具进入安装界面,选择安装，进行各种设置，确定安装。</p>
+<p>然后它会把USB安装盘上的安装文件预复制到要安装的系统分区里，之后系统会自动进行重启，进入第二阶段的安装。时间长短取决于你的硬盘速度，耐心等待即可。</p>
+<p><strong>重启时要注意，如果是在bios中选择的优盘为第一启动项，应该会直接进入macOS安装界面，但是如果像我的电脑可以直接从F12选择启动项的，重启的时候也要记得按F12选择启动项，免得直接进入默认的windows中了。</strong></p>
+<p>整个安装过程需要重启一次还是两次我已经记不清了，需要留意的是每次重启后要在clover中选择不同的选项，重复选择可能会重复安装，另外不要选择带有FileVault的选项，这个给磁盘加密用的，黑苹果还是不用为上吧。</p>
+<p>经过一到三次重启后，选择boot macOS from mac（名字取决于你的硬盘分区名称），进入设置向导，设置完成后进入桌面，黑苹果的初步安装可以说已经大功告成了。</p>
+<h2 id="合并EFI，设置多系统并存"><a href="#合并EFI，设置多系统并存" class="headerlink" title="合并EFI，设置多系统并存"></a>合并EFI，设置多系统并存</h2><p>到正式进入桌面为止，macOS算是安装成功了，但是真正的折腾才刚刚开始，难道你没发现之前的安装过程可以说是傻瓜式的，如果真这么简单，黑苹果恐怕早就流行起来了。</p>
+<p>下面直接复制@黑果小兵的帖子，图片也不做修改了，我这里算是做个备份，也方便自己查看。</p>
+<h3 id="教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇"><a href="#教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇" class="headerlink" title="教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]"></a>教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]</h3><p>新的系统安装成功后，EFI还位于U盘里，总不能一直挂着U盘使用系统吧。这个时候如果你想将U盘里的EFI复制到磁盘的EFI分区里，却苦于找不到看不见EFI分区，这个时候是该让diskutil登场了。</p>
+<p>diskutil命令的基本用法：</p>
+<p>查看磁盘分区表: <code>diskutil list</code></p>
+<p>&#x2F;dev&#x2F;disk0(internal, physical):</p>
+<table>
+<thead>
+<tr>
+<th>#:</th>
+<th>TYPE</th>
+<th>NAME</th>
+<th>SIZE</th>
+<th align="center">IDENTIFIER</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:</td>
+<td>GUID_partition_scheme</td>
+<td></td>
+<td>256 GB</td>
+<td align="center">disk0</td>
+</tr>
+<tr>
+<td>1:</td>
+<td>EFI</td>
+<td>EFI</td>
+<td>200 MB</td>
+<td align="center">disk0s1</td>
+</tr>
+<tr>
+<td>2:</td>
+<td>Apple_HFS</td>
+<td>MAC</td>
+<td>128 GB</td>
+<td align="center">disk0s2</td>
+</tr>
+<tr>
+<td>3:</td>
+<td>Microsoft Basic Data</td>
+<td>WIN10</td>
+<td>127.7 GB</td>
+<td align="center">disk0s3</td>
+</tr>
+</tbody></table>
+<p>&#x2F;dev&#x2F;disk1(internal, physical):</p>
+<table>
+<thead>
+<tr>
+<th>#:</th>
+<th>TYPE</th>
+<th>NAME</th>
+<th>SIZE</th>
+<th>IDENTIFIER</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:</td>
+<td>GUID_partition_scheme</td>
+<td></td>
+<td>16 GB</td>
+<td>disk1</td>
+</tr>
+<tr>
+<td>1:</td>
+<td>EFI</td>
+<td>EFI</td>
+<td>200 MB</td>
+<td>disk1s1</td>
+</tr>
+<tr>
+<td>2:</td>
+<td>Apple_HFS</td>
+<td>Install macOS Sierra</td>
+<td>15.8 GB</td>
+<td>disk1s2</td>
+</tr>
+</tbody></table>
+<h4 id="挂载磁盘EFI分区"><a href="#挂载磁盘EFI分区" class="headerlink" title="挂载磁盘EFI分区"></a>挂载磁盘EFI分区</h4><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">sudo diskutil mount disk0s1</span><br></pre></td></tr></table></figure>
 
-<p>重点来了</p>
-<p>注意！这里面最重要的就是 layout 选项，后面的参数对应的是你 主题文件夹下 layout 文件夹下第一级的布局文件。比如，我的主题是用 ejs 写的，那么对应的就是 layout&#x2F;tags.ejs，如果没有，那么就会出现空白的现象！如果你的 tags 文件的命名时 a.ejs，那么你就应该写成 layout: “a”。(作者原文)</p>
-<p>我的next主题是swig文件，layout中标签显示的是tag.swig，我按照作者所说修改index中的layout参数为tag，然而并没有成功，于是灵机一动，认为title、type、layout是不是只有一致才能被正确读取，于是又换成了tags，就像上面代码块所显示的那样，竟然真的成功了。</p>
-<h2 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h2><p>编辑主题配置文件，编辑主题的 _config.yml ，添加 tags 到 menu 中，如下:</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">   <span class="attr">home:</span> <span class="string">/</span></span><br><span class="line">   <span class="attr">archives:</span> <span class="string">/archives</span></span><br><span class="line">   <span class="attr">tags:</span> <span class="string">/tags</span></span><br></pre></td></tr></table></figure>
+<h4 id="挂载U盘EFI分区"><a href="#挂载U盘EFI分区" class="headerlink" title="挂载U盘EFI分区"></a>挂载U盘EFI分区</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo diskutil mount disk1s1</span><br></pre></td></tr></table></figure>
 
-<h2 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h2><p>编辑 hexo 配置文件 Directory 选项。</p>
-<p>检查一下名称是否对应如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Directory</span></span><br><span class="line"><span class="attr">tag_dir:</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+<h4 id="打开Finder，注意后面有个"><a href="#打开Finder，注意后面有个" class="headerlink" title="打开Finder，注意后面有个."></a>打开Finder，注意后面有个<code>.</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">open .</span><br></pre></td></tr></table></figure>
 
-<p>就是这样，感谢原博主。</p>
+<p>左侧会显示挂载了两个EFI分区，将U盘EFI目录全部复制到磁盘的EFI分区即可。</p>
+<h4 id="合并EFI分区"><a href="#合并EFI分区" class="headerlink" title="合并EFI分区"></a>合并EFI分区</h4><p><strong>这里有一点需要注意</strong>:<em>如果之前安装过Windows系统的话,会存在EFI的目录,只是EFI的目录下面只有BOOT和Microsoft这两个目录,如果希望添加macOS的Clover引导的话,可以将USB的EFI分区里面的EFI目录下面的CLOVER复制到磁盘里的EFI目录下,也就是执行的是</em><strong>合并</strong><em>的操作,让EFI同时支持WINDOWS和macOS的引导.千万不要全部复制,否则有可能造成EFI无法启动Windows.</em></p>
+<h2 id="添加UEFI引导选项"><a href="#添加UEFI引导选项" class="headerlink" title="添加UEFI引导选项"></a>添加UEFI引导选项</h2><p>使用工具:BOOTICE</p>
+<h3 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程:"></a>操作过程:</h3><ol>
+<li>打开BOOTICE软件,选择<code>物理磁盘</code>,选择欲操作的目标磁盘,点击<code>分区管理</code>,弹出分区管理的窗口,点击<code>分配盘符</code>,为<code>ESP</code>分区分配一个盘符,点击确定<br><img src="http://7.daliansky.net/BOOTICE1.jpg" alt="BOOTICE1"></li>
+<li>选择<code>UEFI</code>,点击<code>修改启动序列</code>,点击<code>添加</code>按钮,菜单标题填写:<code>CLOVER</code>,选择<code>启动文件</code>,在打开的窗口里选择<code>ESP</code>分区下的目录<code>\EFI\CLOVER\CLOVERX64.EFI</code>,点击<code>保存当前启动项设置</code><br><img src="http://7.daliansky.net/BOOTICE2.jpg" alt="BOOTICE2"></li>
+</ol>
+<p>不得不说，黑果小兵推荐的这个bootice软件非常实用，一般都推荐用easyuefi之类的，但是这是收费软件，试用版在企业版的win10上是不让用的，所以基本上没用，当然，破解版就算了。</p>
+<p>至此，可以拔掉优盘，开机进入clover界面选择想要启动的系统了。</p>
+<p>接下来就是进行各种功能的完善了。</p>
 ]]></content>
       <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
+        <tag>操作系统</tag>
+        <tag>黑苹果</tag>
       </tags>
   </entry>
   <entry>
@@ -1745,6 +1719,32 @@
       <tags>
         <tag>n1</tag>
         <tag>nas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决Hexo下标签无法显示的问题</title>
+    <url>/2018/11/17/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>Hexo下标签无法显示的问题真的把我折腾惨了，耗费了无数的精力和时间，最终在虾哔哔的<a href="https://blog.mrcxt.com/hexo/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">这篇文章</a> 中才找到解决方案，记录备用。具体如下：</p>
+<h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><p>在 hexo 根目录的 source 文件夹下新建一个 tags 文件夹，然后在 tags 文件夹里面新建一个 index.md 文件，命令为：</p>
+<p><code>hexo new page &quot;tags&quot;</code></p>
+<h2 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h2><p>编辑 index.md 文件，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>重点来了</p>
+<p>注意！这里面最重要的就是 layout 选项，后面的参数对应的是你 主题文件夹下 layout 文件夹下第一级的布局文件。比如，我的主题是用 ejs 写的，那么对应的就是 layout&#x2F;tags.ejs，如果没有，那么就会出现空白的现象！如果你的 tags 文件的命名时 a.ejs，那么你就应该写成 layout: “a”。(作者原文)</p>
+<p>我的next主题是swig文件，layout中标签显示的是tag.swig，我按照作者所说修改index中的layout参数为tag，然而并没有成功，于是灵机一动，认为title、type、layout是不是只有一致才能被正确读取，于是又换成了tags，就像上面代码块所显示的那样，竟然真的成功了。</p>
+<h2 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h2><p>编辑主题配置文件，编辑主题的 _config.yml ，添加 tags 到 menu 中，如下:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">   <span class="attr">home:</span> <span class="string">/</span></span><br><span class="line">   <span class="attr">archives:</span> <span class="string">/archives</span></span><br><span class="line">   <span class="attr">tags:</span> <span class="string">/tags</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h2><p>编辑 hexo 配置文件 Directory 选项。</p>
+<p>检查一下名称是否对应如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Directory</span></span><br><span class="line"><span class="attr">tag_dir:</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+
+<p>就是这样，感谢原博主。</p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1826,6 +1826,17 @@
       </tags>
   </entry>
   <entry>
+    <title>黑苹果添加内存条出现End InitBootStruct的解决办法</title>
+    <url>/2019/07/24/%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AD%98%E6%9D%A1%E5%87%BA%E7%8E%B0End-InitBootStruct%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>实在禁受不住内存降价的诱惑，在京东上入了一根8G的内存条，可是如果知道在黑苹果上添加内存竟会这么麻烦的话，恐怕无论如何也不会下手了，反正现在的8g内存对我来说也完全够用。</p>
+<p>拆机安装上之后竟然卡在白苹果界面，加v进入啰嗦模式，出现了End InitBootStruct的提示，如下：<img src="https://s2.ax1x.com/2019/07/24/eVbujK.jpg" alt="eVbujK.jpg"></p>
+<p>先是怀疑内存条是否有问题，于是切换到Windows和Ubuntu下查看，都能正常读取新内存，那肯定是黑苹果自身的问题了，在中文环境下搜不到有效的解决办法，直接Google了一下End InitBootStruct，第一条竟然就解决了问题，当然过程也没那么顺利，反复拆卸安装了好几次。</p>
+]]></content>
+      <tags>
+        <tag>黑苹果</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>买书与读书</title>
     <url>/2018/11/17/%E8%AF%BB%E4%B9%A6%E4%B8%8E%E4%B9%B0%E4%B9%A6/</url>
     <content><![CDATA[<p>毫无疑问，对于并没有过多的钱财可以拿来挥霍的我来说，买书就是为了拿来读的。这本来不该成为问题，然而近来猛然发现，情况似乎有点超出了自己的预期。</p>
@@ -1861,17 +1872,6 @@
       <tags>
         <tag>macos</tag>
         <tag>输入法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>黑苹果添加内存条出现End InitBootStruct的解决办法</title>
-    <url>/2019/07/24/%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AD%98%E6%9D%A1%E5%87%BA%E7%8E%B0End-InitBootStruct%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<p>实在禁受不住内存降价的诱惑，在京东上入了一根8G的内存条，可是如果知道在黑苹果上添加内存竟会这么麻烦的话，恐怕无论如何也不会下手了，反正现在的8g内存对我来说也完全够用。</p>
-<p>拆机安装上之后竟然卡在白苹果界面，加v进入啰嗦模式，出现了End InitBootStruct的提示，如下：<img src="https://s2.ax1x.com/2019/07/24/eVbujK.jpg" alt="eVbujK.jpg"></p>
-<p>先是怀疑内存条是否有问题，于是切换到Windows和Ubuntu下查看，都能正常读取新内存，那肯定是黑苹果自身的问题了，在中文环境下搜不到有效的解决办法，直接Google了一下End InitBootStruct，第一条竟然就解决了问题，当然过程也没那么顺利，反复拆卸安装了好几次。</p>
-]]></content>
-      <tags>
-        <tag>黑苹果</tag>
       </tags>
   </entry>
   <entry>
