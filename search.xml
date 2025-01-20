@@ -143,6 +143,46 @@
       </tags>
   </entry>
   <entry>
+    <title>OnePlus 12R/Ace3 OOS 升级后恢复信号和Root步骤</title>
+    <url>/2025/01/17/OnePlus-12R-Ace3-OOS-%E5%8D%87%E7%BA%A7%E5%90%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E5%8F%B7%E5%92%8CRoot%E6%AD%A5%E9%AA%A4/</url>
+    <content><![CDATA[<p>因为一加Ace3切换成OxygenOS后会伴随有信号丢失的问题 ，解决办法就是刷ocdt分区和oplusstanvbk分区，但是这个也不是一劳永逸的方法，每次ota后都要重新操作一遍，为了方便自己使用，特在此记录。</p>
+<h2 id="恢复信号"><a href="#恢复信号" class="headerlink" title="恢复信号"></a>恢复信号</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot fastboot</span><br><span class="line">fastboot flash ocdt ocdt.img</span><br><span class="line">fastboot flash --slot=all oplusstanvbk oplusstanvbk.img</span><br></pre></td></tr></table></figure>
+<p>这里面的ocdt.img和oplusstanvbk.img是自己在买回新机后备份的原ColorOS系统的分区，一直保留使用，据说这个是和自己的手机绑定的，所以使用别人的，以及其它版本的不知道是否可行。</p>
+<h2 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h2><p>现在使用<a href="https://github.com/bmax121/APatch/releases">APatch</a>进行root，虽然从Apr 4, 2024已经没有再进行更新了，但截止到目前依然可用，目前最新版本的oos为CPH2609_15.0.0.400(EX01) 。使用它的原因是感觉比Magisk好用，内核级别的root，不容易被检测到。第一次安装刷入的步骤不难，也不是自己的目的，升级后进行的操作步骤如下：</p>
+<h3 id="获取boot镜像文件"><a href="#获取boot镜像文件" class="headerlink" title="获取boot镜像文件"></a>获取boot镜像文件</h3><ul>
+<li>1、下载全量包，可通过<code>oxygen Updater</code> 获得</li>
+<li>2、解包<ul>
+<li>通过解压软件获取<code>payload.bin</code> 文件</li>
+<li>通过<a href="https://github.com/vm03/payload_dumper">payload dumper</a> 获取boot.img文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="修补镜像"><a href="#修补镜像" class="headerlink" title="修补镜像"></a>修补镜像</h3><p>将获取到的原系统boot.img传输到手机，打开APatch，点击右上角手机图标，选择<code>选择一个启动镜像并修补</code> ，找到文件，选择进行修补，之后修补好的文件会被保存到download文件夹，名称类似于<code>apatch_patched_10763_0.10.7_prob.img</code> 。</p>
+<h3 id="刷入修补后的boot文件"><a href="#刷入修补后的boot文件" class="headerlink" title="刷入修补后的boot文件"></a>刷入修补后的boot文件</h3><p>将修补后的<code>apatch_patched_10763_0.10.7_prob.img</code>传到电脑，在相应文件夹内打开终端，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot bootloader</span><br><span class="line">fastboot flash boot xxx_boot.img</span><br></pre></td></tr></table></figure>
+<p>完成</p>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><p>在oos14时代，可能是内核版本没变，一次修补好的boot文件连续用了好几次，升级后直接刷入，免除了解包的麻烦。</p>
+<p>但在oos15时代，不知道什么原因，第一次大版本升级后修补的boot镜像，直接用在后面的小版本OTA后都导致了无法进入系统的问题，所以，还是不要偷懒，每次都解包重新修补比较保险。</p>
+<p>当然，出现无法启动的问题后，只需要刷入原版boot.img即可重新开机。</p>
+<h2 id="附：Linux环境下payload-dumper使用方法"><a href="#附：Linux环境下payload-dumper使用方法" class="headerlink" title="附：Linux环境下payload dumper使用方法"></a>附：Linux环境下payload dumper使用方法</h2><h3 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h3><ul>
+<li>Python3, pip</li>
+<li>google protobuf for python pip install protobuf</li>
+</ul>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>1、git clone <a href="https://github.com/vm03/payload_dumper.git">https://github.com/vm03/payload_dumper.git</a></li>
+<li>2、在<code>payload dumper</code> 目录下<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+这里要注意，如果不能安装，要进入python虚拟环境，方法在<a href="https://zhyq118.com/2025/01/16/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">这一篇</a> ，这一点至关重要，我在这里花费了不少时间。</li>
+</ul>
+<h3 id="全量包解包"><a href="#全量包解包" class="headerlink" title="全量包解包"></a>全量包解包</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python payload_dumper.py payload.bin</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</title>
     <url>/2019/04/26/Ubuntu19-04%E5%AE%89%E8%A3%85%E4%B8%AD%E5%87%BA%E7%8E%B0Pcie-Bus-Error%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<p>Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</p>
@@ -657,6 +697,46 @@
       </tags>
   </entry>
   <entry>
+    <title>python虚拟环境</title>
+    <url>/2025/01/16/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="python虚拟环境"><a href="#python虚拟环境" class="headerlink" title="python虚拟环境"></a>python虚拟环境</h1><h2 id="一、安装虚拟环境包"><a href="#一、安装虚拟环境包" class="headerlink" title="一、安装虚拟环境包"></a>一、安装虚拟环境包</h2><p>在使用虚拟环境之前，首先需要安装虚拟环境管理工具。Python提供了多种工具来创建虚拟环境，最常用的是venv和virtualenv。</p>
+<ul>
+<li>安装venv<br>Python 3.3及以上版本自带venv模块，因此无需额外安装。只需确保Python版本符合要求。</li>
+<li>安装virtualenv<br>对于Python 2或者需要额外功能，可以选择安装virtualenv。使用以下命令安装virtualenv：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="二、创建虚拟环境"><a href="#二、创建虚拟环境" class="headerlink" title="二、创建虚拟环境"></a>二、创建虚拟环境</h2><ul>
+<li>使用venv创建虚拟环境<br>在命令行中导航到项目目录，然后使用以下命令创建虚拟环境：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m venv myenv</span><br></pre></td></tr></table></figure>
+其中<code>myenv</code>是虚拟环境的名称，可以根据需要更改。</li>
+<li>使用virtualenv创建虚拟环境<br>同样，在项目目录下，使用以下命令创建虚拟环境：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">virtualenv myenv</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="三、激活虚拟环境"><a href="#三、激活虚拟环境" class="headerlink" title="三、激活虚拟环境"></a>三、激活虚拟环境</h2><p>在Unix或MacOS上激活</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source myenv/bin/activate</span><br></pre></td></tr></table></figure>
+<h2 id="四、在虚拟环境中安装和管理包"><a href="#四、在虚拟环境中安装和管理包" class="headerlink" title="四、在虚拟环境中安装和管理包"></a>四、在虚拟环境中安装和管理包</h2><p>激活虚拟环境后，所有的包安装和管理操作都会在该虚拟环境中进行，而不会影响全局的Python环境。</p>
+<h3 id="1-安装包"><a href="#1-安装包" class="headerlink" title="1. 安装包"></a>1. 安装包</h3><p>例如，安装requests库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<h3 id="2、查看已安装包"><a href="#2、查看已安装包" class="headerlink" title="2、查看已安装包"></a>2、查看已安装包</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list</span><br></pre></td></tr></table></figure>
+<h3 id="3、退出虚拟环境"><a href="#3、退出虚拟环境" class="headerlink" title="3、退出虚拟环境"></a>3、退出虚拟环境</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="五、在项目中使用虚拟环境"><a href="#五、在项目中使用虚拟环境" class="headerlink" title="五、在项目中使用虚拟环境"></a>五、在项目中使用虚拟环境</h2><h3 id="1-项目文件结构"><a href="#1-项目文件结构" class="headerlink" title="1. 项目文件结构"></a>1. 项目文件结构</h3><p>建议将虚拟环境目录排除在版本控制之外（例如Git），可以在项目根目录中创建一个.gitignore文件并添加以下内容：</p>
+<p><code>myenv/</code></p>
+<h3 id="2-使用requirements-txt管理依赖"><a href="#2-使用requirements-txt管理依赖" class="headerlink" title="2. 使用requirements.txt管理依赖"></a>2. 使用requirements.txt管理依赖</h3><p>在项目开发中，可以使用<code>requirements.txt</code>文件来管理依赖。在虚拟环境中，生成requirements.txt文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>在新的环境中，可以使用以下命令安装所有依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="六、其它"><a href="#六、其它" class="headerlink" title="六、其它"></a>六、其它</h2><h3 id="1、包冲突问题"><a href="#1、包冲突问题" class="headerlink" title="1、包冲突问题"></a>1、包冲突问题</h3><p>在虚拟环境中安装包时，可能会遇到包冲突问题。可以使用pipdeptree工具查看包依赖关系，并解决冲突：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install pipdeptree</span><br><span class="line">pipdeptree</span><br></pre></td></tr></table></figure>
+<h3 id="2、使用不同版本的Python"><a href="#2、使用不同版本的Python" class="headerlink" title="2、使用不同版本的Python"></a>2、使用不同版本的Python</h3><p>可以在创建虚拟环境时指定Python版本。例如，使用Python 3.8创建虚拟环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">virtualenv -p python3.8 myenv</span><br></pre></td></tr></table></figure>
+<h3 id="3、使用venv和virtualenv同时管理多个项目"><a href="#3、使用venv和virtualenv同时管理多个项目" class="headerlink" title="3、使用venv和virtualenv同时管理多个项目"></a>3、使用venv和virtualenv同时管理多个项目</h3><p>可以在不同的项目中使用不同的虚拟环境，以便独立管理各个项目的依赖关系。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu ss 全局</title>
     <url>/2018/02/04/ubuntu-ss-%E5%85%A8%E5%B1%80/</url>
     <content><![CDATA[<p>shadowsocks 是走的socks5协议，需要搭配浏览器插件使用，如果想要在系统全局使用，需要使用polipo进行二次转发</p>
@@ -704,6 +784,18 @@
 ]]></content>
       <tags>
         <tag>操作系统</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一行命令解决ubuntu下解压文件乱码的问题</title>
+    <url>/2020/12/26/%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A7%A3%E5%86%B3ubuntu%E4%B8%8B%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>在windows上压缩的文件，是以系统的默认编码中文来压缩文件的。由于zip文件中没有声明其编码，所以linux上的unzip一般以默认编码解压，因此中文文件名会出现乱码。</p>
+<p>所以解决方法很简单，可以使用终端解压缩zip文件时指定解压的编码：</p>
+<p><code>unzip -O GBK xxx.zip</code>‘ </p>
+<p>解压后的文件路径为当前终端所在的路径。</p>
+]]></content>
+      <tags>
         <tag>ubuntu</tag>
       </tags>
   </entry>
@@ -786,18 +878,6 @@
         <tag>操作系统</tag>
         <tag>macos</tag>
         <tag>黑苹果</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一行命令解决ubuntu下解压文件乱码的问题</title>
-    <url>/2020/12/26/%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A7%A3%E5%86%B3ubuntu%E4%B8%8B%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>在windows上压缩的文件，是以系统的默认编码中文来压缩文件的。由于zip文件中没有声明其编码，所以linux上的unzip一般以默认编码解压，因此中文文件名会出现乱码。</p>
-<p>所以解决方法很简单，可以使用终端解压缩zip文件时指定解压的编码：</p>
-<p><code>unzip -O GBK xxx.zip</code>‘ </p>
-<p>解压后的文件路径为当前终端所在的路径。</p>
-]]></content>
-      <tags>
-        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -1617,31 +1697,6 @@
       </tags>
   </entry>
   <entry>
-    <title>解决N1-OpenWrt在Win10下不能正常使用SMB共享服务的问题</title>
-    <url>/2020/07/27/%E8%A7%A3%E5%86%B3N1-OpenWrt%E5%9C%A8Win10%E4%B8%8B%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8SMB%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>N1打开smb共享服务，在mac及linux下皆能正常访问，偏偏在win10中打不开，百思不得其解，经过搜索，最终解决。</p>
-<p>原来，win10 1809及以上处于安全考虑，默认关闭了SMBv1服务，所以，只要打开就好了。</p>
-<h2 id="打开smb功能"><a href="#打开smb功能" class="headerlink" title="打开smb功能"></a>打开smb功能</h2><p>控制面板中找到“程序和功能”，或者直接在Cortana搜索框中搜“功能”，打开即可。</p>
-<p><img src="https://s1.ax1x.com/2020/07/27/aPc87F.jpg" alt="1.jpg"></p>
-<p>确定，然后重启。</p>
-<h2 id="修改本地组策略"><a href="#修改本地组策略" class="headerlink" title="修改本地组策略"></a>修改本地组策略</h2><p>重启后再次 <code>Win+R</code> 打开“运行”，输入 <code>gpedit.msc</code>，“确定”以打开“本地组策略编辑器”。</p>
-<p>按 计算机配置→管理模板→网络 的顺序，依次展开左侧目录树。</p>
-<p>点击“Lanman工作站”，右侧会显示该项目的详细设置。</p>
-<p>点击里面的“启用不安全的来宾登录”，将它由“未配置”改为“已启用”，应用并重启电脑。</p>
-<p><img src="https://s1.ax1x.com/2020/07/27/aPcJk4.jpg" alt="2.jpg"></p>
-<p>最后打开PowerShell，输入以下命令查看SMBv1的开启状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-SmbServerConfiguration | Select EnableSMB1Protocol</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s1.ax1x.com/2020/07/27/aPc30U.jpg" alt="3.jpg"></p>
-<p>现在，一切正常了，可以访问N1-OpenWrt上的资源了。</p>
-<p><a href="https://pockies.github.io/2019/01/19/fix-win10-smb/">本文参考链接</a></p>
-]]></content>
-      <tags>
-        <tag>n1</tag>
-        <tag>nas</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>解决Hexo下标签无法显示的问题</title>
     <url>/2018/11/17/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>Hexo下标签无法显示的问题真的把我折腾惨了，耗费了无数的精力和时间，最终在虾哔哔的<a href="https://blog.mrcxt.com/hexo/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">这篇文章</a> 中才找到解决方案，记录备用。具体如下：</p>
@@ -1665,6 +1720,31 @@
       <tags>
         <tag>hexo</tag>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决N1-OpenWrt在Win10下不能正常使用SMB共享服务的问题</title>
+    <url>/2020/07/27/%E8%A7%A3%E5%86%B3N1-OpenWrt%E5%9C%A8Win10%E4%B8%8B%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8SMB%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>N1打开smb共享服务，在mac及linux下皆能正常访问，偏偏在win10中打不开，百思不得其解，经过搜索，最终解决。</p>
+<p>原来，win10 1809及以上处于安全考虑，默认关闭了SMBv1服务，所以，只要打开就好了。</p>
+<h2 id="打开smb功能"><a href="#打开smb功能" class="headerlink" title="打开smb功能"></a>打开smb功能</h2><p>控制面板中找到“程序和功能”，或者直接在Cortana搜索框中搜“功能”，打开即可。</p>
+<p><img src="https://s1.ax1x.com/2020/07/27/aPc87F.jpg" alt="1.jpg"></p>
+<p>确定，然后重启。</p>
+<h2 id="修改本地组策略"><a href="#修改本地组策略" class="headerlink" title="修改本地组策略"></a>修改本地组策略</h2><p>重启后再次 <code>Win+R</code> 打开“运行”，输入 <code>gpedit.msc</code>，“确定”以打开“本地组策略编辑器”。</p>
+<p>按 计算机配置→管理模板→网络 的顺序，依次展开左侧目录树。</p>
+<p>点击“Lanman工作站”，右侧会显示该项目的详细设置。</p>
+<p>点击里面的“启用不安全的来宾登录”，将它由“未配置”改为“已启用”，应用并重启电脑。</p>
+<p><img src="https://s1.ax1x.com/2020/07/27/aPcJk4.jpg" alt="2.jpg"></p>
+<p>最后打开PowerShell，输入以下命令查看SMBv1的开启状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-SmbServerConfiguration | Select EnableSMB1Protocol</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2020/07/27/aPc30U.jpg" alt="3.jpg"></p>
+<p>现在，一切正常了，可以访问N1-OpenWrt上的资源了。</p>
+<p><a href="https://pockies.github.io/2019/01/19/fix-win10-smb/">本文参考链接</a></p>
+]]></content>
+      <tags>
+        <tag>n1</tag>
+        <tag>nas</tag>
       </tags>
   </entry>
   <entry>
@@ -1713,29 +1793,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>买书与读书</title>
-    <url>/2018/11/17/%E8%AF%BB%E4%B9%A6%E4%B8%8E%E4%B9%B0%E4%B9%A6/</url>
-    <content><![CDATA[<p>毫无疑问，对于并没有过多的钱财可以拿来挥霍的我来说，买书就是为了拿来读的。这本来不该成为问题，然而近来猛然发现，情况似乎有点超出了自己的预期。</p>
-<p>除去高中时期偶尔的购买外，真正开始比较大量地买书是在大学时代，也就是当当和亚马逊（当时叫卓越亚马逊）正兴起和活跃的年代。一天，猛然发现那些在新华书店按定价出售的书在网上竟然可以以如此的低价购买，真是喜出望外，再加上身边也有不少爱书之人，在相互学习及激励之下，可以说是省吃俭用地着实买了不少自己喜欢的书。</p>
-<p>毕业后在外工作，居无定所，购买实体书就意味着搬家时更多的行李，哪还敢像大学时那样买书啊，于是，当Kindle还没有进入大陆的时候海淘了一个日版的paperwhite，作为日常阅读使用。可是，Kindle的局限性也是显而易见的，在上面阅读一些现代的文学作品倒是方便，然而，想要阅读一些古籍就难了，一是没有好的资源，二是完全找不到阅读古籍的感觉，这两点都非常重要。特别是第二点，虽然听起来有点矫情，但是，真正用电子设备读过古籍的人恐怕都能心领神会吧。</p>
-<p>所以，还得买实体书，只是，要控制着买就是了。不过，也正是如此，买的那几本才能真正去读完。</p>
-<p>可以说，在“逃离北上广”之前，Kindle陪我在地铁上度过了很多无聊的时间，想想现在在柜子里安静地“睡大觉”的它，不禁唏嘘不已。</p>
-<p>狼狈“逃”回来后，相对稳定了，于是，又走上了购买实体书的不归路。</p>
-<p>然而随着购买书籍的增多，读书速度慢的问题也逐渐凸显出来了。</p>
-<p>读书慢，一是有的书快不了，这无可非议；二是没时间，没有充足的读书时间，想要按预定计划读完一本书自然是不可能的，这也是客观事实，自然也无可厚非；三是对读书的兴趣貌似被生活逐渐给磨去了，读书后的那种满足与欣喜感正在逐渐消失，而任务感却在与日俱增，甚至可以说，只是因为自己“读书人”的身份在强迫着自己继续读下去。</p>
-<p>这最后一种现象才是最可怕的，然而，事实上，我却并没有因此而停下自己买书的步伐。</p>
-<p>近两三年来，除了日常的购买外（因为有京东plus，所以，不必考虑凑单免运费），每年的“618”和“双十一”都会批量购买，总感觉不能错过这样的机会。尽管其中不少书确实都是自己喜欢的，然而，也只是机械地在购买而已，真正拿起来读的却少。</p>
-<p>比如，很早就“立誓”今生一定要拥有的《金庸作品集》终于购买了，然而，买回来之后，却连一部都没有完整地看完，想来，购买这部书恐怕完全是出于情怀了。前段时间，老先生仙逝时，曾想过对他老人家最好的祭奠莫过于重读他的全部作品了吧，然而，终究还是没有表达出自己最大的敬意。</p>
-<p>再比如，大学时读过的《约翰·克里斯朵夫》总想要重读，于是，专门购买了当年阅读过的傅雷先生译本（出版社不同，找不到），可终究还是情怀的成分更多。</p>
-<p>面对这样的情况，接下来还要不要继续买书就需要认真考虑考虑了，毕竟，我从来都很鄙弃那种拿书来装点门面的人。</p>
-<p>我怎能成为自己所讨厌的那种人呢？</p>
-]]></content>
-      <tags>
-        <tag>随笔</tag>
-        <tag>阅读</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>读余华《我只知道人是什么》</title>
     <url>/2018/11/22/%E8%AF%BB%E4%BD%99%E5%8D%8E%E3%80%8A%E6%88%91%E5%8F%AA%E7%9F%A5%E9%81%93%E4%BA%BA%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%8B/</url>
     <content><![CDATA[<p>书17号到手，18号开始读，利用了五天工作之外的时间读完，算是近期除《侠隐》之外读得最快的一本了。</p>
@@ -1769,14 +1826,26 @@
       </tags>
   </entry>
   <entry>
-    <title>黑苹果添加内存条出现End InitBootStruct的解决办法</title>
-    <url>/2019/07/24/%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AD%98%E6%9D%A1%E5%87%BA%E7%8E%B0End-InitBootStruct%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<p>实在禁受不住内存降价的诱惑，在京东上入了一根8G的内存条，可是如果知道在黑苹果上添加内存竟会这么麻烦的话，恐怕无论如何也不会下手了，反正现在的8g内存对我来说也完全够用。</p>
-<p>拆机安装上之后竟然卡在白苹果界面，加v进入啰嗦模式，出现了End InitBootStruct的提示，如下：<img src="https://s2.ax1x.com/2019/07/24/eVbujK.jpg" alt="eVbujK.jpg"></p>
-<p>先是怀疑内存条是否有问题，于是切换到Windows和Ubuntu下查看，都能正常读取新内存，那肯定是黑苹果自身的问题了，在中文环境下搜不到有效的解决办法，直接Google了一下End InitBootStruct，第一条竟然就解决了问题，当然过程也没那么顺利，反复拆卸安装了好几次。</p>
+    <title>买书与读书</title>
+    <url>/2018/11/17/%E8%AF%BB%E4%B9%A6%E4%B8%8E%E4%B9%B0%E4%B9%A6/</url>
+    <content><![CDATA[<p>毫无疑问，对于并没有过多的钱财可以拿来挥霍的我来说，买书就是为了拿来读的。这本来不该成为问题，然而近来猛然发现，情况似乎有点超出了自己的预期。</p>
+<p>除去高中时期偶尔的购买外，真正开始比较大量地买书是在大学时代，也就是当当和亚马逊（当时叫卓越亚马逊）正兴起和活跃的年代。一天，猛然发现那些在新华书店按定价出售的书在网上竟然可以以如此的低价购买，真是喜出望外，再加上身边也有不少爱书之人，在相互学习及激励之下，可以说是省吃俭用地着实买了不少自己喜欢的书。</p>
+<p>毕业后在外工作，居无定所，购买实体书就意味着搬家时更多的行李，哪还敢像大学时那样买书啊，于是，当Kindle还没有进入大陆的时候海淘了一个日版的paperwhite，作为日常阅读使用。可是，Kindle的局限性也是显而易见的，在上面阅读一些现代的文学作品倒是方便，然而，想要阅读一些古籍就难了，一是没有好的资源，二是完全找不到阅读古籍的感觉，这两点都非常重要。特别是第二点，虽然听起来有点矫情，但是，真正用电子设备读过古籍的人恐怕都能心领神会吧。</p>
+<p>所以，还得买实体书，只是，要控制着买就是了。不过，也正是如此，买的那几本才能真正去读完。</p>
+<p>可以说，在“逃离北上广”之前，Kindle陪我在地铁上度过了很多无聊的时间，想想现在在柜子里安静地“睡大觉”的它，不禁唏嘘不已。</p>
+<p>狼狈“逃”回来后，相对稳定了，于是，又走上了购买实体书的不归路。</p>
+<p>然而随着购买书籍的增多，读书速度慢的问题也逐渐凸显出来了。</p>
+<p>读书慢，一是有的书快不了，这无可非议；二是没时间，没有充足的读书时间，想要按预定计划读完一本书自然是不可能的，这也是客观事实，自然也无可厚非；三是对读书的兴趣貌似被生活逐渐给磨去了，读书后的那种满足与欣喜感正在逐渐消失，而任务感却在与日俱增，甚至可以说，只是因为自己“读书人”的身份在强迫着自己继续读下去。</p>
+<p>这最后一种现象才是最可怕的，然而，事实上，我却并没有因此而停下自己买书的步伐。</p>
+<p>近两三年来，除了日常的购买外（因为有京东plus，所以，不必考虑凑单免运费），每年的“618”和“双十一”都会批量购买，总感觉不能错过这样的机会。尽管其中不少书确实都是自己喜欢的，然而，也只是机械地在购买而已，真正拿起来读的却少。</p>
+<p>比如，很早就“立誓”今生一定要拥有的《金庸作品集》终于购买了，然而，买回来之后，却连一部都没有完整地看完，想来，购买这部书恐怕完全是出于情怀了。前段时间，老先生仙逝时，曾想过对他老人家最好的祭奠莫过于重读他的全部作品了吧，然而，终究还是没有表达出自己最大的敬意。</p>
+<p>再比如，大学时读过的《约翰·克里斯朵夫》总想要重读，于是，专门购买了当年阅读过的傅雷先生译本（出版社不同，找不到），可终究还是情怀的成分更多。</p>
+<p>面对这样的情况，接下来还要不要继续买书就需要认真考虑考虑了，毕竟，我从来都很鄙弃那种拿书来装点门面的人。</p>
+<p>我怎能成为自己所讨厌的那种人呢？</p>
 ]]></content>
       <tags>
-        <tag>黑苹果</tag>
+        <tag>随笔</tag>
+        <tag>阅读</tag>
       </tags>
   </entry>
   <entry>
@@ -1792,6 +1861,17 @@
       <tags>
         <tag>macos</tag>
         <tag>输入法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>黑苹果添加内存条出现End InitBootStruct的解决办法</title>
+    <url>/2019/07/24/%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AD%98%E6%9D%A1%E5%87%BA%E7%8E%B0End-InitBootStruct%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>实在禁受不住内存降价的诱惑，在京东上入了一根8G的内存条，可是如果知道在黑苹果上添加内存竟会这么麻烦的话，恐怕无论如何也不会下手了，反正现在的8g内存对我来说也完全够用。</p>
+<p>拆机安装上之后竟然卡在白苹果界面，加v进入啰嗦模式，出现了End InitBootStruct的提示，如下：<img src="https://s2.ax1x.com/2019/07/24/eVbujK.jpg" alt="eVbujK.jpg"></p>
+<p>先是怀疑内存条是否有问题，于是切换到Windows和Ubuntu下查看，都能正常读取新内存，那肯定是黑苹果自身的问题了，在中文环境下搜不到有效的解决办法，直接Google了一下End InitBootStruct，第一条竟然就解决了问题，当然过程也没那么顺利，反复拆卸安装了好几次。</p>
+]]></content>
+      <tags>
+        <tag>黑苹果</tag>
       </tags>
   </entry>
   <entry>
@@ -1819,86 +1899,6 @@
       <tags>
         <tag>macos</tag>
         <tag>输入法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python虚拟环境</title>
-    <url>/2025/01/16/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h1 id="python虚拟环境"><a href="#python虚拟环境" class="headerlink" title="python虚拟环境"></a>python虚拟环境</h1><h2 id="一、安装虚拟环境包"><a href="#一、安装虚拟环境包" class="headerlink" title="一、安装虚拟环境包"></a>一、安装虚拟环境包</h2><p>在使用虚拟环境之前，首先需要安装虚拟环境管理工具。Python提供了多种工具来创建虚拟环境，最常用的是venv和virtualenv。</p>
-<ul>
-<li>安装venv<br>Python 3.3及以上版本自带venv模块，因此无需额外安装。只需确保Python版本符合要求。</li>
-<li>安装virtualenv<br>对于Python 2或者需要额外功能，可以选择安装virtualenv。使用以下命令安装virtualenv：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="二、创建虚拟环境"><a href="#二、创建虚拟环境" class="headerlink" title="二、创建虚拟环境"></a>二、创建虚拟环境</h2><ul>
-<li>使用venv创建虚拟环境<br>在命令行中导航到项目目录，然后使用以下命令创建虚拟环境：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m venv myenv</span><br></pre></td></tr></table></figure>
-其中<code>myenv</code>是虚拟环境的名称，可以根据需要更改。</li>
-<li>使用virtualenv创建虚拟环境<br>同样，在项目目录下，使用以下命令创建虚拟环境：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">virtualenv myenv</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="三、激活虚拟环境"><a href="#三、激活虚拟环境" class="headerlink" title="三、激活虚拟环境"></a>三、激活虚拟环境</h2><p>在Unix或MacOS上激活</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source myenv/bin/activate</span><br></pre></td></tr></table></figure>
-<h2 id="四、在虚拟环境中安装和管理包"><a href="#四、在虚拟环境中安装和管理包" class="headerlink" title="四、在虚拟环境中安装和管理包"></a>四、在虚拟环境中安装和管理包</h2><p>激活虚拟环境后，所有的包安装和管理操作都会在该虚拟环境中进行，而不会影响全局的Python环境。</p>
-<h3 id="1-安装包"><a href="#1-安装包" class="headerlink" title="1. 安装包"></a>1. 安装包</h3><p>例如，安装requests库：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
-<h3 id="2、查看已安装包"><a href="#2、查看已安装包" class="headerlink" title="2、查看已安装包"></a>2、查看已安装包</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list</span><br></pre></td></tr></table></figure>
-<h3 id="3、退出虚拟环境"><a href="#3、退出虚拟环境" class="headerlink" title="3、退出虚拟环境"></a>3、退出虚拟环境</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-<h2 id="五、在项目中使用虚拟环境"><a href="#五、在项目中使用虚拟环境" class="headerlink" title="五、在项目中使用虚拟环境"></a>五、在项目中使用虚拟环境</h2><h3 id="1-项目文件结构"><a href="#1-项目文件结构" class="headerlink" title="1. 项目文件结构"></a>1. 项目文件结构</h3><p>建议将虚拟环境目录排除在版本控制之外（例如Git），可以在项目根目录中创建一个.gitignore文件并添加以下内容：</p>
-<p><code>myenv/</code></p>
-<h3 id="2-使用requirements-txt管理依赖"><a href="#2-使用requirements-txt管理依赖" class="headerlink" title="2. 使用requirements.txt管理依赖"></a>2. 使用requirements.txt管理依赖</h3><p>在项目开发中，可以使用<code>requirements.txt</code>文件来管理依赖。在虚拟环境中，生成requirements.txt文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
-
-<p>在新的环境中，可以使用以下命令安装所有依赖：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<h2 id="六、其它"><a href="#六、其它" class="headerlink" title="六、其它"></a>六、其它</h2><h3 id="1、包冲突问题"><a href="#1、包冲突问题" class="headerlink" title="1、包冲突问题"></a>1、包冲突问题</h3><p>在虚拟环境中安装包时，可能会遇到包冲突问题。可以使用pipdeptree工具查看包依赖关系，并解决冲突：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install pipdeptree</span><br><span class="line">pipdeptree</span><br></pre></td></tr></table></figure>
-<h3 id="2、使用不同版本的Python"><a href="#2、使用不同版本的Python" class="headerlink" title="2、使用不同版本的Python"></a>2、使用不同版本的Python</h3><p>可以在创建虚拟环境时指定Python版本。例如，使用Python 3.8创建虚拟环境：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">virtualenv -p python3.8 myenv</span><br></pre></td></tr></table></figure>
-<h3 id="3、使用venv和virtualenv同时管理多个项目"><a href="#3、使用venv和virtualenv同时管理多个项目" class="headerlink" title="3、使用venv和virtualenv同时管理多个项目"></a>3、使用venv和virtualenv同时管理多个项目</h3><p>可以在不同的项目中使用不同的虚拟环境，以便独立管理各个项目的依赖关系。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OnePlus 12R/Ace3 OOS 升级后恢复信号和Root步骤</title>
-    <url>/2025/01/17/OnePlus-12R-Ace3-OOS-%E5%8D%87%E7%BA%A7%E5%90%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E5%8F%B7%E5%92%8CRoot%E6%AD%A5%E9%AA%A4/</url>
-    <content><![CDATA[<p>因为一加Ace3切换成OxygenOS后会伴随有信号丢失的问题 ，解决办法就是刷ocdt分区和oplusstanvbk分区，但是这个也不是一劳永逸的方法，每次ota后都要重新操作一遍，为了方便自己使用，特在此记录。</p>
-<h2 id="恢复信号"><a href="#恢复信号" class="headerlink" title="恢复信号"></a>恢复信号</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot fastboot</span><br><span class="line">fastboot flash ocdt ocdt.img</span><br><span class="line">fastboot flash --slot=all oplusstanvbk oplusstanvbk.img</span><br></pre></td></tr></table></figure>
-<p>这里面的ocdt.img和oplusstanvbk.img是自己在买回新机后备份的原ColorOS系统的分区，一直保留使用，据说这个是和自己的手机绑定的，所以使用别人的，以及其它版本的不知道是否可行。</p>
-<h2 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h2><p>现在使用<a href="https://github.com/bmax121/APatch/releases">APatch</a>进行root，虽然从Apr 4, 2024已经没有再进行更新了，但截止到目前依然可用，目前最新版本的oos为CPH2609_15.0.0.400(EX01) 。使用它的原因是感觉比Magisk好用，内核级别的root，不容易被检测到。第一次安装刷入的步骤不难，也不是自己的目的，升级后进行的操作步骤如下：</p>
-<h3 id="获取boot镜像文件"><a href="#获取boot镜像文件" class="headerlink" title="获取boot镜像文件"></a>获取boot镜像文件</h3><ul>
-<li>1、下载全量包，可通过<code>oxygen Updater</code> 获得</li>
-<li>2、解包<ul>
-<li>通过解压软件获取<code>payload.bin</code> 文件</li>
-<li>通过<a href="https://github.com/vm03/payload_dumper">payload dumper</a> 获取boot.img文件</li>
-</ul>
-</li>
-</ul>
-<h3 id="修补镜像"><a href="#修补镜像" class="headerlink" title="修补镜像"></a>修补镜像</h3><p>将获取到的原系统boot.img传输到手机，打开APatch，点击右上角手机图标，选择<code>选择一个启动镜像并修补</code> ，找到文件，选择进行修补，之后修补好的文件会被保存到download文件夹，名称类似于<code>apatch_patched_10763_0.10.7_prob.img</code> 。</p>
-<h3 id="刷入修补后的boot文件"><a href="#刷入修补后的boot文件" class="headerlink" title="刷入修补后的boot文件"></a>刷入修补后的boot文件</h3><p>将修补后的<code>apatch_patched_10763_0.10.7_prob.img</code>传到电脑，在相应文件夹内打开终端，输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot bootloader</span><br><span class="line">fastboot flash boot xxx_boot.img</span><br></pre></td></tr></table></figure>
-<p>完成</p>
-<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><p>在oos14时代，可能是内核版本没变，一次修补好的boot文件连续用了好几次，升级后直接刷入，免除了解包的麻烦。</p>
-<p>但在oos15时代，不知道什么原因，第一次大版本升级后修补的boot镜像，直接用在后面的小版本OTA后都导致了无法进入系统的问题，所以，还是不要偷懒，每次都解包重新修补比较保险。</p>
-<p>当然，出现无法启动的问题后，只需要刷入原版boot.img即可重新开机。</p>
-<h2 id="附：Linux环境下payload-dumper使用方法"><a href="#附：Linux环境下payload-dumper使用方法" class="headerlink" title="附：Linux环境下payload dumper使用方法"></a>附：Linux环境下payload dumper使用方法</h2><h3 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h3><ul>
-<li>Python3, pip</li>
-<li>google protobuf for python pip install protobuf</li>
-</ul>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
-<li>1、git clone <a href="https://github.com/vm03/payload_dumper.git">https://github.com/vm03/payload_dumper.git</a></li>
-<li>2、在<code>payload dumper</code> 目录下<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-这里要注意，如果不能安装，要进入python虚拟环境，方法在<a href="https://zhyq118.com/2025/01/16/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">这一篇</a> ，这一点至关重要，我在这里花费了不少时间。</li>
-</ul>
-<h3 id="全量包解包"><a href="#全量包解包" class="headerlink" title="全量包解包"></a>全量包解包</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python payload_dumper.py payload.bin</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>android</tag>
       </tags>
   </entry>
 </search>
