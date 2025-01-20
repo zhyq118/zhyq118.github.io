@@ -636,6 +636,8 @@
 <h3 id="本地搜索（Local-Search）"><a href="#本地搜索（Local-Search）" class="headerlink" title="本地搜索（Local Search）"></a>本地搜索（<a href="https://theme-next.js.org/docs/third-party-services/search-services.html#Local-Search">Local Search</a>）</h3><p>Install <code>hexo-generator-searchdb</code> by executing the following command in site root dir:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
 <p>根据官方文档在hexo配置文件和next配置文件中做相应设置</p>
+<h3 id="访问统计"><a href="#访问统计" class="headerlink" title="访问统计"></a>访问统计</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
 <h1 id="上传到GitHub的补充设置"><a href="#上传到GitHub的补充设置" class="headerlink" title="上传到GitHub的补充设置"></a>上传到GitHub的补充设置</h1><p>前面在安装好已经设置好git和GitHub，需要注意现在GitHub授权不要用token方式，太麻烦，可以直接采用GitHub CLI的方式进行认证。</p>
 <p>想要使<code>hexo d</code> 成功运行，需要</p>
 <pre><code>1、在`_config.yml` 中添加以下内容
