@@ -1901,4 +1901,53 @@
         <tag>输入法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Hexo Next主题打开Gitalk评论系统</title>
+    <url>/2025/01/21/Hexo%20Next%E4%B8%BB%E9%A2%98%E6%89%93%E5%BC%80Gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<p>又从disqus切换到了gitalk</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://github.com/gitalk/gitalk">gitalk</a>是一个基于<code>github</code>开发的评论插件，它将文章评论以<code>issues</code>形式保存在<code>github</code>仓库中</p>
+<p>实现步骤如下：</p>
+<ol>
+<li>注册<code>github</code>应用</li>
+<li><code>NexT</code>配置</li>
+</ol>
+<h2 id="注册github应用"><a href="#注册github应用" class="headerlink" title="注册github应用"></a>注册github应用</h2><p>进入<code>github</code>注册页面：<a href="https://github.com/settings/applications/new">Register a new OAuth application</a></p>
+<p><img src="https://hexo-next.readthedocs.io/zh-cn/latest/next/advanced/imgs/register-github.png"></p>
+<ul>
+<li><code>Application name</code>：应用名，方便起见直接填<code>github</code>用户名</li>
+<li><code>Homepage URL</code>：网站地址</li>
+<li><code>Application description</code>：应用描述</li>
+<li><code>Authorization callback URL</code>：网站地址</li>
+</ul>
+<p>注册成功后会生成<code>Client ID</code>和<code>Client Secret</code></p>
+<p>提示：<code>Homepage URL</code>和<code>Authorization callback URL</code>如果绑定了自己的域名，最好填写自定义域名，不要填写<code>***.github.io</code> ，否则可能会出现<code>The redirect_uri is not associated with this application</code> 的提示。</p>
+<h2 id="NexT配置"><a href="#NexT配置" class="headerlink" title="NexT配置"></a>NexT配置</h2><p>修改主题<code>_config.yml</code>（根目录下）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: zjykzj # GitHub repo owner</span><br><span class="line">  repo: guestbook # Repository name to store issues</span><br><span class="line">  client_id: e15xxxxx63dce # GitHub Application Client ID</span><br><span class="line">  client_secret: 76cxxxxxf766 # GitHub Application Client Secret</span><br><span class="line">  admin_user: zjykzj # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: true # Facebook-like distraction free mode</span><br><span class="line">  # When the official proxy is not available, you can change it to your own proxy address</span><br><span class="line">  proxy: https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token # This is official proxy adress</span><br><span class="line">  # Gitalk&#x27;s display language depends on user&#x27;s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language: zh-CN</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置<code>enable</code>为<code>true</code></li>
+<li><code>github_id</code>填入<code>github</code>帐号（用户名，不是邮箱）</li>
+<li><code>repo</code>填入<code>github</code>仓库名（<strong>注意：是仓库名不是仓库地址</strong>），评论将会以<code>issues</code>形式保存在该仓库下</li>
+<li><code>client_id</code>填入注册生成的值</li>
+<li><code>client_secret</code>填入注册生成的值</li>
+<li><code>admin_user</code>填入<code>github</code>帐号，用于初始化评论账户（用户名，不是邮箱）</li>
+</ul>
+<h2 id="Error-Not-Found"><a href="#Error-Not-Found" class="headerlink" title="Error: Not Found"></a><code>Error: Not Found</code></h2><p>问题描述：在文章底部评论框中出现错误信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: Not Found</span><br></pre></td></tr></table></figure>
+
+<p>解决：和配置选项的填写有关，注意填写的内容</p>
+<p>备注：填写主题中的配置的时候一定要小心，否则可能就出现此问题。我折腾了一个小时，最后发现是填写仓库名称的时候#号漏删了。<br>另外，如果配置都正确的情况下，如果还是出现此问题，那么请注意把评论所在仓库设置为<code>public</code>。</p>
+<h2 id="未找到相关的issue进行评论"><a href="#未找到相关的issue进行评论" class="headerlink" title="未找到相关的issue进行评论"></a>未找到相关的issue进行评论</h2><p>错误提示：<code>Related Issues not found：未找到相关的issue进行评论</code>，出现这种情况是因为文章评论还未初始化，只需要点击下面的按钮，登录 GitHub 账户即可。</p>
+<p>文章少的话记得登录github账户后一篇一篇打开进行初始化，如果已有文章较多，建议查找脚本操作。</p>
+<h2 id="隐藏评论框"><a href="#隐藏评论框" class="headerlink" title="隐藏评论框"></a>隐藏评论框</h2><p>设置<code>gitalk</code>评论系统后，将会在每篇文章末尾添加评论框，而对于标签页&#x2F;类别页等不需要评论的文章，可在<code>front-matter</code>设置属性进行隐藏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">comments: false</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
 </search>

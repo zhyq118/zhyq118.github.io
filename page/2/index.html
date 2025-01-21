@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -202,6 +202,110 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2023/02/07/Debian-11-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E5%88%B0sudoers-%E4%B8%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhyq118">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZHYQ118">
+      <meta itemprop="description" content="我见青山多妩媚，料青山见我应如是。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZHYQ118">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/07/Debian-11-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E5%88%B0sudoers-%E4%B8%AD/" class="post-title-link" itemprop="url">Debian 11 添加用户到sudoers 中</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-07 20:20:05" itemprop="dateCreated datePublished" datetime="2023-02-07T20:20:05+08:00">2023-02-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-11 05:51:46" itemprop="dateModified" datetime="2023-04-11T05:51:46+08:00">2023-04-11</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>160</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>针对“普通用户提示用户名不在sudoers文件中，此事将被报告“，如此解决：</p>
+<p>解决办法：</p>
+<ol>
+<li>终端输入 <code>su</code> 回车，输入 root 密码，回车，切换到 root 用户</li>
+<li>打开 sudoers 文件：<code>vi /etc/sudoers</code></li>
+<li>找到 <code># Allow members of group sudo to execute any command</code>，在 <code>%sudo ALL=(ALL:ALL) ALL</code> 下面添加 <code>xxx ALL=(ALL:ALL) ALL</code>，xxx 为前面无法执行 sudo 命令的用户名</li>
+</ol>
+<p>vi 给 sudoers 添加内容方法：</p>
+<ol>
+<li>光标移动到指定位置，按 <code>i</code> 键当前光标位置插入</li>
+<li>输入内容</li>
+<li><code>ESC</code></li>
+<li>输入 <code>:wq!</code> 回车，因为 sudoers 是只读文件，所以要加 <code>!</code> 强制保存。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1778,100 +1882,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2019/04/26/Ubuntu19-04%E5%AE%89%E8%A3%85%E4%B8%AD%E5%87%BA%E7%8E%B0Pcie-Bus-Error%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zhyq118">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZHYQ118">
-      <meta itemprop="description" content="我见青山多妩媚，料青山见我应如是。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZHYQ118">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/04/26/Ubuntu19-04%E5%AE%89%E8%A3%85%E4%B8%AD%E5%87%BA%E7%8E%B0Pcie-Bus-Error%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-04-26 12:30:48" itemprop="dateCreated datePublished" datetime="2019-04-26T12:30:48+08:00">2019-04-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-04-11 05:51:46" itemprop="dateModified" datetime="2023-04-11T05:51:46+08:00">2023-04-11</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>234</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</p>
-<p>Ubuntu从18.04升级至19.04后竟然开不了机，不停跑代码，以为是升级不彻底造成的，所以，干脆制作启动盘重新安装，不料情况依然如故，而且代码显示和之前也一样，几乎就打算放弃了。</p>
-<p>看看错误代码，反复出现的关键词就是Pcie Bus Error，猛然意识到可能和我的NVME SSD有关，这样就简单了，因为我的Ubuntu虽然安装在机械硬盘上，但是EFI分区却放在了SSD上（和其它两个系统共用），所以，就在机械硬盘上新建EFI分区，然后重新安装，完成后顺利开机。</p>
-<p>问题有点莫名其妙，如果说是nvme驱动跟不上的话，为何18.04却没有问题？似乎每次Ubuntu大版本升级总要折腾一番。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1896,14 +1906,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">20k</span>
+    <span title="站点总字数">21k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:13</span>
+    <span title="站点阅读时长">1:15</span>
   </span>
 </div>
 <div class="busuanzi-count">
