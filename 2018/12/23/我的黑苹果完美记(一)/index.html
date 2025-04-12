@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.css" integrity="sha256-zM8WXtG4eUn7dKKNMTuoWZub++VnSfaOpA/8PJfvTBo=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhyq118.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="从10月26号在Windows下的VMWare上首次成功安装macOS到12月21日凌晨成功解决实体机上的睡眠问题为止，我的黑苹果折腾过程差不多已经有了两个月的时间了。这段时间除了工作，剩下的时间全都用在了这上面，甚至连正常的生活都受到了影响（心不在焉），虽然中间有几次因遇到难题想暂停下来，但只要一想到还有未解决的问题，就总是不放心，只好继续下去，好在目前都已解决。所以，写这样一篇记录性质的文章，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的黑苹果完美记(一)">
+<meta property="og:url" content="https://zhyq118.github.io/2018/12/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%AE%8C%E7%BE%8E%E8%AE%B0(%E4%B8%80)/index.html">
+<meta property="og:site_name" content="ZHYQ118">
+<meta property="og:description" content="从10月26号在Windows下的VMWare上首次成功安装macOS到12月21日凌晨成功解决实体机上的睡眠问题为止，我的黑苹果折腾过程差不多已经有了两个月的时间了。这段时间除了工作，剩下的时间全都用在了这上面，甚至连正常的生活都受到了影响（心不在焉），虽然中间有几次因遇到难题想暂停下来，但只要一想到还有未解决的问题，就总是不放心，只好继续下去，好在目前都已解决。所以，写这样一篇记录性质的文章，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://7.daliansky.net/BOOTICE1.jpg">
+<meta property="og:image" content="http://7.daliansky.net/BOOTICE2.jpg">
+<meta property="article:published_time" content="2018-12-23T13:23:43.000Z">
+<meta property="article:modified_time" content="2023-04-10T21:51:46.000Z">
+<meta property="article:author" content="zhyq118">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="黑苹果">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://7.daliansky.net/BOOTICE1.jpg">
+
+
+<link rel="canonical" href="https://zhyq118.github.io/2018/12/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%AE%8C%E7%BE%8E%E8%AE%B0(%E4%B8%80)/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhyq118.github.io/2018/12/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%AE%8C%E7%BE%8E%E8%AE%B0(%E4%B8%80)/","path":"2018/12/23/我的黑苹果完美记(一)/","title":"我的黑苹果完美记(一)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>我的黑苹果完美记(一) | ZHYQ118</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.js" integrity="sha256-hiUEBwFEpLF6DlB8sGXlKo4kPZ46Ui4qGpd0vrVkOm4=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZHYQ118</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个太过正常的人的自白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E9%85%8D%E7%BD%AE%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">我的配置单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E7%9B%98%E8%A7%84%E5%88%92"><span class="nav-number">2.</span> <span class="nav-text">硬盘规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="nav-number">3.1.</span> <span class="nav-text">制作启动盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%B9%E7%9B%98"><span class="nav-number">3.2.1.</span> <span class="nav-text">抹盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.2.</span> <span class="nav-text">安装过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E5%B9%B6EFI%EF%BC%8C%E8%AE%BE%E7%BD%AE%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%B9%B6%E5%AD%98"><span class="nav-number">4.</span> <span class="nav-text">合并EFI，设置多系统并存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%99%E4%BD%A0%E5%B0%86U%E7%9B%98%E4%B8%8A%E7%9A%84EFI%E5%A4%8D%E5%88%B6%E5%88%B0%E7%A3%81%E7%9B%98%E7%9A%84EFI%E5%88%86%E5%8C%BA-%E8%84%B1%E7%A6%BBUSB%E8%BF%90%E8%A1%8C-macOS%E7%AF%87"><span class="nav-number">4.1.</span> <span class="nav-text">教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98EFI%E5%88%86%E5%8C%BA"><span class="nav-number">4.1.1.</span> <span class="nav-text">挂载磁盘EFI分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%82%E8%BD%BDU%E7%9B%98EFI%E5%88%86%E5%8C%BA"><span class="nav-number">4.1.2.</span> <span class="nav-text">挂载U盘EFI分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80Finder%EF%BC%8C%E6%B3%A8%E6%84%8F%E5%90%8E%E9%9D%A2%E6%9C%89%E4%B8%AA"><span class="nav-number">4.1.3.</span> <span class="nav-text">打开Finder，注意后面有个.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%88%E5%B9%B6EFI%E5%88%86%E5%8C%BA"><span class="nav-number">4.1.4.</span> <span class="nav-text">合并EFI分区</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0UEFI%E5%BC%95%E5%AF%BC%E9%80%89%E9%A1%B9"><span class="nav-number">5.</span> <span class="nav-text">添加UEFI引导选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">5.1.</span> <span class="nav-text">操作过程:</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zhyq118"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">zhyq118</p>
+  <div class="site-description" itemprop="description">我见青山多妩媚，料青山见我应如是。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhyq118" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zhyq118" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/zhyq118" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/zhyq118" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+        <div class="pjax">
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2018/12/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%AE%8C%E7%BE%8E%E8%AE%B0(%E4%B8%80)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhyq118">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZHYQ118">
+      <meta itemprop="description" content="我见青山多妩媚，料青山见我应如是。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="我的黑苹果完美记(一) | ZHYQ118">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我的黑苹果完美记(一)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-23 21:23:43" itemprop="dateCreated datePublished" datetime="2018-12-23T21:23:43+08:00">2018-12-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-11 05:51:46" itemprop="dateModified" datetime="2023-04-11T05:51:46+08:00">2023-04-11</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>从10月26号在Windows下的VMWare上首次成功安装macOS到12月21日凌晨成功解决实体机上的睡眠问题为止，我的黑苹果折腾过程差不多已经有了两个月的时间了。这段时间除了工作，剩下的时间全都用在了这上面，甚至连正常的生活都受到了影响（心不在焉），虽然中间有几次因遇到难题想暂停下来，但只要一想到还有未解决的问题，就总是不放心，只好继续下去，好在目前都已解决。所以，写这样一篇记录性质的文章，算是一个总结，接下来把时间放在更有价值的事情上去，好好利用新系统。</p>
+<h2 id="我的配置单"><a href="#我的配置单" class="headerlink" title="我的配置单"></a>我的配置单</h2><p>非组装机，而是购买的联想品牌台式机，型号为天逸510pro，配置如下：</p>
+<ul>
+<li>主板：Lenovo 36C5 （Intel B250 芯片组）</li>
+<li>CPU: i5-7400 3 GHz</li>
+<li>内存：8 GB 2667 MHz DDR4</li>
+<li>硬盘：Samsung SSD 960 EVO 250GB</li>
+<li>显卡：NVIDIA GeForce GT 730</li>
+<li>无线网卡：BCM943602CS（后加的，原声Intel，无解）</li>
+</ul>
+<h2 id="硬盘规划"><a href="#硬盘规划" class="headerlink" title="硬盘规划"></a>硬盘规划</h2><p>由于完美主义作祟，看不得之前硬盘上无数的凌乱的分区，所以，毁掉之前win、mac和Ubuntu三系统并存在同一块硬盘上的分区状况，重新规划，最终分区如下：</p>
+<ul>
+<li>SSD：格掉其它系统，全盘保留给macOS</li>
+<li>1T HDD：Win10 （C盘+ D盘）+ Ubuntu</li>
+</ul>
+<p>其它，efi分区放在ssd上，且放在起始扇区上。</p>
+<h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>先装Windows，再装macOS。</p>
+<p>在我重新调整系统规划之前，Windows实际上是安装在ssd上的，所以，首先迁移系统，当然最大的问题是完整保留数据。</p>
+<p>大致步骤是先用diskgenius调整数据盘分区，在D盘之前腾出一块空间安装新Windows，安装之后居然直接变成了C盘，而之前的C盘（系统盘）则变成了普通的数据盘，所以，原系统盘直接格式化，倒也省事，软件再装就是。中间也是遇到了一些问题，好在都顺利解决，不再赘述。</p>
+<p>重点是macOS的安装过程，教程用的@黑果小兵的 <a target="_blank" rel="noopener" href="https://blog.daliansky.net/MacOS-installation-tutorial-XiaoMi-Pro-installation-process-records.html">这一篇</a>，简述如下：</p>
+<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>方法一（省事）：下载 <a target="_blank" rel="noopener" href="https://www.balena.io/etcher/">etcher</a>，打开镜像（黑果小兵网站上有提供下载），选择U盘，点击Flash即可。</p>
+<p>方法二：如果自己对从第三方网站上下载的镜像不放心，那么可以到官网下载所需的系统镜像，用unibeast制作完成，教程在 <a target="_blank" rel="noopener" href="https://www.tonymacx86.com/threads/unibeast-install-macos-mojave-on-any-supported-intel-based-pc.259381/">这</a>，只是相对复杂一些，但也不算难。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>插入制作好的带clover的启动盘，开机按F12选择从U盘启动，跑完代码，顺利进入clover界面，选择Boot OS X Install from…（就是U盘所在位置），然后开始引导macOS系统，顺利的话会很快进入安装设置选项。</p>
+<h4 id="抹盘"><a href="#抹盘" class="headerlink" title="抹盘"></a>抹盘</h4><p>选择简体中文</p>
+<p>出现macOS实用工具界面,选择磁盘工具</p>
+<p>选择<code>显示所有设备</code></p>
+<p>选择你要安装的磁盘或者分区，点击<code>抹掉</code>按钮,选择格式，将名称修改为你想要的,点击<code>抹掉</code>按钮，请注意：</p>
+<p><strong>选择格式的时候很多教程上都说应该选择HFS+，但是我查了一下APFS是苹果最新的文件系统，我想既然用了最新的Mojave系统，只有搭配最新的文件系统或许才最能发挥系统系能，所以，直接选了APFS。</strong></p>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><p>然后退出磁盘工具进入安装界面,选择安装，进行各种设置，确定安装。</p>
+<p>然后它会把USB安装盘上的安装文件预复制到要安装的系统分区里，之后系统会自动进行重启，进入第二阶段的安装。时间长短取决于你的硬盘速度，耐心等待即可。</p>
+<p><strong>重启时要注意，如果是在bios中选择的优盘为第一启动项，应该会直接进入macOS安装界面，但是如果像我的电脑可以直接从F12选择启动项的，重启的时候也要记得按F12选择启动项，免得直接进入默认的windows中了。</strong></p>
+<p>整个安装过程需要重启一次还是两次我已经记不清了，需要留意的是每次重启后要在clover中选择不同的选项，重复选择可能会重复安装，另外不要选择带有FileVault的选项，这个给磁盘加密用的，黑苹果还是不用为上吧。</p>
+<p>经过一到三次重启后，选择boot macOS from mac（名字取决于你的硬盘分区名称），进入设置向导，设置完成后进入桌面，黑苹果的初步安装可以说已经大功告成了。</p>
+<h2 id="合并EFI，设置多系统并存"><a href="#合并EFI，设置多系统并存" class="headerlink" title="合并EFI，设置多系统并存"></a>合并EFI，设置多系统并存</h2><p>到正式进入桌面为止，macOS算是安装成功了，但是真正的折腾才刚刚开始，难道你没发现之前的安装过程可以说是傻瓜式的，如果真这么简单，黑苹果恐怕早就流行起来了。</p>
+<p>下面直接复制@黑果小兵的帖子，图片也不做修改了，我这里算是做个备份，也方便自己查看。</p>
+<h3 id="教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇"><a href="#教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇" class="headerlink" title="教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]"></a>教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]</h3><p>新的系统安装成功后，EFI还位于U盘里，总不能一直挂着U盘使用系统吧。这个时候如果你想将U盘里的EFI复制到磁盘的EFI分区里，却苦于找不到看不见EFI分区，这个时候是该让diskutil登场了。</p>
+<p>diskutil命令的基本用法：</p>
+<p>查看磁盘分区表: <code>diskutil list</code></p>
+<p>&#x2F;dev&#x2F;disk0(internal, physical):</p>
+<table>
+<thead>
+<tr>
+<th>#:</th>
+<th>TYPE</th>
+<th>NAME</th>
+<th>SIZE</th>
+<th align="center">IDENTIFIER</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:</td>
+<td>GUID_partition_scheme</td>
+<td></td>
+<td>256 GB</td>
+<td align="center">disk0</td>
+</tr>
+<tr>
+<td>1:</td>
+<td>EFI</td>
+<td>EFI</td>
+<td>200 MB</td>
+<td align="center">disk0s1</td>
+</tr>
+<tr>
+<td>2:</td>
+<td>Apple_HFS</td>
+<td>MAC</td>
+<td>128 GB</td>
+<td align="center">disk0s2</td>
+</tr>
+<tr>
+<td>3:</td>
+<td>Microsoft Basic Data</td>
+<td>WIN10</td>
+<td>127.7 GB</td>
+<td align="center">disk0s3</td>
+</tr>
+</tbody></table>
+<p>&#x2F;dev&#x2F;disk1(internal, physical):</p>
+<table>
+<thead>
+<tr>
+<th>#:</th>
+<th>TYPE</th>
+<th>NAME</th>
+<th>SIZE</th>
+<th>IDENTIFIER</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:</td>
+<td>GUID_partition_scheme</td>
+<td></td>
+<td>16 GB</td>
+<td>disk1</td>
+</tr>
+<tr>
+<td>1:</td>
+<td>EFI</td>
+<td>EFI</td>
+<td>200 MB</td>
+<td>disk1s1</td>
+</tr>
+<tr>
+<td>2:</td>
+<td>Apple_HFS</td>
+<td>Install macOS Sierra</td>
+<td>15.8 GB</td>
+<td>disk1s2</td>
+</tr>
+</tbody></table>
+<h4 id="挂载磁盘EFI分区"><a href="#挂载磁盘EFI分区" class="headerlink" title="挂载磁盘EFI分区"></a>挂载磁盘EFI分区</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo diskutil mount disk0s1</span><br></pre></td></tr></table></figure>
+
+<h4 id="挂载U盘EFI分区"><a href="#挂载U盘EFI分区" class="headerlink" title="挂载U盘EFI分区"></a>挂载U盘EFI分区</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo diskutil mount disk1s1</span><br></pre></td></tr></table></figure>
+
+<h4 id="打开Finder，注意后面有个"><a href="#打开Finder，注意后面有个" class="headerlink" title="打开Finder，注意后面有个."></a>打开Finder，注意后面有个<code>.</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open .</span><br></pre></td></tr></table></figure>
+
+<p>左侧会显示挂载了两个EFI分区，将U盘EFI目录全部复制到磁盘的EFI分区即可。</p>
+<h4 id="合并EFI分区"><a href="#合并EFI分区" class="headerlink" title="合并EFI分区"></a>合并EFI分区</h4><p><strong>这里有一点需要注意</strong>:<em>如果之前安装过Windows系统的话,会存在EFI的目录,只是EFI的目录下面只有BOOT和Microsoft这两个目录,如果希望添加macOS的Clover引导的话,可以将USB的EFI分区里面的EFI目录下面的CLOVER复制到磁盘里的EFI目录下,也就是执行的是</em><strong>合并</strong><em>的操作,让EFI同时支持WINDOWS和macOS的引导.千万不要全部复制,否则有可能造成EFI无法启动Windows.</em></p>
+<h2 id="添加UEFI引导选项"><a href="#添加UEFI引导选项" class="headerlink" title="添加UEFI引导选项"></a>添加UEFI引导选项</h2><p>使用工具:BOOTICE</p>
+<h3 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程:"></a>操作过程:</h3><ol>
+<li>打开BOOTICE软件,选择<code>物理磁盘</code>,选择欲操作的目标磁盘,点击<code>分区管理</code>,弹出分区管理的窗口,点击<code>分配盘符</code>,为<code>ESP</code>分区分配一个盘符,点击确定<br><img src="http://7.daliansky.net/BOOTICE1.jpg" alt="BOOTICE1"></li>
+<li>选择<code>UEFI</code>,点击<code>修改启动序列</code>,点击<code>添加</code>按钮,菜单标题填写:<code>CLOVER</code>,选择<code>启动文件</code>,在打开的窗口里选择<code>ESP</code>分区下的目录<code>\EFI\CLOVER\CLOVERX64.EFI</code>,点击<code>保存当前启动项设置</code><br><img src="http://7.daliansky.net/BOOTICE2.jpg" alt="BOOTICE2"></li>
+</ol>
+<p>不得不说，黑果小兵推荐的这个bootice软件非常实用，一般都推荐用easyuefi之类的，但是这是收费软件，试用版在企业版的win10上是不让用的，所以基本上没用，当然，破解版就算了。</p>
+<p>至此，可以拔掉优盘，开机进入clover界面选择想要启动的系统了。</p>
+<p>接下来就是进行各种功能的完善了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+              <a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" rel="tag"># 黑苹果</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/09/%E6%9A%82%E6%97%B6%E4%B8%8D%E6%8A%98%E8%85%BE%E4%BA%86/" rel="prev" title="暂时不折腾了">
+                  <i class="fa fa-angle-left"></i> 暂时不折腾了
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/01/08/%E9%BC%A0%E9%A1%BB%E7%AE%A1%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/" rel="next" title="鼠须管卸载方法">
+                  鼠须管卸载方法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zhyq118</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">21k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:16</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"zhyq118","repo":"zhyq118.github.io","client_id":"Ov23lita5L2AQH4Ekl5y","client_secret":"30c172c3545779d7e3ab23511a129f0635205519","admin_user":"zhyq118","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0c57f53ea828ff5edc128f20fba9cf70"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

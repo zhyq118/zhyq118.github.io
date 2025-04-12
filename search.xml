@@ -1,0 +1,1973 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Debian 11 (Bullseye) 配置fcitx中文输入法</title>
+    <url>/2023/02/07/Debian-11-Bullseye-%E9%85%8D%E7%BD%AEfcitx%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="安装配置中文输入法的方法如下："><a href="#安装配置中文输入法的方法如下：" class="headerlink" title="安装配置中文输入法的方法如下："></a>安装配置中文输入法的方法如下：</h2><h3 id="首先安装fcitx5和fcitx5-pinyin"><a href="#首先安装fcitx5和fcitx5-pinyin" class="headerlink" title="首先安装fcitx5和fcitx5-pinyin:"></a>首先安装fcitx5和fcitx5-pinyin:</h3><p><code>apt-get install fcitx5 fcitx5-pinyin</code></p>
+<h3 id="接着在im-config-input-method-中激活fcitx5作为输入方式。"><a href="#接着在im-config-input-method-中激活fcitx5作为输入方式。" class="headerlink" title="接着在im-config(input method)中激活fcitx5作为输入方式。"></a>接着在im-config(input method)中激活fcitx5作为输入方式。</h3><h3 id="打开fcitx5-configure，配置拼音输入法："><a href="#打开fcitx5-configure，配置拼音输入法：" class="headerlink" title="打开fcitx5-configure，配置拼音输入法："></a>打开fcitx5-configure，配置拼音输入法：</h3><p><code>在右侧搜pinyin,然后添加到左边</code></p>
+<h3 id="然后用ctrl-space切换输入法，shift切换中英。"><a href="#然后用ctrl-space切换输入法，shift切换中英。" class="headerlink" title="然后用ctrl+space切换输入法，shift切换中英。"></a>然后用ctrl+space切换输入法，shift切换中英。</h3>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Debian 11 Linux(bullseye) 可用的国内镜像源</title>
+    <url>/2023/02/07/Debian-11-Linux-bullseye-%E5%8F%AF%E7%94%A8%E7%9A%84%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</url>
+    <content><![CDATA[<p><a href="https://www.zzxworld.com/posts/available-cn-mirrors-for-debian-linux">原文链接</a></p>
+<p><img src="https://www.zzxworld.com/resource/posts/202208/1661740805.577.jpg" alt="Debian 11 Linux(bullseye) 可用的国内镜像源"></p>
+<p>Debian 默认的软件源在国外，使用默认源安装软件速度感人，浪费大量不必要的等待时间。所以在安装完 Deiban 系统后的首要事情就是更换为国内的镜像源，能显著提高软件安装和系统更新速度。本文收集了 8 个能用的 Debian 国内镜像源以供选择。</p>
+<blockquote>
+<p>如果不熟悉 Debian 镜像源的使用和配置，请直接翻到最后。文末提供了手动和命令式的两种镜像源配置方式。</p>
+</blockquote>
+<h2 id="可用的国内源"><a href="#可用的国内源" class="headerlink" title="可用的国内源"></a>可用的国内源</h2><p>由阿里云提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.aliyun.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>由腾讯提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.tencent.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.tencent.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.tencent.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>由北京清华大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由中国科学技术大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由上海交通大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由北京外国语大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian-security bullseye-security main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian-security bullseye-security main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由华为提供的 Deiban 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>由网易提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.163.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.163.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.163.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.163.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.163.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<h2 id="手动更换镜像源"><a href="#手动更换镜像源" class="headerlink" title="手动更换镜像源"></a>手动更换镜像源</h2><p>手动更换 Debian 镜像源配置主要分为以下三步：</p>
+<ol>
+<li>用熟悉的文本编辑器打开 <code>/etc/apt/sources.list</code> 文件（需要 <code>sudo</code> 权限），或是直接执行 <code>sudo apt edit-sources</code> 命令。</li>
+<li>替换文件内容为上面任意一个镜像站的源配置代码并保存。</li>
+<li>运行 <code>sudo apt-get update</code> 命令更新软件索引。</li>
+</ol>
+<h2 id="命令更换镜像源"><a href="#命令更换镜像源" class="headerlink" title="命令更换镜像源"></a>命令更换镜像源</h2><p>使用命令替换镜像源更为快捷。比如在没有更换过数据源的情况下，要使用阿里云的 Debian 镜像源：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo sed -i &#x27;s/deb.debian.org/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了默认源到阿里云镜像源的配置。接下来同样需要执行一下 <code>sudo apt-get update</code> 命令更新软件索引。</p>
+<p>上面这个命令的原理在镜像源的地址上。不同的镜像源通常只是域名有所区别，其他部分大致类似。所以之需要通过 <code>sed</code> 命令来修改 <code>/etc/apt/sources.list</code> 这个源配置文件中的域名地址就足够了。</p>
+<p>但这意味着使用这个命令方式修改镜像源的配置时需要格外注意。如果输入的匹配地址或替换地址有误，有可能不会生效，或是导致镜像源异常。遇到这种情况，可以选择上面手动更换镜像源的方式来解决。</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git和GitHub设置</title>
+    <url>/2024/04/03/Git%E5%92%8CGitHub%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h2><h3 id="debian系"><a href="#debian系" class="headerlink" title="debian系"></a>debian系</h3><p><code>sudo apt install git</code></p>
+<h3 id="arch-linux"><a href="#arch-linux" class="headerlink" title="arch linux"></a>arch linux</h3><p><code>sudo pacman -S git</code></p>
+<h3 id="macos"><a href="#macos" class="headerlink" title="macos"></a>macos</h3><p><code>brew install git</code></p>
+<h2 id="设置git"><a href="#设置git" class="headerlink" title="设置git"></a>设置git</h2><h3 id="设置提交用户名"><a href="#设置提交用户名" class="headerlink" title="设置提交用户名"></a>设置提交用户名</h3><p><code>git config --global user.name &quot;Mona Lisa&quot;</code></p>
+<h3 id="设置提交电子邮件"><a href="#设置提交电子邮件" class="headerlink" title="设置提交电子邮件"></a>设置提交电子邮件</h3><p><code>git config --global user.email &quot;YOUR_EMAIL&quot;</code></p>
+<h3 id="验证一下"><a href="#验证一下" class="headerlink" title="验证一下"></a>验证一下</h3><p><code>git config --global user.name</code><br><code>git config --global user.email</code></p>
+<h2 id="设置GitHub"><a href="#设置GitHub" class="headerlink" title="设置GitHub"></a>设置GitHub</h2><p>现在github已不能使用传统token的方式验证，网上大部分教程已失效，可采用官方推荐的gh（GitHub CLI）方式验证自己的账户。</p>
+<h3 id="安装gh"><a href="#安装gh" class="headerlink" title="安装gh"></a>安装gh</h3><h4 id="macos-1"><a href="#macos-1" class="headerlink" title="macos"></a>macos</h4><p><code>brew install gh</code></p>
+<h4 id="debian系-1"><a href="#debian系-1" class="headerlink" title="debian系"></a>debian系</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">type -p curl &gt;/dev/null || (sudo apt update &amp;&amp; sudo apt install curl -y)</span><br><span class="line">curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \</span><br><span class="line">&amp;&amp; sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \</span><br><span class="line">&amp;&amp; echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot; | sudo tee /etc/apt/sources.list.d/github-cli.list &gt; /dev/null \</span><br><span class="line">&amp;&amp; sudo apt update \</span><br><span class="line">&amp;&amp; sudo apt install gh -y</span><br></pre></td></tr></table></figure>
+<h4 id="arch-linux-1"><a href="#arch-linux-1" class="headerlink" title="arch linux"></a>arch linux</h4><p><code>sudo pacman -S github-cli</code></p>
+<h3 id="验证账户"><a href="#验证账户" class="headerlink" title="验证账户"></a>验证账户</h3><p><code>gh auth login</code></p>
+<p>一直下一步即可完成账户验证。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Debian 11 添加用户到sudoers 中</title>
+    <url>/2023/02/07/Debian-11-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E5%88%B0sudoers-%E4%B8%AD/</url>
+    <content><![CDATA[<p>针对“普通用户提示用户名不在sudoers文件中，此事将被报告“，如此解决：</p>
+<p>解决办法：</p>
+<ol>
+<li>终端输入 <code>su</code> 回车，输入 root 密码，回车，切换到 root 用户</li>
+<li>打开 sudoers 文件：<code>vi /etc/sudoers</code></li>
+<li>找到 <code># Allow members of group sudo to execute any command</code>，在 <code>%sudo ALL=(ALL:ALL) ALL</code> 下面添加 <code>xxx ALL=(ALL:ALL) ALL</code>，xxx 为前面无法执行 sudo 命令的用户名</li>
+</ol>
+<p>vi 给 sudoers 添加内容方法：</p>
+<ol>
+<li>光标移动到指定位置，按 <code>i</code> 键当前光标位置插入</li>
+<li>输入内容</li>
+<li><code>ESC</code></li>
+<li>输入 <code>:wq!</code> 回车，因为 sudoers 是只读文件，所以要加 <code>!</code> 强制保存。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Next主题打开Gitalk评论系统</title>
+    <url>/2025/01/21/Hexo%20Next%E4%B8%BB%E9%A2%98%E6%89%93%E5%BC%80Gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<p>又从disqus切换到了gitalk</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><a href="https://github.com/gitalk/gitalk">gitalk</a>是一个基于<code>github</code>开发的评论插件，它将文章评论以<code>issues</code>形式保存在<code>github</code>仓库中</p>
+<p>实现步骤如下：</p>
+<ol>
+<li>注册<code>github</code>应用</li>
+<li><code>NexT</code>配置</li>
+</ol>
+<h2 id="注册github应用"><a href="#注册github应用" class="headerlink" title="注册github应用"></a>注册github应用</h2><p>进入<code>github</code>注册页面：<a href="https://github.com/settings/applications/new">Register a new OAuth application</a></p>
+<p><img src="https://hexo-next.readthedocs.io/zh-cn/latest/next/advanced/imgs/register-github.png"></p>
+<ul>
+<li><code>Application name</code>：应用名，方便起见直接填<code>github</code>用户名</li>
+<li><code>Homepage URL</code>：网站地址</li>
+<li><code>Application description</code>：应用描述</li>
+<li><code>Authorization callback URL</code>：网站地址</li>
+</ul>
+<p>注册成功后会生成<code>Client ID</code>和<code>Client Secret</code></p>
+<p>提示：<code>Homepage URL</code>和<code>Authorization callback URL</code>如果绑定了自己的域名，最好填写自定义域名，不要填写<code>***.github.io</code> ，否则可能会出现<code>The redirect_uri is not associated with this application</code> 的提示。</p>
+<h2 id="NexT配置"><a href="#NexT配置" class="headerlink" title="NexT配置"></a>NexT配置</h2><p>修改主题<code>_config.yml</code>（根目录下）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># Gitalk</span><br><span class="line"># For more information: https://gitalk.github.io</span><br><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  github_id: zjykzj # GitHub repo owner</span><br><span class="line">  repo: guestbook # Repository name to store issues</span><br><span class="line">  client_id: e15xxxxx63dce # GitHub Application Client ID</span><br><span class="line">  client_secret: 76cxxxxxf766 # GitHub Application Client Secret</span><br><span class="line">  admin_user: zjykzj # GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span><br><span class="line">  distraction_free_mode: true # Facebook-like distraction free mode</span><br><span class="line">  # When the official proxy is not available, you can change it to your own proxy address</span><br><span class="line">  proxy: https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token # This is official proxy adress</span><br><span class="line">  # Gitalk&#x27;s display language depends on user&#x27;s browser or system environment</span><br><span class="line">  # If you want everyone visiting your site to see a uniform language, you can set a force language value</span><br><span class="line">  # Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span><br><span class="line">  language: zh-CN</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置<code>enable</code>为<code>true</code></li>
+<li><code>github_id</code>填入<code>github</code>帐号（用户名，不是邮箱）</li>
+<li><code>repo</code>填入<code>github</code>仓库名（<strong>注意：是仓库名不是仓库地址</strong>），评论将会以<code>issues</code>形式保存在该仓库下</li>
+<li><code>client_id</code>填入注册生成的值</li>
+<li><code>client_secret</code>填入注册生成的值</li>
+<li><code>admin_user</code>填入<code>github</code>帐号，用于初始化评论账户（用户名，不是邮箱）</li>
+</ul>
+<h2 id="Error-Not-Found"><a href="#Error-Not-Found" class="headerlink" title="Error: Not Found"></a><code>Error: Not Found</code></h2><p>问题描述：在文章底部评论框中出现错误信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: Not Found</span><br></pre></td></tr></table></figure>
+
+<p>解决：和配置选项的填写有关，注意填写的内容</p>
+<p>备注：填写主题中的配置的时候一定要小心，否则可能就出现此问题。我折腾了一个小时，最后发现是填写仓库名称的时候#号漏删了。<br>另外，如果配置都正确的情况下，如果还是出现此问题，那么请注意把评论所在仓库设置为<code>public</code>。</p>
+<h2 id="未找到相关的issue进行评论"><a href="#未找到相关的issue进行评论" class="headerlink" title="未找到相关的issue进行评论"></a>未找到相关的issue进行评论</h2><p>错误提示：<code>Related Issues not found：未找到相关的issue进行评论</code>，出现这种情况是因为文章评论还未初始化，只需要点击下面的按钮，登录 GitHub 账户即可。</p>
+<p>文章少的话记得登录github账户后一篇一篇打开进行初始化，如果已有文章较多，建议查找脚本操作。</p>
+<h2 id="隐藏评论框"><a href="#隐藏评论框" class="headerlink" title="隐藏评论框"></a>隐藏评论框</h2><p>设置<code>gitalk</code>评论系统后，将会在每篇文章末尾添加评论框，而对于标签页&#x2F;类别页等不需要评论的文章，可在<code>front-matter</code>设置属性进行隐藏</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">comments: false</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OnePlus 12R/Ace3 OOS 升级后恢复信号和Root步骤</title>
+    <url>/2025/01/17/OnePlus-12R-Ace3-OOS-%E5%8D%87%E7%BA%A7%E5%90%8E%E6%81%A2%E5%A4%8D%E4%BF%A1%E5%8F%B7%E5%92%8CRoot%E6%AD%A5%E9%AA%A4/</url>
+    <content><![CDATA[<p>因为一加Ace3切换成OxygenOS后会伴随有信号丢失的问题，解决办法就是刷ocdt分区和oplusstanvbk分区，但是这个也不是一劳永逸的方法，每次ota后都要重新操作一遍，为了方便自己使用，特在此记录。</p>
+<h2 id="恢复信号"><a href="#恢复信号" class="headerlink" title="恢复信号"></a>恢复信号</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot fastboot</span><br><span class="line">fastboot flash ocdt ocdt.img</span><br><span class="line">fastboot flash --slot=all oplusstanvbk oplusstanvbk.img</span><br></pre></td></tr></table></figure>
+<p>这里面的ocdt.img和oplusstanvbk.img是自己在买回新机后备份的原ColorOS系统的分区，一直保留使用，据说这个是和自己的手机绑定的，所以使用别人的，以及其它版本的不知道是否可行。</p>
+<h2 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h2><p>现在使用<a href="https://github.com/bmax121/APatch/releases">APatch</a>进行root，虽然从Apr 4, 2024已经没有再进行更新了，但截止到目前依然可用，目前最新版本的oos为CPH2609_15.0.0.400(EX01) 。使用它的原因是感觉比Magisk好用，内核级别的root，不容易被检测到。第一次安装刷入的步骤不难，也不是自己的目的，升级后进行的操作步骤如下：</p>
+<h3 id="获取boot镜像文件"><a href="#获取boot镜像文件" class="headerlink" title="获取boot镜像文件"></a>获取boot镜像文件</h3><ul>
+<li>1、下载全量包，可通过<code>oxygen Updater</code> 获得</li>
+<li>2、解包<ul>
+<li>通过解压软件获取<code>payload.bin</code> 文件</li>
+<li>通过<a href="https://github.com/vm03/payload_dumper">payload dumper</a> 获取boot.img文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="修补镜像"><a href="#修补镜像" class="headerlink" title="修补镜像"></a>修补镜像</h3><p>将获取到的原系统boot.img传输到手机，打开APatch，点击右上角手机图标，选择<code>选择一个启动镜像并修补</code> ，找到文件，选择进行修补，之后修补好的文件会被保存到download文件夹，名称类似于<code>apatch_patched_10763_0.10.7_prob.img</code> 。</p>
+<h3 id="刷入修补后的boot文件"><a href="#刷入修补后的boot文件" class="headerlink" title="刷入修补后的boot文件"></a>刷入修补后的boot文件</h3><p>将修补后的<code>apatch_patched_10763_0.10.7_prob.img</code>传到电脑，在相应文件夹内打开终端，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb reboot bootloader</span><br><span class="line">fastboot flash boot xxx_boot.img</span><br></pre></td></tr></table></figure>
+<p>完成</p>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><p>在oos14时代，可能是内核版本没变，一次修补好的boot文件连续用了好几次，升级后直接刷入，免除了解包的麻烦。</p>
+<p>但在oos15时代，不知道什么原因，第一次大版本升级后修补的boot镜像，直接用在后面的小版本OTA后都导致了无法进入系统的问题，所以，还是不要偷懒，每次都解包重新修补比较保险。</p>
+<p>当然，出现无法启动的问题后，只需要刷入原版boot.img即可重新开机。</p>
+<h2 id="附：Linux环境下payload-dumper使用方法"><a href="#附：Linux环境下payload-dumper使用方法" class="headerlink" title="附：Linux环境下payload dumper使用方法"></a>附：Linux环境下payload dumper使用方法</h2><h3 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h3><ul>
+<li>Python3, pip</li>
+<li>google protobuf for python pip install protobuf</li>
+</ul>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>1、git clone <a href="https://github.com/vm03/payload_dumper.git">https://github.com/vm03/payload_dumper.git</a></li>
+<li>2、在<code>payload dumper</code> 目录下</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>这里要注意，如果不能安装，要进入python虚拟环境，方法在<a href="https://zhyq118.com/2025/01/16/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">这一篇</a> ，这一点至关重要，我在这里花费了不少时间。</p>
+<h3 id="全量包解包"><a href="#全量包解包" class="headerlink" title="全量包解包"></a>全量包解包</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python payload_dumper.py payload.bin</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</title>
+    <url>/2019/04/26/Ubuntu19-04%E5%AE%89%E8%A3%85%E4%B8%AD%E5%87%BA%E7%8E%B0Pcie-Bus-Error%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p>Ubuntu19.04安装中出现Pcie Bus Error问题的一种解决方案</p>
+<p>Ubuntu从18.04升级至19.04后竟然开不了机，不停跑代码，以为是升级不彻底造成的，所以，干脆制作启动盘重新安装，不料情况依然如故，而且代码显示和之前也一样，几乎就打算放弃了。</p>
+<p>看看错误代码，反复出现的关键词就是Pcie Bus Error，猛然意识到可能和我的NVME SSD有关，这样就简单了，因为我的Ubuntu虽然安装在机械硬盘上，但是EFI分区却放在了SSD上（和其它两个系统共用），所以，就在机械硬盘上新建EFI分区，然后重新安装，完成后顺利开机。</p>
+<p>问题有点莫名其妙，如果说是nvme驱动跟不上的话，为何18.04却没有问题？似乎每次Ubuntu大版本升级总要折腾一番。</p>
+]]></content>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>N1 OpenWrt Docker 安装 Homeassistant 教程</title>
+    <url>/2025/01/02/N1-OpenWrt-Docker-%E5%AE%89%E8%A3%85-Homeassistant-%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="获取docker镜像"><a href="#获取docker镜像" class="headerlink" title="获取docker镜像"></a>获取docker镜像</h2><p>拉取homeassistant最新docker镜像<br>终端登入执行以下命令</p>
+<p><code>docker pull homeassistant/home-assistant:latest</code></p>
+<h2 id="创建docker容器"><a href="#创建docker容器" class="headerlink" title="创建docker容器"></a>创建docker容器</h2><p>创建homeassistant的docker容器<br>点击Docker&gt;容器菜单，然后 点击添加按钮</p>
+<p>点击 命令行 按钮</p>
+<p>在弹出的弹窗中 准备输入以下代码</p>
+<p><code>docker run -d --name=&quot;hass&quot; -v 你的挂载点/hassistant:/config -p 8123:8123 homeassistant/home-assistant:latest</code></p>
+<p>挂在点在 openwrt&gt;系统&gt;挂载点 查看,就是结尾带docker字样的那个</p>
+<p>由此最终得出 弹窗中需要输入的命令行 即为</p>
+<p><code>docker run -d --name=&quot;hass&quot; -v /mnt/mmcblk2p4/docker/hassistant:/config -p 8123:8123 homeassistant/home-assistant:latest</code></p>
+<p>然后在创建docker容器处，配置以下两项：</p>
+<ul>
+<li>docker镜像：选择homeassistant&#x2F;home-assistant:latest</li>
+<li>网络：选择host | host</li>
+</ul>
+<h2 id="启动docker容器"><a href="#启动docker容器" class="headerlink" title="启动docker容器"></a>启动docker容器</h2><p>找到容器，点击启动，稍微等待一会儿</p>
+<p>最后在浏览器 输入你的<code>http://软路由IP地址:8123</code> 就可以登录homeassistant后台</p>
+<h2 id="安装hacs"><a href="#安装hacs" class="headerlink" title="安装hacs"></a>安装hacs</h2><p>到现在为止，我们的Home Assistant系统已经安装完毕并正常运行了，但它仍然是一个空壳子。本质上，现在的Home Assistant，就相当于刚刚买回来的手机或者笔记本电脑，只有操作系统，还需要安装各种软件(应用&#x2F;App)，才能够真正满足日常使用需求。<br>HACS(Home Assistant Community Store，HA社区商店) 是一个应用商店，我们推荐安装！</p>
+<p>网上找到的教程基本都是针对国内访问优化过的商店，不放心，我找到了官方原版，安装步骤也很详细，姑且复制过来。<br><a href="https://hacs.xyz/docs/use/download/download/#to-download-hacs-container">官方地址</a><br>1、进入终端<br>2、进入容器：</p>
+<p><code>docker exec -it &lt;name of container running homeassistant&gt; bash</code></p>
+<p>上面创建的容器名称为hass,所以最终命令应为</p>
+<p><code>docker exec -it hass bash</code></p>
+<p>3、下载运行bash脚本</p>
+<p><code>wget -O - https://get.hacs.xyz | bash -</code></p>
+<p>4、重启homeassistant</p>
+<p>最后你的homeassistant的左侧就多出了 hacs 的菜单，就可以使用了。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>n1</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>U盘制作系统镜像后恢复容量的方法（win）</title>
+    <url>/2019/01/24/U%E7%9B%98%E5%88%B6%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E5%90%8E%E6%81%A2%E5%A4%8D%E5%AE%B9%E9%87%8F%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88win%EF%BC%89/</url>
+    <content><![CDATA[<p>Windows下使用diskpart命令即可，具体操作如下：</p>
+<p>1、win+R，cmd进入命令行界面，输入diskpart回车。</p>
+<p>2、进入diskpart后列出所有磁盘：list disk。</p>
+<p>3、选中U盘，一定看仔细，别选错：select disk x。</p>
+<p>4、清除：clean。</p>
+<p>此时，在磁盘管理界面会发现U盘已经变成黑色的未分配状态。</p>
+<p>下面新建简单卷即可。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>clash for linux 客户端使用方法</title>
+    <url>/2023/02/07/clash-for-linux-%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="1、下载最新版"><a href="#1、下载最新版" class="headerlink" title="1、下载最新版"></a>1、下载最新版</h2><p>[地址在此]<br>(<a href="https://github.com/Dreamacro/clash/releases">https://github.com/Dreamacro/clash/releases</a>)</p>
+<h2 id="2、解压缩"><a href="#2、解压缩" class="headerlink" title="2、解压缩"></a>2、解压缩</h2><h2 id="3、授予可执行权限"><a href="#3、授予可执行权限" class="headerlink" title="3、授予可执行权限"></a>3、授予可执行权限</h2><p><code> chmod +x clash</code></p>
+<h2 id="4、初始化"><a href="#4、初始化" class="headerlink" title="4、初始化"></a>4、初始化</h2><p><code>./clash</code></p>
+<p>初始化执行 clash 会默认在 ~&#x2F;.config&#x2F;clash&#x2F; 目录下生成配置文件和全球IP地址库：config.yaml 和 Country.mmdb。</p>
+<h2 id="5、配置config-yaml"><a href="#5、配置config-yaml" class="headerlink" title="5、配置config.yaml"></a>5、配置config.yaml</h2><p>没找到自动下载订阅的方式，只能采取笨方法，从clash for windows 中导出配置，粘贴到~&#x2F;.config&#x2F;clash&#x2F; 目录下的config.yaml</p>
+<h2 id="6、运行，可添加守护进程"><a href="#6、运行，可添加守护进程" class="headerlink" title="6、运行，可添加守护进程"></a>6、运行，可添加守护进程</h2><p>这样就不用一直打开一个terminal了。</p>
+<p><code>./clash &amp;</code></p>
+<p>7、配置系统代理</p>
+<p>找到网络-代理设置-手动<br><code>http 127.0.0.1:7890</code><br><code>socks 127.0.0.1:7890</code></p>
+<p>socks端口存疑，也可能是7891。</p>
+<p>8、网页管理</p>
+<p><code>http://clash.razord.top/#/proxies</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>clash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vim Cheat Sheet(转载）</title>
+    <url>/2019/05/31/Vim-Cheat-Sheet-%E8%BD%AC%E8%BD%BD%EF%BC%89/</url>
+    <content><![CDATA[<p>原地址<a href="https://vim.rtorr.com/lang/zh_cn">在此</a></p>
+<h2 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h2><ul>
+<li>:help keyword - 打开关键字帮助</li>
+<li>:saveas file - 另存为</li>
+<li>:close - 关闭当前窗口</li>
+<li>K - open man page for word under the cursor</li>
+</ul>
+<h2 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h2><ul>
+<li>h - 左移光标</li>
+<li>j - 下移光标</li>
+<li>k - 上移光标</li>
+<li>l - 右移光标</li>
+<li>H - 移动到当前页面顶部</li>
+<li>M - 移动到当前页面中间</li>
+<li>L - 移动到当前页面底部</li>
+<li>w - 移动到下个单词开头</li>
+<li>W - 移动到下个单词开头(单词含标点)</li>
+<li>e - 移动到下个单词结尾</li>
+<li>E - 移动到下个单词结尾(单词含标点)</li>
+<li>b - 移动到上个单词结尾</li>
+<li>B - 移动到上个单词结尾(单词含标点)</li>
+<li>% - move to matching character (default supported pairs: ‘()’, ‘{}’, ‘[]’ - use <code>:h matchpairs</code> in vim for more info)</li>
+<li>0 - 移动到行首</li>
+<li>^ - 移动到行首的非空白符</li>
+<li>$ - 移动到行尾</li>
+<li>g_ - 移动到行内最后一个非空白符</li>
+<li>gg - 移动到文件第一行</li>
+<li>G - 移动到文件最后一行</li>
+<li>5G - 移动到第五行</li>
+<li>fx - 移动到字符 x 下次出现的位置</li>
+<li>tx - 移动到字符 x 下次出现的位置的前一个字符</li>
+<li>Fx - jump to previous occurence of character x</li>
+<li>Tx - jump to after previous occurence of character x</li>
+<li>; - repeat previous f, t, F or T movement</li>
+<li>, - repeat previous f, t, F or T movement, backwards</li>
+<li>} - 移动到下一个段落 (当编辑代码时则为函数／代码块)</li>
+<li>{ - 移动到上一个段落 (当编辑代码时则为函数／代码块)</li>
+<li>zz - 移动屏幕使光标居中</li>
+<li>Ctrl + e - move screen down one line (without moving cursor)</li>
+<li>Ctrl + y - move screen up one line (without moving cursor)</li>
+<li>Ctrl + b - 向后滚动一屏</li>
+<li>Ctrl + f -</li>
+<li>Ctrl + d -</li>
+<li>Ctrl + u -</li>
+</ul>
+<p><strong>Tip</strong> 命令前追加数字表示命令的重复次数, 比如 4j 表示向下移动四行</p>
+<h2 id="插入模式-插入-追加文本"><a href="#插入模式-插入-追加文本" class="headerlink" title="插入模式 - 插入&#x2F;追加文本"></a>插入模式 - 插入&#x2F;追加文本</h2><ul>
+<li>i - 从光标前开始插入字符</li>
+<li>I - 从行首开始插入字符</li>
+<li>a - 从光标后开始插入字符</li>
+<li>A - 从行尾开始插入字符</li>
+<li>o - 在当前行之下另起一行, 开始插入字符</li>
+<li>O - 在当前行之上另起一行, 开始插入字符</li>
+<li>ea - 从当前单词末尾开始插入</li>
+<li>Esc - 退出插入模式</li>
+</ul>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><ul>
+<li>r - 替换当前字符</li>
+<li>J - 将下一行合并到当前行</li>
+<li>gJ - join line below to the current one without space in between</li>
+<li>gwip - reflow paragraph</li>
+<li>cc - 清空当前行, 然后进入插入模式</li>
+<li>C - change (replace) to the end of the line</li>
+<li>c$ - 从光标位置开始, 修改当前行</li>
+<li>ciw - change (replace) entire word</li>
+<li>cw - 从光标位置开始, 修改单词</li>
+<li>s - 删除当前字符, 然后进入插入模式</li>
+<li>S - 清空当前行, 然后进入插入模式 (同<kbd>cc</kbd>)</li>
+<li>xp - 当前字符后移</li>
+<li>u - 撤销</li>
+<li>Ctrl + r - 重复</li>
+<li>. - 再次执行上个命令</li>
+</ul>
+<h2 id="选择文本（可视化模式）"><a href="#选择文本（可视化模式）" class="headerlink" title="选择文本（可视化模式）"></a>选择文本（可视化模式）</h2><ul>
+<li>v - 进入可视化模式, 移动光标高亮选择, 然后可以对选择的文本执行命令(比如<kbd>y</kbd>-复制)</li>
+<li>V - 进入可视化模式(行粒度选择)</li>
+<li>o - 切换光标到选择区开头&#x2F;结尾</li>
+<li>Ctrl + v - 进入可视化模式(矩阵选择)</li>
+<li>O - 切换光标到选择区的角</li>
+<li>aw - 选择当前单词</li>
+<li>ab - 选择被 () 包裹的区域(含括号)</li>
+<li>aB - 选择被 {} 包裹的区域(含花括号)</li>
+<li>ib - 选择被 () 包裹的区域(不含括号)</li>
+<li>iB - 选择被 {} 包裹的区域(不含花括号)</li>
+<li>Esc - 退出可视化模式</li>
+</ul>
+<h2 id="可视化模式命令"><a href="#可视化模式命令" class="headerlink" title="可视化模式命令"></a>可视化模式命令</h2><ul>
+<li>&gt; - 向右缩进</li>
+<li>&lt; - 向左缩进</li>
+<li>y - 复制</li>
+<li>d - 剪切</li>
+<li>~ - 大小写切换</li>
+</ul>
+<h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><ul>
+<li>:reg - 显示寄存器内容</li>
+<li>“xy - 复制内容到寄存器 x</li>
+<li>“xp - 粘贴寄存器 x 中的内容</li>
+</ul>
+<p><strong>Tip</strong> 寄存器被存储在 ~&#x2F;.viminfo 中, 在下次重启vim时仍会加载</p>
+<p><strong>Tip</strong> 寄存器 0 存储上一次复制的值</p>
+<h2 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h2><ul>
+<li>:marks - 标记列表</li>
+<li>ma - 设置当前位置为标记 a</li>
+<li>&#96;a - 跳转到标记 a 的位置</li>
+<li>y&#96;a - 复制当前位置到标记 a 的内容</li>
+</ul>
+<h2 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h2><ul>
+<li>qa - 录制宏 a</li>
+<li>q - 停止录制宏</li>
+<li>@a - 执行宏 a</li>
+<li>@@ - 重新执行上次执行的宏</li>
+</ul>
+<h2 id="剪切-复制-粘贴"><a href="#剪切-复制-粘贴" class="headerlink" title="剪切, 复制, 粘贴"></a>剪切, 复制, 粘贴</h2><ul>
+<li>yy - 复制当前行</li>
+<li>2yy - 复制 2 行</li>
+<li>yw - 复制当前单词</li>
+<li>y$ - 复制, 从光标位置到行末</li>
+<li>p - 在光标后粘贴</li>
+<li>P - 在光标前粘贴</li>
+<li>dd - 剪切当前行</li>
+<li>2dd - 剪切 2 行</li>
+<li>dw - 剪切当前单词</li>
+<li>D - 剪切, 从光标位置到行末</li>
+<li>d$ - 剪切, 从光标位置到行末 (同<kbd>D</kbd>)</li>
+<li>x - 剪切当前字符</li>
+</ul>
+<h2 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h2><ul>
+<li>:w - 保存</li>
+<li>:w !sudo tee % - 使用 sudo 保存当前文件</li>
+<li>:wq or :x or ZZ - 保存并退出</li>
+<li>:q - 退出(修改未保存时警告)</li>
+<li>:q! or ZQ - 不保存强制退出</li>
+<li>:wqa - write (save) and quit on all tabs</li>
+</ul>
+<h2 id="查找-替换"><a href="#查找-替换" class="headerlink" title="查找&#x2F;替换"></a>查找&#x2F;替换</h2><ul>
+<li>&#x2F;pattern - 查找<kbd>pattern</kbd></li>
+<li>?pattern - 向上查找<kbd>pattern</kbd></li>
+<li>\vpattern - <kbd>pattern</kbd> 中的非字母数字字符被视为正则表达式特殊字符 (不需转义字符)</li>
+<li>n - 查找下一个</li>
+<li>N - 查找上一个</li>
+<li>:%s&#x2F;old&#x2F;new&#x2F;g - 替换全部</li>
+<li>:%s&#x2F;old&#x2F;new&#x2F;gc - (逐个)替换</li>
+<li>:noh - 移除搜索结果的高亮显示</li>
+</ul>
+<h2 id="多文件搜索"><a href="#多文件搜索" class="headerlink" title="多文件搜索"></a>多文件搜索</h2><ul>
+<li>:vimgrep &#x2F;pattern&#x2F; {file} - 在多个文件中搜索 <kbd>pattern</kbd></li>
+</ul>
+<p>e.g.:vimgrep &#x2F;foo&#x2F; **&#x2F;*</p>
+<ul>
+<li>:cn - 移动至下一个</li>
+<li>:cp - 移动至上一个</li>
+<li>:copen - 打开搜索结果列表</li>
+</ul>
+<h2 id="多文件"><a href="#多文件" class="headerlink" title="多文件"></a>多文件</h2><ul>
+<li>:e file - 新建缓冲区打开 filename</li>
+<li>:bnext or :bn - 切换到下个缓冲区</li>
+<li>:bprev or :bp - 切换到上个缓冲区</li>
+<li>:bd - 关闭缓冲区</li>
+<li>:ls - 列出所有打开的缓冲区</li>
+<li>:sp file - 新建缓冲区打开 filename 并水平分割窗口</li>
+<li>:vsp file - 新缓冲区打开 filename 并垂直分割窗口</li>
+<li>Ctrl + ws - 水平分割窗口</li>
+<li>Ctrl + ww - 在窗口间切换</li>
+<li>Ctrl + wq - 关闭窗口</li>
+<li>Ctrl + wv - 垂直分割窗口</li>
+<li>Ctrl + wh - 切换到右侧窗口</li>
+<li>Ctrl + wl - 切换到左侧窗口</li>
+<li>Ctrl + wj - 切换到下侧窗口</li>
+<li>Ctrl + wk - 切换到上侧窗口</li>
+</ul>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>:tabnew or :tabnew file - 在新标签中打开文件</li>
+<li>Ctrl + wT - 将窗口变成标签</li>
+<li>gt or :tabnext or :tabn - 切换到下一个标签</li>
+<li>gT or :tabprev or :tabp - 切换到上一个标签</li>
+<li>#gt - 切换到第 <kbd>#</kbd> 个标签</li>
+<li>:tabmove # - 移动标签到第 <kbd>#</kbd> 位(下标从 0 开始)</li>
+<li>:tabclose or :tabc - 关闭当前标签</li>
+<li>:tabonly or :tabo - 关闭其他标签</li>
+<li>:tabdo command - 在所有标签中执行命令 (例如 :tabdo q 关闭所有标签)</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>vim</tag>
+        <tag>转载</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>debian 11 添加WIFI</title>
+    <url>/2023/02/07/debian-11-%E6%B7%BB%E5%8A%A0WIFI/</url>
+    <content><![CDATA[<p><code>apt install firmware-iwlwifi</code></p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo deploy配置免输入github账号密码</title>
+    <url>/2020/12/26/hexo-deploy%E9%85%8D%E7%BD%AE%E5%85%8D%E8%BE%93%E5%85%A5github%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<h2 id="使用-SSH-连接"><a href="#使用-SSH-连接" class="headerlink" title="使用 SSH 连接"></a>使用 SSH 连接</h2><p>1.进入 ssh 目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<p>2.生成 SSH key (文件名：id_rsa, id_rsa.pub)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxxxxx@yy.com&quot;  #填写自己真实有效的邮箱地址</span><br></pre></td></tr></table></figure>
+
+<p>3.文本编辑器打开公钥 <code>id_rsa.pub</code> 复制内容，添加到 Github setting。</p>
+<p>4.测试</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<h2 id="hexo配置文件中选择git协议，不能用https"><a href="#hexo配置文件中选择git协议，不能用https" class="headerlink" title="hexo配置文件中选择git协议，不能用https"></a>hexo配置文件中选择git协议，不能用https</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: &#x27;git&#x27;</span><br><span class="line">  repo: &#x27;git@github.com:xxx/xxx.github.io.git&#x27;</span><br><span class="line">  branch: &#x27;master&#x27;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>github</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo从Ubuntu迁移至Mac OS</title>
+    <url>/2018/11/04/hexo%E4%BB%8EUbuntu%E8%BF%81%E7%A7%BB%E8%87%B3Mac-OS/</url>
+    <content><![CDATA[<p>黑苹果的安装与折腾基本算是告一段落了，接下来就是尝试真正使用全新的系统了，今天成功把Hexo从Ubuntu迁移到了OS X。</p>
+<p>对于那些会各种命令的大牛来说，这不过是一件再简单不过的事了，但是对于我这样一个半路出家的文科生来说，有些时候却不得不“曲线救国”了。</p>
+<p>下面记下自己迁移的过程，下次如果再折腾也可以省点事。</p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>OS X自带，用以下命令确认一下即可</p>
+<p><code>git --version</code></p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><p><a href="https://nodejs.org/en/">官网</a>直接下载mac os版本安装即可，自带安装npm。安装完成，输入命令检查确认：</p>
+<p><code>node -v</code></p>
+<p><code>npm -v</code></p>
+<p>有版本信息即为安装成功。</p>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>条件满足后就可以开始安装了</p>
+<p><code>sudo npm install -g hexo</code></p>
+<p>结束后，输入命令查看</p>
+<p><code>hexo -v</code></p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>创建目录</p>
+<p><code>mkdir hexo</code></p>
+<p>进入目录</p>
+<p><code>cd hexo</code></p>
+<p>初始化</p>
+<p><code>hexo init</code></p>
+<p>这样就完成hexo的安装与初始化了。</p>
+<p>有些教程上说还需要安装依赖</p>
+<p><code>npm install</code></p>
+<p>不妨执行一下。</p>
+<h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p>由于我不是第一次安装，所以不敢直接往GitHub上部署，担心毁掉之前的数据，而自己又不会用git pull，所以，先把Ubuntu上的hexo文件夹压缩上传至Dropbox，回到Mac上，解压并替换掉之前新建的hexo目录中的所有文件。</p>
+<p>可以说是最没技术含量的数据迁移方法了，无奈。</p>
+<h2 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h2><p>由于是迁移，所以省了不少事，这里直接连到GitHub即可。</p>
+<p>1、创建新的ssh key</p>
+<p><code>cd ~/.ssh</code></p>
+<p><code>ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; </code></p>
+<p>一路enter即可。</p>
+<p>2、添加ssh key 至GitHub中：</p>
+<p>打开ssh key</p>
+<p><code>vim ~/.ssh/id_rsa.pub</code></p>
+<p>拷贝至Account Settings–&gt;SSH Keys。</p>
+<p>3、设置本地git个人信息</p>
+<p><code>git config --global user.name &quot;your real name&quot;</code><br><code>git config --global user.email &quot;xxxxx@gmail.com&quot;</code></p>
+<p>4、验证GitHub链接</p>
+<p><code>ssh -T git@github.com</code></p>
+<p>5、部署</p>
+<p>万事俱备</p>
+<p><code>cd hexo</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo s</code></p>
+<p>本地查看没有问题的话就可以部署了</p>
+<p><code>hexo d</code></p>
+<h2 id="搞定"><a href="#搞定" class="headerlink" title="搞定"></a>搞定</h2><p>可以在新系统上写作了。</p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>ubuntu</tag>
+        <tag>macos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo command</title>
+    <url>/2018/10/07/hexo%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure>
+
+<p>新建一个网站。如果没有设置 <code>folder</code> ，Hexo 默认在目前的文件夹建立网站。</p>
+<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>新建一篇文章。如果没有设置 <code>layout</code> 的话，默认使用 <a href="https://hexo.io/zh-cn/docs/configuration">_config.yml</a> 中的 <code>default_layout</code> 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
+<h2 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>生成静态文件。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-d</code>, <code>--deploy</code></td>
+<td>文件生成后立即部署网站</td>
+</tr>
+<tr>
+<td><code>-w</code>, <code>--watch</code></td>
+<td>监视文件变动</td>
+</tr>
+</tbody></table>
+<p>该命令可以简写为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+
+<p>发表草稿。</p>
+<h2 id="server"><a href="#server" class="headerlink" title="server"></a>server</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>启动服务器。默认情况下，访问网址为： <code>http://localhost:4000/</code>。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-p</code>, <code>--port</code></td>
+<td>重设端口</td>
+</tr>
+<tr>
+<td><code>-s</code>, <code>--static</code></td>
+<td>只使用静态文件</td>
+</tr>
+<tr>
+<td><code>-l</code>, <code>--log</code></td>
+<td>启动日记记录，使用覆盖记录格式</td>
+</tr>
+</tbody></table>
+<h2 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>部署网站。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-g</code>, <code>--generate</code></td>
+<td>部署之前预先生成静态文件</td>
+</tr>
+</tbody></table>
+<p>该命令可以简写为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="render"><a href="#render" class="headerlink" title="render"></a>render</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo render &lt;file1&gt; [file2] ...</span><br></pre></td></tr></table></figure>
+
+<p>渲染文件。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-o</code>, <code>--output</code></td>
+<td>设置输出路径</td>
+</tr>
+</tbody></table>
+<h2 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo migrate &lt;type&gt;</span><br></pre></td></tr></table></figure>
+
+<p>从其他博客系统 <a href="https://hexo.io/zh-cn/docs/migration">迁移内容</a>。</p>
+<h2 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p>
+<p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo list &lt;type&gt;</span><br></pre></td></tr></table></figure>
+
+<p>列出网站资料。</p>
+<h2 id="version"><a href="#version" class="headerlink" title="version"></a>version</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo version</span><br></pre></td></tr></table></figure>
+
+<p>显示 Hexo 版本。</p>
+<h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><h3 id="安全模式"><a href="#安全模式" class="headerlink" title="安全模式"></a>安全模式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo --safe</span><br></pre></td></tr></table></figure>
+
+<p>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行。</p>
+<h3 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo --debug</span><br></pre></td></tr></table></figure>
+
+<p>在终端中显示调试信息并记录到 <code>debug.log</code>。当您碰到问题时，可以尝试用调试模式重新执行一次，并 <a href="https://github.com/hexojs/hexo/issues/new">提交调试信息到 GitHub</a>。</p>
+<h3 id="简洁模式"><a href="#简洁模式" class="headerlink" title="简洁模式"></a>简洁模式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo --silent</span><br></pre></td></tr></table></figure>
+
+<p>隐藏终端信息。</p>
+<h3 id="自定义配置文件的路径"><a href="#自定义配置文件的路径" class="headerlink" title="自定义配置文件的路径"></a>自定义配置文件的路径</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo --config custom.yml</span><br></pre></td></tr></table></figure>
+
+<p>自定义配置文件的路径，执行后将不再使用 <code>_config.yml</code>。</p>
+<h3 id="显示草稿"><a href="#显示草稿" class="headerlink" title="显示草稿"></a>显示草稿</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo --draft</span><br></pre></td></tr></table></figure>
+
+<p>显示 <code>source/_drafts</code> 文件夹中的草稿文章。</p>
+<h3 id="自定义-CWD"><a href="#自定义-CWD" class="headerlink" title="自定义 CWD"></a>自定义 CWD</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo --cwd /path/to/cwd</span><br></pre></td></tr></table></figure>
+
+<p>自定义当前工作目录（Current working directory）的路径。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo安装及next主题个人配置</title>
+    <url>/2023/04/10/hexo%E5%AE%89%E8%A3%85%E5%8F%8Anext%E4%B8%BB%E9%A2%98%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>本篇内容纯粹为了个人安装方便，并非完整的安装教程。因为太喜欢装系统，所以hexo也要不断安装，写下这篇之后希望可以加速安装时间，不用再到处查看文档。</p>
+<h1 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h1><h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>Linux（DEB&#x2F;RPM-based）：从 <a href="https://github.com/nodesource/distributions">NodeSource</a> 安装</p>
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu:"></a>Ubuntu:</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_19.x | <span class="built_in">sudo</span> -E bash - &amp;&amp;\</span><br><span class="line"><span class="built_in">sudo</span> apt install -y nodejs</span><br></pre></td></tr></table></figure>
+<h3 id="Arch-Linux"><a href="#Arch-Linux" class="headerlink" title="Arch Linux"></a>Arch Linux</h3><p><code>sudo pacman -S nodejs</code><br><code>sudo pacman -S npm</code></p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>Ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install git</span><br></pre></td></tr></table></figure>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="建立网站"><a href="#建立网站" class="headerlink" title="建立网站"></a>建立网站</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt; <span class="comment">#建立文件夹并初始化</span></span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<h3 id="新建文件夹目录如下"><a href="#新建文件夹目录如下" class="headerlink" title="新建文件夹目录如下"></a>新建文件夹目录如下</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.  </span><br><span class="line">├── _config.yml  </span><br><span class="line">├── package.json  </span><br><span class="line">├── scaffolds  </span><br><span class="line">├── <span class="built_in">source</span>  </span><br><span class="line">|   ├── _drafts  </span><br><span class="line">|   └── _posts  </span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+<p>如果非首次安装，在之前备份的文件内，把<code>scaffolds</code>和<code>public</code>文件夹、<code>_config.yml</code>和<code>_config.next.yml</code>文件拷贝到新建立的网站文件夹内相应位置。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>在<code>_config.yml</code>中修改网站配置</p>
+<p>在<code>_config.next.yml</code>中配置next主题</p>
+<h1 id="next主题安装及配置"><a href="#next主题安装及配置" class="headerlink" title="next主题安装及配置"></a>next主题安装及配置</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo-site</span><br><span class="line">npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+<p>安装后，在系统配置文件<code>_config.yml</code>中设置</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h2><p>next官方现不推荐在主题目录下修改任何文件，目的是为了方便升级，这种做法很好。那么，现在需要复制一份配置文件进行编辑，根据<a href="https://theme-next.js.org/docs/getting-started/configuration.html">官方文档</a> ，有多种方式，我选择第一种，方式如下：</p>
+<pre><code>1、在根目录创建一个配置文件
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> _config.next.yml</span><br></pre></td></tr></table></figure>
+
+<pre><code>2、从主题目录复制配置文件到根目录
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Installed through npm</span></span><br><span class="line"><span class="built_in">cp</span> node_modules/hexo-theme-next/_config.yml _config.next.yml</span><br></pre></td></tr></table></figure>
+<p>我至今不明白此处第一步意义何在，因为第二步复制的同名文件会直接覆盖第一步建立的空文件。</p>
+<p>然后，所有的配置都在复制到根目录的这个<code>_config.next.yml</code>中进行。</p>
+<p>实际上，具体的配置文件可以直接复制之前备份的那个文件，通用。但是，因为有些依赖没有安装，所以导致运行<code>hexo g</code> 的时候总是报错，这也正是我写这篇纪录最大的原因。</p>
+<p>个人使用的第三方插件需要安装这几个依赖：</p>
+<h3 id="字数统计显示（Post-Wordcount）"><a href="#字数统计显示（Post-Wordcount）" class="headerlink" title="字数统计显示（Post Wordcount）"></a>字数统计显示（Post Wordcount）</h3><p>Install <code>hexo-word-counter</code> by executing the following command in site root dir:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-word-counter  </span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>然后在<code>_config.next.yml</code> 中把相应参数设置为 <code>true</code><br>此处还需要在hexo配置文件<code>_config.yml</code> 中做相应设置，个人配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude_codeblock:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">awl:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">wpm:</span> <span class="number">275</span></span><br><span class="line">  <span class="attr">suffix:</span> <span class="string">&quot;mins.&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="相关文章推荐（Related-Popular-Posts）"><a href="#相关文章推荐（Related-Popular-Posts）" class="headerlink" title="相关文章推荐（Related Popular Posts）"></a>相关文章推荐（Related Popular Posts）</h3><p>Install <code>hexo-related-posts</code> by executing the following command in site root dir:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-related-posts  </span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<h3 id="本地搜索（Local-Search）"><a href="#本地搜索（Local-Search）" class="headerlink" title="本地搜索（Local Search）"></a>本地搜索（<a href="https://theme-next.js.org/docs/third-party-services/search-services.html#Local-Search">Local Search</a>）</h3><p>Install <code>hexo-generator-searchdb</code> by executing the following command in site root dir:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb</span><br></pre></td></tr></table></figure>
+<p>根据官方文档在hexo配置文件和next配置文件中做相应设置</p>
+<h3 id="访问统计"><a href="#访问统计" class="headerlink" title="访问统计"></a>访问统计</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h1 id="上传到GitHub的补充设置"><a href="#上传到GitHub的补充设置" class="headerlink" title="上传到GitHub的补充设置"></a>上传到GitHub的补充设置</h1><p>前面在安装好已经设置好git和GitHub，需要注意现在GitHub授权不要用token方式，太麻烦，可以直接采用GitHub CLI的方式进行认证。</p>
+<p>想要使<code>hexo d</code> 成功运行，需要</p>
+<pre><code>1、在`_config.yml` 中添加以下内容
+</code></pre>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line">  <span class="attr">type:</span> <span class="string">&#x27;git&#x27;</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">&#x27;url&#x27;</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">&#x27;master&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre><code>2、安装相应插件
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>有需要再完善。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python虚拟环境</title>
+    <url>/2025/01/16/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="python虚拟环境"><a href="#python虚拟环境" class="headerlink" title="python虚拟环境"></a>python虚拟环境</h1><h2 id="一、安装虚拟环境包"><a href="#一、安装虚拟环境包" class="headerlink" title="一、安装虚拟环境包"></a>一、安装虚拟环境包</h2><p>在使用虚拟环境之前，首先需要安装虚拟环境管理工具。Python提供了多种工具来创建虚拟环境，最常用的是venv和virtualenv。</p>
+<ul>
+<li>安装venv<br>Python 3.3及以上版本自带venv模块，因此无需额外安装。只需确保Python版本符合要求。</li>
+<li>安装virtualenv<br>对于Python 2或者需要额外功能，可以选择安装virtualenv。使用以下命令安装virtualenv：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="二、创建虚拟环境"><a href="#二、创建虚拟环境" class="headerlink" title="二、创建虚拟环境"></a>二、创建虚拟环境</h2><ul>
+<li>使用venv创建虚拟环境<br>在命令行中导航到项目目录，然后使用以下命令创建虚拟环境：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m venv myenv</span><br></pre></td></tr></table></figure>
+<p>其中<code>myenv</code>是虚拟环境的名称，可以根据需要更改。</p>
+<ul>
+<li>使用virtualenv创建虚拟环境<br>同样，在项目目录下，使用以下命令创建虚拟环境：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">virtualenv myenv</span><br></pre></td></tr></table></figure>
+<h2 id="三、激活虚拟环境"><a href="#三、激活虚拟环境" class="headerlink" title="三、激活虚拟环境"></a>三、激活虚拟环境</h2><p>在Unix或MacOS上激活</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source myenv/bin/activate</span><br></pre></td></tr></table></figure>
+<h2 id="四、在虚拟环境中安装和管理包"><a href="#四、在虚拟环境中安装和管理包" class="headerlink" title="四、在虚拟环境中安装和管理包"></a>四、在虚拟环境中安装和管理包</h2><p>激活虚拟环境后，所有的包安装和管理操作都会在该虚拟环境中进行，而不会影响全局的Python环境。</p>
+<h3 id="1-安装包"><a href="#1-安装包" class="headerlink" title="1. 安装包"></a>1. 安装包</h3><p>例如，安装requests库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<h3 id="2、查看已安装包"><a href="#2、查看已安装包" class="headerlink" title="2、查看已安装包"></a>2、查看已安装包</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list</span><br></pre></td></tr></table></figure>
+<h3 id="3、退出虚拟环境"><a href="#3、退出虚拟环境" class="headerlink" title="3、退出虚拟环境"></a>3、退出虚拟环境</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="五、在项目中使用虚拟环境"><a href="#五、在项目中使用虚拟环境" class="headerlink" title="五、在项目中使用虚拟环境"></a>五、在项目中使用虚拟环境</h2><h3 id="1-项目文件结构"><a href="#1-项目文件结构" class="headerlink" title="1. 项目文件结构"></a>1. 项目文件结构</h3><p>建议将虚拟环境目录排除在版本控制之外（例如Git），可以在项目根目录中创建一个.gitignore文件并添加以下内容：</p>
+<p><code>myenv/</code></p>
+<h3 id="2-使用requirements-txt管理依赖"><a href="#2-使用requirements-txt管理依赖" class="headerlink" title="2. 使用requirements.txt管理依赖"></a>2. 使用requirements.txt管理依赖</h3><p>在项目开发中，可以使用<code>requirements.txt</code>文件来管理依赖。在虚拟环境中，生成requirements.txt文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>在新的环境中，可以使用以下命令安装所有依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="六、其它"><a href="#六、其它" class="headerlink" title="六、其它"></a>六、其它</h2><h3 id="1、包冲突问题"><a href="#1、包冲突问题" class="headerlink" title="1、包冲突问题"></a>1、包冲突问题</h3><p>在虚拟环境中安装包时，可能会遇到包冲突问题。可以使用pipdeptree工具查看包依赖关系，并解决冲突：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install pipdeptree</span><br><span class="line">pipdeptree</span><br></pre></td></tr></table></figure>
+<h3 id="2、使用不同版本的Python"><a href="#2、使用不同版本的Python" class="headerlink" title="2、使用不同版本的Python"></a>2、使用不同版本的Python</h3><p>可以在创建虚拟环境时指定Python版本。例如，使用Python 3.8创建虚拟环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">virtualenv -p python3.8 myenv</span><br></pre></td></tr></table></figure>
+<h3 id="3、使用venv和virtualenv同时管理多个项目"><a href="#3、使用venv和virtualenv同时管理多个项目" class="headerlink" title="3、使用venv和virtualenv同时管理多个项目"></a>3、使用venv和virtualenv同时管理多个项目</h3><p>可以在不同的项目中使用不同的虚拟环境，以便独立管理各个项目的依赖关系。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu ss 全局</title>
+    <url>/2018/02/04/ubuntu-ss-%E5%85%A8%E5%B1%80/</url>
+    <content><![CDATA[<p>shadowsocks 是走的socks5协议，需要搭配浏览器插件使用，如果想要在系统全局使用，需要使用polipo进行二次转发</p>
+<h3 id="安装polipo"><a href="#安装polipo" class="headerlink" title="安装polipo"></a>安装polipo</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install polipo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置<br><code>sudo gedit /etc/polipo/config</code><br>复制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># This file only needs to list configuration variables that deviate</span><br><span class="line"># from the default values.  See /usr/share/doc/polipo/examples/config.sample</span><br><span class="line"># and &quot;polipo -v&quot; for variables you can tweak and further information.</span><br><span class="line"></span><br><span class="line">logSyslog = true</span><br><span class="line">logFile = /var/log/polipo/polipo.log</span><br><span class="line"></span><br><span class="line">proxyAddress = &quot;0.0.0.0&quot;</span><br><span class="line"></span><br><span class="line">socksParentProxy = &quot;127.0.0.1:1080&quot;</span><br><span class="line">socksProxyType = socks5</span><br><span class="line"></span><br><span class="line">chunkHighMark = 50331648</span><br><span class="line">objectHighMark = 16384</span><br><span class="line"></span><br><span class="line">serverMaxSlots = 64</span><br><span class="line">serverSlots = 16</span><br><span class="line">serverSlots1 = 32</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="重启polipo服务"><a href="#重启polipo服务" class="headerlink" title="重启polipo服务"></a>重启polipo服务</h3><p><code>sudo /etc/init.d/polipo restart</code></p>
+<p>测试<br><code>export http_proxy=&quot;http://127.0.0.1:8123/&quot; curl ifconfig.me</code><br>如果成功就会返回代理服务器地址</p>
+<h3 id="设置全局代理"><a href="#设置全局代理" class="headerlink" title="设置全局代理"></a>设置全局代理</h3><p>一般是在<code>系统设置-&gt;网络代理-&gt;socks主机-&gt;127.0.0.1:1080</code><br>这样就启用系统全局代理了。</p>
+<p>如果只是用Chrome，就没必要这么设置，直接用SwitchyOmega就好了。</p>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>也可以写个脚本，开机执行</p>
+<p>&#96;#!&#x2F;bin&#x2F;sh</p>
+<p>nohup sslocal -c &#x2F;file_path&#x2F;file_name.json &amp;<br><code>添加进开机执行脚本</code>sudo vi &#x2F;etc&#x2F;rc.local&#96;</p>
+<p>添加</p>
+<p><code>sudo sh file_path/file_name.sh</code></p>
+<p>下次重启就会自启动了，如果没有自启动，排查下执行路径及权限是否正确，还有1080端口是否被占用,最好是自己配置一个指定端口，默认的1080可能会与其他程序冲突，比如xware,<br>如果与xware冲突，重新配置端口即可解决</p>
+]]></content>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu 磁盘分区</title>
+    <url>/2018/11/11/ubuntu-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</url>
+    <content><![CDATA[<p>个人方案，记录供后续折腾。</p>
+<p>首先硬盘是gpt+uefi，不是这个的另当别论。其次，用来安装Ubuntu的分区应该是一块空闲分区，可以在Windows中调整至“未分配”状态。</p>
+<p>具体分配如下：</p>
+<h2 id="efi引导分区："><a href="#efi引导分区：" class="headerlink" title="efi引导分区："></a>efi引导分区：</h2><p>必不可少，但是如果安装Ubuntu的分区所在的磁盘上已经有efi分区，那么实际上是不必另建此分区的，已亲自实践证明之。如果没有，则点击空闲分区-新建分区（左下角加号）：</p>
+<p>1、大小：300mb左右</p>
+<p>2、新分区类型：主分区（阙疑，暂以此为准）</p>
+<p>3、新分区的位置：空间起始位置</p>
+<p>4、用于：efi系统分区</p>
+<h2 id="swap交换空间"><a href="#swap交换空间" class="headerlink" title="swap交换空间"></a>swap交换空间</h2><p>1、大小：与电脑内存一致即可（8gb以上的内存）</p>
+<p>2、新分区的类型：逻辑分区</p>
+<p>3、新分区的位置：空间起始位置</p>
+<p>4、用于：交换空间</p>
+<h2 id=""><a href="#" class="headerlink" title="&#x2F;"></a>&#x2F;</h2><p>安装系统、软件等等的地方，我是尽可能给得大，反正我是拿系统来折腾的，会安装各种东西，这个分区如果太小容易崩溃。</p>
+<p>1、大小：尽可能大（50&#x2F;70）<br>2、新分区的类型：逻辑分区<br>3、新分区的位置：空间起始位置<br>4、用于：EXT4日志文件系统<br>5、挂载点：&#x2F;</p>
+<h2 id="home"><a href="#home" class="headerlink" title="&#x2F;home"></a>&#x2F;home</h2><p>相当于个人文件夹，用来存储文档、图片、音乐之类，根据个人需要可大可小，没有也可以，有这个分区的话，如果以后系统重装，可以只动根目录&#x2F;，个人数据放在这里不用担心丢失。</p>
+<p>1、大小：个人自定（我在70gb的总硬盘中给了20gb）<br>2、新分区的类型：逻辑分区<br>3、新分区的位置：空间起始位置<br>4、用于：EXT4日志文件系统<br>5、挂载点：&#x2F;home</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我的这种分法，算是比较偷懒的一种分法了，除了必不可少的分区之外，实际上仅仅多了一个home分区而已，主要是考虑到了以后的折腾，实际上完全还可以细分更多的分区。</p>
+<p>当然了，更简省的做法是只要efi、swap和&#x2F;三个分区。</p>
+]]></content>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一行命令解决ubuntu下解压文件乱码的问题</title>
+    <url>/2020/12/26/%E4%B8%80%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A7%A3%E5%86%B3ubuntu%E4%B8%8B%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>在windows上压缩的文件，是以系统的默认编码中文来压缩文件的。由于zip文件中没有声明其编码，所以linux上的unzip一般以默认编码解压，因此中文文件名会出现乱码。</p>
+<p>所以解决方法很简单，可以使用终端解压缩zip文件时指定解压的编码：</p>
+<p><code>unzip -O GBK xxx.zip</code>‘ </p>
+<p>解压后的文件路径为当前终端所在的路径。</p>
+]]></content>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>余华《语文和文学之间》读后</title>
+    <url>/2018/11/20/%E4%BD%99%E5%8D%8E%E3%80%8A%E8%AF%AD%E6%96%87%E5%92%8C%E6%96%87%E5%AD%A6%E4%B9%8B%E9%97%B4%E3%80%8B%E8%AF%BB%E5%90%8E/</url>
+    <content><![CDATA[<p>在读这篇文章之前，我并没有查看目录，只是读完之后，在意犹未尽之余才意识到我今晚的时间好像全都用来读它了，打开目录，嚯，竟然有39页，真庆幸！</p>
+<p>掩卷想来，最让我激动不已的倒不是余华在作品中提出了多么惊世骇俗的观点，而是自己在长期的“饥渴”之后，看到作家余华以一个评论家的身份不疾不徐地写出的那些有关文学的点点滴滴时给我的一种恍如隔世的感觉，让我回忆起当初如饥似渴地阅读文学作品以及和好友滔滔不绝分享自己观点之时的种种情景。</p>
+<p>如果不是这样的一篇文章，我是说，在正常的工作和生活之中，我可能完全意识不到我现在依然会对这样的文字感到兴奋。意识到这一点，对于现在的我来说意义重大，最起码我知道自己并没有“心如死灰”，如果有可能，我的精神世界还是能够继续得到丰富，甚至接下来的阅读方向也会稍稍有所不同。</p>
+<p>除此之外，才是里面的内容。下面是一些摘录及个人感悟：</p>
+<blockquote>
+<p>1、我曾经说过，一个好的读者应该怀着空白之心去阅读，一个好的作者应该怀着空白之心去写作。这句话说起来容易，做起来却很不容易。每一个读者都是带着自己的经验去阅读文学作品，这样的经验里包含了很多，年龄、性别、经历、性格、心理、环境等；每一个作者也是带着自己的经验去写作文学作品，这个经验里包含了上述这些等等之外，还包含了作者已经熟练掌握的叙述方式。所以无论是读者还是作者，都是长时间沦陷在自己的经验阅读和经验写作之中，可是突然的、毫无先兆的、非经验的阅读或者写作闪现了一下，这样的次数不会多，因为经验是必然，非经验是偶然，当这个偶然出现时，你是困惑之后退却了，还是欣喜之后前进了？如果是困惑退却，那么一切照旧；如果是欣喜前进，那么一个崭新的世界有可能向你打开。</p>
+</blockquote>
+<p>人总是易受先入为主的观念的影响，所以在接触到新事物特别是自己不熟悉的事物时容易产生抗拒心理，总认为自己以前接受的才是最好的，正因为如此，个人的进步才会比较缓慢，而这种情况随着年龄的增长表现得越来越明显，因为，越是年龄大的人越会误以为自己经验丰富，需警惕之。</p>
+<blockquote>
+<p>2、与当时中国流行的“伤痕文学”里的伤痕不同，那是被刀砍出来的疼痛喊叫，而川端康成的是内心深处的隐约作痛。</p>
+</blockquote>
+<blockquote>
+<p>3、如果让我选出十部必读的中篇小说，《青梅竹马》应该是其中的一部，我会把它和海明威的《老人与海》，马尔克斯的《没有人给他写信的上校》，科塔萨尔的《南方高速公路》放在一起。</p>
+</blockquote>
+<p>标记这几本书，找时间读完。《青梅竹马》作者是日本作家樋口一叶。</p>
+<blockquote>
+<p>4、川端康成对于我写作的意义就是让我一开始就重视细部描写，这为我后来的写作奠定了坚实的基础，我后来写作时的叙述无论是粗犷还是细腻，都不会忽略细部。</p>
+</blockquote>
+<p>余华的这种风格原来来自于以川端康成为代表的日本文学。</p>
+<blockquote>
+<p>5、我读完了，那是一九八六年初的冬天，我是蜷缩在被窝里读完的，南方冬天的屋里没有暖气，我穿上毛衣和棉衣，坐在床上，一根接着一根抽烟，把门窗紧闭的屋里弄得烟雾缭绕，我以彻夜难眠的激动迎接这个非经验时刻的来临。</p>
+</blockquote>
+<p>这场景令人回味、促人回忆。</p>
+<blockquote>
+<p>6、川端康成把我引入写作之门后，卡夫卡给予我的是写作的自由。</p>
+</blockquote>
+<p>原来影响余华最大的两人是川端康成和卡夫卡。</p>
+<blockquote>
+<p>7、阅读一部小说，理解或者不理解其实不重要，重要的是你是否读着有兴趣，有兴趣的话不理解也会读完，没兴趣的话理解了也不会读完。</p>
+</blockquote>
+<p>所以，解决学生阅读能力不足的方法自然是加大阅读量，但我认为加大阅读量不应该仅仅是给学生列出一个个必读书单，而应该是划定一个更大的范围，在这个范围内让学生挑选自己感兴趣的书来读。</p>
+<blockquote>
+<p>8、人生总是陷在这种荒谬的永无止境的追求之中，一直到最后一刻。这里包含着人类生活中最常见的、谁也无力摆脱的公式，人永远是这公式的证明材料，圣贤豪杰，无一例外。</p>
+</blockquote>
+<p>这第八条是莫言对余华《十八岁出门远行》的评论摘录。</p>
+<blockquote>
+<p>9、……海明威对于这种定点清除似的评论很不满意，他说老人和大海都没有象征，只有鲨鱼有象征，鲨鱼象征评论家。……贝瑞逊在心理说，老人就是老人，大海就是大海，鲨鱼就是鲨鱼，他们不象征什么，但是一部伟大的文学作品无处不洋溢着象征。</p>
+</blockquote>
+<blockquote>
+<p>10、我觉得好的文学教育应该先是阅读，然后才是分析。</p>
+</blockquote>
+<p>我也这样认为，抛开文本只谈分析无疑是耍流氓的行为。</p>
+<blockquote>
+<p>11、有句老话，听君一席话，胜读十年书。叶兆言对此有很好的解释，他说你要先读过十年书，才能听君一席话胜读十年书；没读十年书的话，听君百席话也没用。这个读了十年的书就是经验，听君一席话胜读十年书的顿悟就是非经验的突然闪现。</p>
+</blockquote>
+<p>这些摘录中的观点有些是以前知道的，有的是初次见到的，不管是哪种情况，在我今晚读到的时候都感觉他们非常有价值，所以摘录出来，以供回头整理使用。</p>
+]]></content>
+      <tags>
+        <tag>文学</tag>
+        <tag>随想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>徐志摩《偶然》</title>
+    <url>/2018/10/18/%E5%81%B6%E7%84%B6/</url>
+    <content><![CDATA[<p>我是天空裏的一片雲，<br>偶爾投影在你的波心<br>你不必訝異，<br>更無須歡喜，<br>在轉瞬間消滅了蹤影。</p>
+<p>你我相逢在黑夜的海上，<br>你有你的，我有我的，方向；<br>你記得也好，<br>最好你忘掉，<br>在這交會時互放的光亮！</p>
+]]></content>
+      <tags>
+        <tag>诗歌</tag>
+        <tag>经典</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初尝黑苹果</title>
+    <url>/2018/10/27/%E5%88%9D%E5%B0%9D%E9%BB%91%E8%8B%B9%E6%9E%9C/</url>
+    <content><![CDATA[<p>从昨晚到现在，在vmware虚拟机上接连安装了两个黑苹果，就是同样的东西安装了两次。</p>
+<p>昨晚第一次安装，算是比较顺利的。因为考虑到几年前安装Ubuntu的时候由于分配的空间过小导致最终系统崩溃，所以，之后再安装系统的时候都尽量给足空间，所以昨晚第一次安装的时候就安在了空间充裕的hdd上，但是今天发现启动系统时速度不是很快，所以，就又尝试分了40g的ssd重新安装了一遍，不过就目前看来，貌似也没有更加流畅，不知道问题出在哪里。根据现有的信息掌握，vmware上的mac os好像不支持nvme，那么这块固态的威力看来就发挥不出来了。</p>
+<p>无论如何，除了之前在别人的电脑上粗略体验过mac os外，这次也算是第一次拥有并真正体验了os x了，这当然不是苹果设备，所以做不到软硬件结合所能达到的高度，因此也就是体验体验而已，并不打算作为主力来使用。</p>
+<p>现在的精力最好还是放在开源的Linux上比较好。</p>
+<p>另，这篇记事就是在os x上的备忘录上打出来的。</p>
+]]></content>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>macos</tag>
+        <tag>黑苹果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>又是重新开始</title>
+    <url>/2017/10/02/%E5%8F%88%E6%98%AF%E9%87%8D%E6%96%B0%E5%BC%80%E5%A7%8B/</url>
+    <content><![CDATA[<p>这绝不是我搭建的第一个博客，我甚至都已经记不清这是第几个了。</p>
+<p>从几年前不知道从什么渠道接触到WordPress开始，见猎心喜，不断尝试，从免费空间、二级域名到自己购买VPS、独立域名，再尝试当时流行的各种博客程序，自己也从一个柔弱的文科生变成了具有一定动手能力的半理科生，然而产出的东西依然寥寥。</p>
+<p>这样做明显偏离了最先给自己设定的轨道，因为我曾经告诫自己，内容的创作才是最重要的，而所谓的博客、网站不过是内容所存在的地方而已，终究只是形式。</p>
+<p>然而，人总是对自己没有接触过的东西抱有极大的好奇心，而这些看起来很geek的东西对我来说正是如此。如果自己在技术方面能够深入，那也未必不是好事，可惜的是，几年下来，似乎依然停留在表层。越是往后，越是难以取得进步，现在会的东西几年前就已经学会，几年前不会的现在依然不会，事实总是这样让人不能满意。</p>
+<p>这几年，自己也从学生而工作，从小城市而一线，再从一线而家乡，彻底变成了一个被时代所抛弃的人，内心的凄苦真的是难以言说。虽然不时提醒自己，绝不能自我放弃，然而再坚强的意志也敌不过时间，更敌不过生活。在这平淡已极的生活中，我都快要忘记一切了。</p>
+<p>直到收到《从FarBox到Button》这封邮件，我才意识到我还有一个FarBox博客的存在，对于有更新癖的我来说，自然迫不及待地转移到了Bitcron，更希望通过这次更新让自己重拾写作，至少有可以好好说话的地方，不至于碌碌。</p>
+<p>对，我用的是词是转移，而不是迁移。大致浏览了一下以前的文章，完全没有可取之处，甚至完全都不能被称为文章，索性，倒不如完全舍弃，而之前自己但凡转移平台，往往也是如此。</p>
+<p>所以说“再次重新开始”。</p>
+<p>只是希望不要重蹈覆辙！</p>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>双系统时间同步</title>
+    <url>/2023/02/07/%E5%8F%8C%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/</url>
+    <content><![CDATA[<p>在linux端操作</p>
+<p><code>timedatectl set-local-rtc 1 --adjust-system-clock</code></p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>天逸510 Pro启动</title>
+    <url>/2018/03/22/%E5%A4%A9%E9%80%B8510-Pro%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<ul>
+<li>进入BIOS按F1</li>
+<li>选择启动项按F12</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>PC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装 debian 后，中文环境下将home目录下文件夹更改为对应的英文</title>
+    <url>/2025/04/12/%E5%AE%89%E8%A3%85-debian-%E5%90%8E%EF%BC%8C%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%B0%86home%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E8%8B%B1%E6%96%87/</url>
+    <content><![CDATA[<p>安装 debian 后，中文环境下home目录下文件夹显示的是中文，不方便使用cd命令，用到的软件xdg-user-dirs-gtk(Gnome 环境已默认安装),可以方便更改为英文。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#临时转换系统语言为英文，重启后会自动恢复原值的</span></span><br><span class="line"><span class="built_in">export</span> LANG=en_US</span><br><span class="line"><span class="comment">#执行转换命令，弹出的窗口中会询问是否将目录转化为英文路径，同意并关闭</span></span><br><span class="line">xdg-user-dirs-gtk-update</span><br><span class="line"><span class="comment">#转换回系统语言为中文，也可以不执行下面的命令，直接重启也一样的</span></span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN</span><br></pre></td></tr></table></figure>
+<p>下次进入系统后，会提示是否把目录转化为中文，选择不，并选择不再提示，并取消修改。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的黑苹果完美记(一)</title>
+    <url>/2018/12/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%AE%8C%E7%BE%8E%E8%AE%B0(%E4%B8%80)/</url>
+    <content><![CDATA[<p>从10月26号在Windows下的VMWare上首次成功安装macOS到12月21日凌晨成功解决实体机上的睡眠问题为止，我的黑苹果折腾过程差不多已经有了两个月的时间了。这段时间除了工作，剩下的时间全都用在了这上面，甚至连正常的生活都受到了影响（心不在焉），虽然中间有几次因遇到难题想暂停下来，但只要一想到还有未解决的问题，就总是不放心，只好继续下去，好在目前都已解决。所以，写这样一篇记录性质的文章，算是一个总结，接下来把时间放在更有价值的事情上去，好好利用新系统。</p>
+<h2 id="我的配置单"><a href="#我的配置单" class="headerlink" title="我的配置单"></a>我的配置单</h2><p>非组装机，而是购买的联想品牌台式机，型号为天逸510pro，配置如下：</p>
+<ul>
+<li>主板：Lenovo 36C5 （Intel B250 芯片组）</li>
+<li>CPU: i5-7400 3 GHz</li>
+<li>内存：8 GB 2667 MHz DDR4</li>
+<li>硬盘：Samsung SSD 960 EVO 250GB</li>
+<li>显卡：NVIDIA GeForce GT 730</li>
+<li>无线网卡：BCM943602CS（后加的，原声Intel，无解）</li>
+</ul>
+<h2 id="硬盘规划"><a href="#硬盘规划" class="headerlink" title="硬盘规划"></a>硬盘规划</h2><p>由于完美主义作祟，看不得之前硬盘上无数的凌乱的分区，所以，毁掉之前win、mac和Ubuntu三系统并存在同一块硬盘上的分区状况，重新规划，最终分区如下：</p>
+<ul>
+<li>SSD：格掉其它系统，全盘保留给macOS</li>
+<li>1T HDD：Win10 （C盘+ D盘）+ Ubuntu</li>
+</ul>
+<p>其它，efi分区放在ssd上，且放在起始扇区上。</p>
+<h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>先装Windows，再装macOS。</p>
+<p>在我重新调整系统规划之前，Windows实际上是安装在ssd上的，所以，首先迁移系统，当然最大的问题是完整保留数据。</p>
+<p>大致步骤是先用diskgenius调整数据盘分区，在D盘之前腾出一块空间安装新Windows，安装之后居然直接变成了C盘，而之前的C盘（系统盘）则变成了普通的数据盘，所以，原系统盘直接格式化，倒也省事，软件再装就是。中间也是遇到了一些问题，好在都顺利解决，不再赘述。</p>
+<p>重点是macOS的安装过程，教程用的@黑果小兵的 <a href="https://blog.daliansky.net/MacOS-installation-tutorial-XiaoMi-Pro-installation-process-records.html">这一篇</a>，简述如下：</p>
+<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>方法一（省事）：下载 <a href="https://www.balena.io/etcher/">etcher</a>，打开镜像（黑果小兵网站上有提供下载），选择U盘，点击Flash即可。</p>
+<p>方法二：如果自己对从第三方网站上下载的镜像不放心，那么可以到官网下载所需的系统镜像，用unibeast制作完成，教程在 <a href="https://www.tonymacx86.com/threads/unibeast-install-macos-mojave-on-any-supported-intel-based-pc.259381/">这</a>，只是相对复杂一些，但也不算难。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>插入制作好的带clover的启动盘，开机按F12选择从U盘启动，跑完代码，顺利进入clover界面，选择Boot OS X Install from…（就是U盘所在位置），然后开始引导macOS系统，顺利的话会很快进入安装设置选项。</p>
+<h4 id="抹盘"><a href="#抹盘" class="headerlink" title="抹盘"></a>抹盘</h4><p>选择简体中文</p>
+<p>出现macOS实用工具界面,选择磁盘工具</p>
+<p>选择<code>显示所有设备</code></p>
+<p>选择你要安装的磁盘或者分区，点击<code>抹掉</code>按钮,选择格式，将名称修改为你想要的,点击<code>抹掉</code>按钮，请注意：</p>
+<p><strong>选择格式的时候很多教程上都说应该选择HFS+，但是我查了一下APFS是苹果最新的文件系统，我想既然用了最新的Mojave系统，只有搭配最新的文件系统或许才最能发挥系统系能，所以，直接选了APFS。</strong></p>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><p>然后退出磁盘工具进入安装界面,选择安装，进行各种设置，确定安装。</p>
+<p>然后它会把USB安装盘上的安装文件预复制到要安装的系统分区里，之后系统会自动进行重启，进入第二阶段的安装。时间长短取决于你的硬盘速度，耐心等待即可。</p>
+<p><strong>重启时要注意，如果是在bios中选择的优盘为第一启动项，应该会直接进入macOS安装界面，但是如果像我的电脑可以直接从F12选择启动项的，重启的时候也要记得按F12选择启动项，免得直接进入默认的windows中了。</strong></p>
+<p>整个安装过程需要重启一次还是两次我已经记不清了，需要留意的是每次重启后要在clover中选择不同的选项，重复选择可能会重复安装，另外不要选择带有FileVault的选项，这个给磁盘加密用的，黑苹果还是不用为上吧。</p>
+<p>经过一到三次重启后，选择boot macOS from mac（名字取决于你的硬盘分区名称），进入设置向导，设置完成后进入桌面，黑苹果的初步安装可以说已经大功告成了。</p>
+<h2 id="合并EFI，设置多系统并存"><a href="#合并EFI，设置多系统并存" class="headerlink" title="合并EFI，设置多系统并存"></a>合并EFI，设置多系统并存</h2><p>到正式进入桌面为止，macOS算是安装成功了，但是真正的折腾才刚刚开始，难道你没发现之前的安装过程可以说是傻瓜式的，如果真这么简单，黑苹果恐怕早就流行起来了。</p>
+<p>下面直接复制@黑果小兵的帖子，图片也不做修改了，我这里算是做个备份，也方便自己查看。</p>
+<h3 id="教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇"><a href="#教你将U盘上的EFI复制到磁盘的EFI分区-脱离USB运行-macOS篇" class="headerlink" title="教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]"></a>教你将U盘上的EFI复制到磁盘的EFI分区,脱离USB运行[macOS篇]</h3><p>新的系统安装成功后，EFI还位于U盘里，总不能一直挂着U盘使用系统吧。这个时候如果你想将U盘里的EFI复制到磁盘的EFI分区里，却苦于找不到看不见EFI分区，这个时候是该让diskutil登场了。</p>
+<p>diskutil命令的基本用法：</p>
+<p>查看磁盘分区表: <code>diskutil list</code></p>
+<p>&#x2F;dev&#x2F;disk0(internal, physical):</p>
+<table>
+<thead>
+<tr>
+<th>#:</th>
+<th>TYPE</th>
+<th>NAME</th>
+<th>SIZE</th>
+<th align="center">IDENTIFIER</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:</td>
+<td>GUID_partition_scheme</td>
+<td></td>
+<td>256 GB</td>
+<td align="center">disk0</td>
+</tr>
+<tr>
+<td>1:</td>
+<td>EFI</td>
+<td>EFI</td>
+<td>200 MB</td>
+<td align="center">disk0s1</td>
+</tr>
+<tr>
+<td>2:</td>
+<td>Apple_HFS</td>
+<td>MAC</td>
+<td>128 GB</td>
+<td align="center">disk0s2</td>
+</tr>
+<tr>
+<td>3:</td>
+<td>Microsoft Basic Data</td>
+<td>WIN10</td>
+<td>127.7 GB</td>
+<td align="center">disk0s3</td>
+</tr>
+</tbody></table>
+<p>&#x2F;dev&#x2F;disk1(internal, physical):</p>
+<table>
+<thead>
+<tr>
+<th>#:</th>
+<th>TYPE</th>
+<th>NAME</th>
+<th>SIZE</th>
+<th>IDENTIFIER</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0:</td>
+<td>GUID_partition_scheme</td>
+<td></td>
+<td>16 GB</td>
+<td>disk1</td>
+</tr>
+<tr>
+<td>1:</td>
+<td>EFI</td>
+<td>EFI</td>
+<td>200 MB</td>
+<td>disk1s1</td>
+</tr>
+<tr>
+<td>2:</td>
+<td>Apple_HFS</td>
+<td>Install macOS Sierra</td>
+<td>15.8 GB</td>
+<td>disk1s2</td>
+</tr>
+</tbody></table>
+<h4 id="挂载磁盘EFI分区"><a href="#挂载磁盘EFI分区" class="headerlink" title="挂载磁盘EFI分区"></a>挂载磁盘EFI分区</h4><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">sudo diskutil mount disk0s1</span><br></pre></td></tr></table></figure>
+
+<h4 id="挂载U盘EFI分区"><a href="#挂载U盘EFI分区" class="headerlink" title="挂载U盘EFI分区"></a>挂载U盘EFI分区</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo diskutil mount disk1s1</span><br></pre></td></tr></table></figure>
+
+<h4 id="打开Finder，注意后面有个"><a href="#打开Finder，注意后面有个" class="headerlink" title="打开Finder，注意后面有个."></a>打开Finder，注意后面有个<code>.</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">open .</span><br></pre></td></tr></table></figure>
+
+<p>左侧会显示挂载了两个EFI分区，将U盘EFI目录全部复制到磁盘的EFI分区即可。</p>
+<h4 id="合并EFI分区"><a href="#合并EFI分区" class="headerlink" title="合并EFI分区"></a>合并EFI分区</h4><p><strong>这里有一点需要注意</strong>:<em>如果之前安装过Windows系统的话,会存在EFI的目录,只是EFI的目录下面只有BOOT和Microsoft这两个目录,如果希望添加macOS的Clover引导的话,可以将USB的EFI分区里面的EFI目录下面的CLOVER复制到磁盘里的EFI目录下,也就是执行的是</em><strong>合并</strong><em>的操作,让EFI同时支持WINDOWS和macOS的引导.千万不要全部复制,否则有可能造成EFI无法启动Windows.</em></p>
+<h2 id="添加UEFI引导选项"><a href="#添加UEFI引导选项" class="headerlink" title="添加UEFI引导选项"></a>添加UEFI引导选项</h2><p>使用工具:BOOTICE</p>
+<h3 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程:"></a>操作过程:</h3><ol>
+<li>打开BOOTICE软件,选择<code>物理磁盘</code>,选择欲操作的目标磁盘,点击<code>分区管理</code>,弹出分区管理的窗口,点击<code>分配盘符</code>,为<code>ESP</code>分区分配一个盘符,点击确定<br><img src="http://7.daliansky.net/BOOTICE1.jpg" alt="BOOTICE1"></li>
+<li>选择<code>UEFI</code>,点击<code>修改启动序列</code>,点击<code>添加</code>按钮,菜单标题填写:<code>CLOVER</code>,选择<code>启动文件</code>,在打开的窗口里选择<code>ESP</code>分区下的目录<code>\EFI\CLOVER\CLOVERX64.EFI</code>,点击<code>保存当前启动项设置</code><br><img src="http://7.daliansky.net/BOOTICE2.jpg" alt="BOOTICE2"></li>
+</ol>
+<p>不得不说，黑果小兵推荐的这个bootice软件非常实用，一般都推荐用easyuefi之类的，但是这是收费软件，试用版在企业版的win10上是不让用的，所以基本上没用，当然，破解版就算了。</p>
+<p>至此，可以拔掉优盘，开机进入clover界面选择想要启动的系统了。</p>
+<p>接下来就是进行各种功能的完善了。</p>
+]]></content>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>黑苹果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的黑苹果必备应用列表</title>
+    <url>/2018/11/23/%E6%88%91%E7%9A%84%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%BF%85%E5%A4%87%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8/</url>
+    <content><![CDATA[<p>除去各种需要完善的驱动，下面是必备软件列表及官网</p>
+<ul>
+<li><a href="https://github.com/Caldis/Mos">Mos</a> :鼠标反转及流畅滑动</li>
+<li><a href="https://www.dropbox.com/install">Dropbox</a></li>
+<li><a href="https://github.com/yangshun1029/aria2gui">Aria2gui</a> :下载神器</li>
+<li><a href="https://www.freedownloadmanager.org/download.htm">FDM</a> : 下载备选</li>
+<li><a href="https://mackie100projects.altervista.org/download-clover-configurator/">Clover Configurator</a></li>
+<li><a href="https://www.mediaatelier.com/CheatSheet/">CheatSheet</a> :快捷键提示</li>
+<li><a href="https://github.com/trazyn/ieaseMusic">ieaseMusic</a> :网易云音乐第三方客户端</li>
+<li><a href="https://github.com/shadowsocks/ShadowsocksX-NG">ShadowsocksX-NG</a></li>
+<li><a href="https://macos.telegram.org/">Telegram</a> :聊天（少用）+ 文件传输</li>
+</ul>
+<p>需求不多，主要这些。下面说说我的写作三件套：</p>
+<ul>
+<li><a href="https://simplenote.com/">simplenote</a> : 写日记，优点在于足够简单同时客户端多平台支持</li>
+<li>OneNote：知识整理，功能足够丰富且客户端齐全，我用Office365订阅</li>
+<li><a href="https://typora.io/">Typora</a> ：写作，所见即所得类型的MarkDown编辑器</li>
+</ul>
+<p>备用</p>
+]]></content>
+      <tags>
+        <tag>黑苹果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记梦</title>
+    <url>/2018/10/26/%E6%97%A0%E9%A2%98/</url>
+    <content><![CDATA[<p>从早上起床到现在一直感觉精神恍惚，总感觉有事萦绕于心。</p>
+<p>仔细想了想原因，其实也是荒唐得可笑，因为只是源自于昨晚的一场梦，而梦中的场景又让人留恋，甚至不愿从梦中醒来，只是因为还要工作，不能蒙头大睡，继续着自己的美梦，然而终究是意犹未尽，所以才不得不游离于于这种半梦半醒的状态之中。</p>
+<p>这种状况貌似荒唐，实则可悲。为何？其实还是因为现实的生活太过于没有乐趣，日日全是重复着昨日的生活，时间长了，甚至甚至连做梦的能力都失去了，故而，仅仅是一个梦就让我惊喜不已，不愿自拔，不得不说，这种生活状态真是可悲。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>暂时不折腾了</title>
+    <url>/2018/12/09/%E6%9A%82%E6%97%B6%E4%B8%8D%E6%8A%98%E8%85%BE%E4%BA%86/</url>
+    <content><![CDATA[<p>半个月来，深深陷入对黑苹果的“研究”中不能自拔，可以说充分利用了工作之余的所有时间，然而却并没有“研究”出任何成果来，挫败感因此产生，所以决定暂时不折腾了，把时间放在更加有意义的事情上去。</p>
+<p>然而，时间究竟浪费在了什么地方，还是有必要记录一下的：</p>
+<p>1、由于在之前的摸索阶段，装了多个系统，两块硬盘上也分别有了efi分区，当然这也许并不影响什么，但是有几点时间看不下去：一是ssd上的efi分区竟然不是在起始分区，担心影响开机速度，不能忍；二是macos和win竟然在同一块硬盘，而win数据盘和Linux系统中间我又格出了一个apfs分区，总担心有一天会出现某个分区或系统突然消失的状况，所以，决定重新规划安装三个系统。如下：</p>
+<ul>
+<li>SSD：MacOS</li>
+<li>HDD: win(C+D) + Ubuntu(&#x2F;+home+efi)</li>
+</ul>
+<p>如此，看起来就整齐多了，而且应该也相对安全了。</p>
+<p>2、各个系统分别安装常用软件，没难度，但耗费时间。</p>
+<p>3、学会升级clover。</p>
+<p>4、用AppleALC代替了voodoohda万能声卡，也正确找出了注入id（5），兴奋。</p>
+<p>5、动过购买bcm943602cs的念头，但考虑到还要拆机安装，遂暂时搁置。</p>
+<p>6、尝试用fbpatcher内建USB端口，可惜效果不好，暂时还是采用补丁方式，目前所有端口可用。</p>
+<p>其实，最耗时间的是难以搞定的部分，目前对我来说主要是睡眠和唤醒的问题了。翻遍了资料，甚至还上了英文的tonymacx86，然而最终还是没能解决问题，所谓的受挫也指这件事。然而，回头想想，即便在Windows下，使用睡眠功能的时候也不多，台式机基本上都是离开时随时关机，现在这样做无非是一种追求完美的心理罢了。</p>
+<p>所以，总结下来，正常使用已完全不成问题，那暂时就先不折腾了。</p>
+]]></content>
+      <tags>
+        <tag>随想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>没有谁能像一座孤岛</title>
+    <url>/2018/11/23/%E6%B2%A1%E6%9C%89%E8%B0%81%E8%83%BD%E5%83%8F%E4%B8%80%E5%BA%A7%E5%AD%A4%E5%B2%9B/</url>
+    <content><![CDATA[<p>BY 约翰·汤恩</p>
+<p>没有谁能像一座孤岛</p>
+<p>在大海里独踞</p>
+<p>每个人都像一块小小的泥土</p>
+<p>连接成整个陆地</p>
+<p>如果有一块泥土被海水冲去</p>
+<p>欧洲就会失去一角</p>
+<p>这如同一座山岬</p>
+<p>也如同你的朋友和你自己</p>
+<p>无论谁死了，都是自己的一部分在死去</p>
+<p>因为我包含在人类这个概念里</p>
+<p>因此我从不问丧钟为谁而鸣</p>
+<p>它为我也为你</p>
+]]></content>
+      <tags>
+        <tag>经典</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>终于出声了</title>
+    <url>/2018/11/01/%E7%BB%88%E4%BA%8E%E5%87%BA%E5%A3%B0%E4%BA%86/</url>
+    <content><![CDATA[<p>在虚拟机上运行黑苹果终究还是问题太多，首先就是完全不能发挥显卡的作用，显示很成问题，其次是因为分了一半的内存给黑苹果，所以，一旦运行，就发现硬盘灯狂亮，占用达到百分之七八十，总是担心，所以，最终还是决定安装在实体机上。</p>
+<p>经过两天的鼓捣，基本算是能用了。</p>
+<p>其实现在的clover已经达到了很完美的程度，所以安装上基本不存在什么问题，真正的问题是安装时候设置启动和安装驱动。</p>
+<p>由于我是Windows+Mac OS+Ubuntu三系统并存，但是这种情况在网上可以说完全没有教程，所以，就完全凭借着自己的经验进行摸索了，经过几个小时才搞定，但相对而言其实也不算难。</p>
+<p>由于无线网卡还需要买外接设备，目前并不打算投资，所以直接用的有线；至于有线网卡驱动，安装上直接就有了，自然不用费事。</p>
+<p>真正花费功夫的是声卡驱动的安装。</p>
+<p>但仅仅就一个声卡驱动的安装就耗费了我两天的空闲时间。因为不少教程都在推荐最新的AppleALC，说是非常完美，遂不停地翻教程，甚至还打算看懂一些原理，但最终证明自己还是太嫩，这一切不过是徒劳，尝试了无数次，AppleALC也没能安装成功，只是白白重启了好多次电脑而已。实在不愿折腾了，最终还是安装了voodoohda万能驱动了事，而且到目前为止声音听起来也没什么问题。</p>
+<p>这不是什么大事，但是中间的经历却颇有些曲折，所以当最终发出声音的时候，还是相当满足的，</p>
+<p>遂记之。</p>
+]]></content>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>macos</tag>
+        <tag>黑苹果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>罗振宇跨年演讲中引用的名人名言</title>
+    <url>/2019/01/18/%E7%BD%97%E6%8C%AF%E5%AE%87%E8%B7%A8%E5%B9%B4%E6%BC%94%E8%AE%B2%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E5%90%8D%E4%BA%BA%E5%90%8D%E8%A8%80/</url>
+    <content><![CDATA[<ul>
+<li>木心：岁月不饶人，我亦未曾饶过岁月。</li>
+<li>海子：今夜我不关心人类，我只关心你。</li>
+<li>罗曼罗兰：世界上只有一种真正的英雄主义，就是认清了生活的真相，还仍然热爱它。</li>
+<li>《兄弟连》：我们是伞兵，伞兵天生就是被包围的。</li>
+<li>尼采：凡杀不死我的，都让我更强大。  |  罗振宇改编：凡我赶不上的，我就在未来等它。</li>
+<li>富兰克林罗斯福：你一心想领导人们前进，回头一看，跟着的人却一个都没有，真可怕。</li>
+<li>菲茨杰拉德：一个人能同时保有全然相反的两种观念，还能正常行事，是第一流智慧的标志。</li>
+<li>查理芒格：宏观是我们必须接受的，微观才是我们可以有所作为的。</li>
+<li>温斯顿丘吉尔：这不是结束，甚至不是结束的开始，而可能是开始的结束。</li>
+<li>泰森：每个人都有一个计划，直到被一拳打到脸上。</li>
+<li>约翰列侬：所有事到最后都会是好事，如果还不是，那它就是还没到最后。</li>
+<li>阿尔贝加缪：对未来最大的慷慨，是把一切献给现在。</li>
+</ul>
+<p>原链接 <a href="http://pic1cdn.luojilab.com/html/poster/picYwlEOLr5NZiv6QyLLpk1.html?ts=1547037636572">在此</a></p>
+<hr>
+<h2 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h2><p>海子</p>
+<p>姐姐，今夜我在德令哈，夜色笼罩<br>姐姐，我今夜只有戈壁<br>草原尽头我两手空空<br>悲痛时握不住一颗泪滴<br>姐姐，今夜我在德令哈<br>这是雨水中一座荒凉的城<br>除了那些路过的和居住的<br>德令哈……今夜<br>这是唯一的，最后的，抒情<br>这是唯一的，最后的，草原<br>我把石头还给石头<br>让胜利的胜利<br>今夜青稞只属于他自己<br>一切都在生长<br>今夜我只有美丽的戈壁空空<br>姐姐，今夜我不关心人类，我只想你</p>
+]]></content>
+      <tags>
+        <tag>转载</tag>
+        <tag>经典</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>群晖默认常用端口大全</title>
+    <url>/2020/11/08/%E7%BE%A4%E6%99%96%E9%BB%98%E8%AE%A4%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<p>原文链接：<a href="https://wp.gxnas.com/202.html">https://wp.gxnas.com/202.html</a></p>
+<p>请参见下表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">设置实用程序</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Synology Assistant</td>
+<td>9999、9998、9997</td>
+<td>UDP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">备份</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Data Replicator、Data Replicator II、Data Replicator III</td>
+<td>9999、9998、9997、137、138、139、445</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DSM 5.2 数据备份、rsync、共享文件夹同步、远程 Time Backup</td>
+<td>873、22（如果通过 SSH 加密）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Hyper Backup（目标）</td>
+<td>6281（多版本备份）、22（如果通过 SSH 加密）、873（远程数据复制）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Hyper Backup Vault、DSM 5.2 Archiving Backup</td>
+<td>6281</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">LUN 备份</td>
+<td>3260 (iSCSI)、873、22（如果通过 SSH 加密）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Snapshot Replication</td>
+<td>3261 (iSCSI LUN)、5566（共享文件夹）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Active Backup for Business</td>
+<td>5510、443（vCenter Server 和 ESXi 主机）、902（ESXi 主机）</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">下载</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">BT</td>
+<td>6890 ~ 6999（用于固件版本早于 v2.0.1-3.0401 的型号）； 16881（用于 DSM 版本 v2.0.1 及以上的型号）</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">eMule</td>
+<td>4662 (TCP)、4672 (UDP)</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Web 应用程序</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">DSM</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">File Station</td>
+<td>5000（HTTP，可添加其它端口）、5001（HTTPS，可添加其它端口）</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Mail Server</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">IMAP</td>
+<td>143</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">通过 SSL&#x2F;TLS 的 IMAP</td>
+<td>993</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">POP3</td>
+<td>110</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">通过 SSL&#x2F;TLS 的 POP3</td>
+<td>995</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">文件传输</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">AFP</td>
+<td>548</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">CIFS</td>
+<td>smbd：139 (netbios-ssn)、445 (microsoft-ds)</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">Nmbd：137、138</td>
+<td>UDP</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">FTP、通过 SSL 的 FTP、通过 TLS 的 FTP</td>
+<td>21（命令）、20（主动模式的数据连接）、1025-65535（被动模式的数据连接；但默认范围因型号而异）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">iSCSI</td>
+<td>3260</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">NFS</td>
+<td>111、892、2049</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">TFTP</td>
+<td>69</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">WebDAV、CalDAV</td>
+<td>5005、5006 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">套件</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Audio Station</td>
+<td>1900 (UDP)、5000（HTTP，可添加其它端口）、5001（HTTPS，可添加其它端口）、5353（Bonjour 服务）、6001-6010（AirPlay 控制&#x2F;定时）</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">日历</td>
+<td>38008、38443</td>
+<td>CalDAV</td>
+</tr>
+<tr>
+<td align="left">CardDAV</td>
+<td>8008 (HTTP)、8443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">集中化管理系统 (CMS)</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">CIFS 向外延展集群</td>
+<td>49152-49252 仅 TCP：17909、17913、19998、24007、24008、24009-24045、38465-38501、4379</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">Cloud Station</td>
+<td>6690</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DHCP Server</td>
+<td>67、68</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">LDAP Server（前身为 Directory Server）</td>
+<td>389 (LDAP)、636（LDAP 含 SSL）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Download Station</td>
+<td>5000</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Drive</td>
+<td>5000 (HTTP)、5001 (HTTPS)、6690</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">iTunes Server</td>
+<td>3689</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Logitech® Media Server</td>
+<td>3483、9002</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Mail Station</td>
+<td>80 (HTTP)、443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">媒体服务器</td>
+<td>1900 (UPnP)、50001（内容浏览）、50002（内容串流）</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">Moments</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Note Station</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Photo Station、Web Station</td>
+<td>80（可添加其它端口）、443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Presto File Server</td>
+<td>3360 (TCP&#x2F;UDP)、3361 (TCP&#x2F;UDP)</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">代理服务器</td>
+<td>3128</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Surveillance Station</td>
+<td>9900 (HTTP)、9901 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Syslog Server</td>
+<td>514（可添加其它端口）</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">Video Station</td>
+<td>1900 (UDP)、5000 (HTTP)、5001 (HTTPS)、9025-9040、 5002、5004、65001（使用 HDHomeRun 网络调谐器的型号）</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">Virtual Machine Manager</td>
+<td>2379-2382（集群网络）、3260-3264 (iSCSI)、16509、16514、30200-30300</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">VPN Server (OpenVPN)</td>
+<td>1194</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">VPN Server (PPTP)</td>
+<td>1723</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">VPN Server (L2TP&#x2F;IPSec)</td>
+<td>500、1701、4500</td>
+<td>UDP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">移动应用程序</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Drive</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS audio</td>
+<td>5000、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS cam</td>
+<td>5000、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS cloud</td>
+<td>6690</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS download</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS file</td>
+<td><strong>Android</strong>：DS file 4.x 和运行 DSM 4.3 或更新版本的 DiskStation：5000、5001 (HTTPS)DS file 4.0 之前的版本和运行 DSM 4.2 或更早版本的 DiskStation：5005、5006 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left"><strong>iOS</strong>：DS file 5.x 和运行 DSM 4.3 或更新版本的 DiskStation：5000、5001 (HTTPS)DS file 4.0 之前的版本和运行 DSM 4.2 或更早版本的 DiskStation：5005、5006 (HTTPS)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><strong>Windows Phone</strong>：5000、5001 (HTTPS)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">群晖管家</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS note</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS photo</td>
+<td>80、443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">DS video</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Moments</td>
+<td>5000 (HTTP)、5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">打印机、UPS 和外围设备</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">Bonjour</td>
+<td>5353</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">LPR</td>
+<td>515</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td align="left">网络打印机 (IPP)&#x2F;CUPS</td>
+<td>631</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">网络 MFP</td>
+<td>3240-3259</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">UPS</td>
+<td>3493</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">系统</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>类型</strong></td>
+<td><strong>端口号</strong></td>
+<td><strong>协议</strong></td>
+</tr>
+<tr>
+<td align="left">LDAP</td>
+<td>389、636 (SLAPD)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">MySQL</td>
+<td>3306</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">资源监视器&#x2F;SNMP</td>
+<td>161</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td align="left">SSH&#x2F;SFTP</td>
+<td>22</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td align="left">Telnet</td>
+<td>23</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>nas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决N1-OpenWrt在Win10下不能正常使用SMB共享服务的问题</title>
+    <url>/2020/07/27/%E8%A7%A3%E5%86%B3N1-OpenWrt%E5%9C%A8Win10%E4%B8%8B%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8SMB%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>N1打开smb共享服务，在mac及linux下皆能正常访问，偏偏在win10中打不开，百思不得其解，经过搜索，最终解决。</p>
+<p>原来，win10 1809及以上处于安全考虑，默认关闭了SMBv1服务，所以，只要打开就好了。</p>
+<h2 id="打开smb功能"><a href="#打开smb功能" class="headerlink" title="打开smb功能"></a>打开smb功能</h2><p>控制面板中找到“程序和功能”，或者直接在Cortana搜索框中搜“功能”，打开即可。</p>
+<p><img src="https://s1.ax1x.com/2020/07/27/aPc87F.jpg" alt="1.jpg"></p>
+<p>确定，然后重启。</p>
+<h2 id="修改本地组策略"><a href="#修改本地组策略" class="headerlink" title="修改本地组策略"></a>修改本地组策略</h2><p>重启后再次 <code>Win+R</code> 打开“运行”，输入 <code>gpedit.msc</code>，“确定”以打开“本地组策略编辑器”。</p>
+<p>按 计算机配置→管理模板→网络 的顺序，依次展开左侧目录树。</p>
+<p>点击“Lanman工作站”，右侧会显示该项目的详细设置。</p>
+<p>点击里面的“启用不安全的来宾登录”，将它由“未配置”改为“已启用”，应用并重启电脑。</p>
+<p><img src="https://s1.ax1x.com/2020/07/27/aPcJk4.jpg" alt="2.jpg"></p>
+<p>最后打开PowerShell，输入以下命令查看SMBv1的开启状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Get-SmbServerConfiguration | Select EnableSMB1Protocol</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s1.ax1x.com/2020/07/27/aPc30U.jpg" alt="3.jpg"></p>
+<p>现在，一切正常了，可以访问N1-OpenWrt上的资源了。</p>
+<p><a href="https://pockies.github.io/2019/01/19/fix-win10-smb/">本文参考链接</a></p>
+]]></content>
+      <tags>
+        <tag>n1</tag>
+        <tag>nas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决Hexo下标签无法显示的问题</title>
+    <url>/2018/11/17/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>Hexo下标签无法显示的问题真的把我折腾惨了，耗费了无数的精力和时间，最终在虾哔哔的<a href="https://blog.mrcxt.com/hexo/%E8%A7%A3%E5%86%B3hexo%E4%B8%8B%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E7%9A%84%E9%97%AE%E9%A2%98/">这篇文章</a> 中才找到解决方案，记录备用。具体如下：</p>
+<h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><p>在 hexo 根目录的 source 文件夹下新建一个 tags 文件夹，然后在 tags 文件夹里面新建一个 index.md 文件，命令为：</p>
+<p><code>hexo new page &quot;tags&quot;</code></p>
+<h2 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h2><p>编辑 index.md 文件，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>重点来了</p>
+<p>注意！这里面最重要的就是 layout 选项，后面的参数对应的是你 主题文件夹下 layout 文件夹下第一级的布局文件。比如，我的主题是用 ejs 写的，那么对应的就是 layout&#x2F;tags.ejs，如果没有，那么就会出现空白的现象！如果你的 tags 文件的命名时 a.ejs，那么你就应该写成 layout: “a”。(作者原文)</p>
+<p>我的next主题是swig文件，layout中标签显示的是tag.swig，我按照作者所说修改index中的layout参数为tag，然而并没有成功，于是灵机一动，认为title、type、layout是不是只有一致才能被正确读取，于是又换成了tags，就像上面代码块所显示的那样，竟然真的成功了。</p>
+<h2 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h2><p>编辑主题配置文件，编辑主题的 _config.yml ，添加 tags 到 menu 中，如下:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">   <span class="attr">home:</span> <span class="string">/</span></span><br><span class="line">   <span class="attr">archives:</span> <span class="string">/archives</span></span><br><span class="line">   <span class="attr">tags:</span> <span class="string">/tags</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h2><p>编辑 hexo 配置文件 Directory 选项。</p>
+<p>检查一下名称是否对应如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Directory</span></span><br><span class="line"><span class="attr">tag_dir:</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+
+<p>就是这样，感谢原博主。</p>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决三星960 EVO 在黑苹果下被识别为外置硬盘（橙色图标）的问题</title>
+    <url>/2021/01/20/%E8%A7%A3%E5%86%B3%E4%B8%89%E6%98%9F960-EVO-%E5%9C%A8%E9%BB%91%E8%8B%B9%E6%9E%9C%E4%B8%8B%E8%A2%AB%E8%AF%86%E5%88%AB%E4%B8%BA%E5%A4%96%E7%BD%AE%E7%A1%AC%E7%9B%98%EF%BC%88%E6%A9%99%E8%89%B2%E5%9B%BE%E6%A0%87%EF%BC%89%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>在Clover时代，被这个问题困扰已久，搜了无数解决方案都没成功，偶然看到一个叫做innie.kext，然后竟然神奇地发生了作用，可惜，升到macos11 big sur后，可能由于安全方面的原因，这个第三方kext不能被注入，所以，硬盘又重新被识别成了外置硬盘，好在现在终于也解决了，不过<a href="https://www.reddit.com/r/hackintosh/comments/f0cc4t/internal_drives_shown_as_external_opencore_amd/">原教程</a>是英文的，我就用中文转述一下，方便有同类问题的爱好者参考。</p>
+<p>实际测试的是三星960 EVO NVME硬盘，其它同样问题的可以参考，不保证有效性。</p>
+<p>操作步骤如下：</p>
+<h3 id="查找设备地址"><a href="#查找设备地址" class="headerlink" title="查找设备地址"></a>查找设备地址</h3><p>1.下载<a href="https://github.com/headkaze/Hackintool/releases">hackintool</a>，</p>
+<p>2.打开并找到PCIe标签，</p>
+<p>3.查找设备名称，找到相应的设备地址，然后右击，选择**”Copy Device Path”**，就像这样的内容：*”PciRoot(0x0)&#x2F;Pci(0x1,0x1)&#x2F;Pci(0x0,0x0)”。</p>
+<h3 id="OpenCore中内建"><a href="#OpenCore中内建" class="headerlink" title="OpenCore中内建"></a>OpenCore中内建</h3><p>1.挂载EFI分区，并用<a href="https://github.com/corpnewt/ProperTree">ProperTree</a>打开config.plist，</p>
+<p>2.找到<strong>DeviceProperties&#x2F;Add</strong></p>
+<p>​	· 右键点击Add增加一个子项目</p>
+<p>​	· 名字命名为刚才拷贝的设备路径，如*”PciRoot(0x0)&#x2F;Pci(0x1,0x1)&#x2F;Pci(0x0,0x0)”.*</p>
+<p>​	· Type类型选择**”Dictionary”.**</p>
+<p>​	· 右键增加一个子项目，命名为**”built-in”<strong>, type改为</strong>“Data”<strong>, 并且把value值设为</strong>“01000000”**</p>
+<p>3.至于Kernel-Quirks中的**”ExternalDiskIcons”**是否有必要设置成true请自己尝试，我是之前已经为true，也就懒得再取消了。</p>
+<p>最终效果如下：<img src="https://i.loli.net/2021/01/21/hD4zIG1ubL9UPBp.png" alt="截屏2021-01-21 22.23.22.png"></p>
+<p>4.记得保存config.plist，然后重启设备应该就生效了。</p>
+<p>这就是所有步骤。</p>
+]]></content>
+      <tags>
+        <tag>黑苹果</tag>
+        <tag>opencore</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>诗人称号</title>
+    <url>/2018/10/25/%E8%AF%97%E4%BA%BA%E7%A7%B0%E5%8F%B7/</url>
+    <content><![CDATA[<ul>
+<li>诗杰 - 王勃</li>
+<li>诗狂 - 贺知章</li>
+<li>诗骨 - 陈子昂</li>
+<li>诗家夫子 - 王昌龄</li>
+<li>诗仙 - 李白</li>
+<li>诗佛 - 王维</li>
+<li>诗圣 - 杜甫</li>
+<li>诗囚 - 孟郊</li>
+<li>诗豪 - 刘禹锡</li>
+<li>诗魔 - 白居易</li>
+<li>诗奴 - 贾岛</li>
+<li>诗鬼 - 李贺</li>
+<li>诗神 - 苏轼</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>买书与读书</title>
+    <url>/2018/11/17/%E8%AF%BB%E4%B9%A6%E4%B8%8E%E4%B9%B0%E4%B9%A6/</url>
+    <content><![CDATA[<p>毫无疑问，对于并没有过多的钱财可以拿来挥霍的我来说，买书就是为了拿来读的。这本来不该成为问题，然而近来猛然发现，情况似乎有点超出了自己的预期。</p>
+<p>除去高中时期偶尔的购买外，真正开始比较大量地买书是在大学时代，也就是当当和亚马逊（当时叫卓越亚马逊）正兴起和活跃的年代。一天，猛然发现那些在新华书店按定价出售的书在网上竟然可以以如此的低价购买，真是喜出望外，再加上身边也有不少爱书之人，在相互学习及激励之下，可以说是省吃俭用地着实买了不少自己喜欢的书。</p>
+<p>毕业后在外工作，居无定所，购买实体书就意味着搬家时更多的行李，哪还敢像大学时那样买书啊，于是，当Kindle还没有进入大陆的时候海淘了一个日版的paperwhite，作为日常阅读使用。可是，Kindle的局限性也是显而易见的，在上面阅读一些现代的文学作品倒是方便，然而，想要阅读一些古籍就难了，一是没有好的资源，二是完全找不到阅读古籍的感觉，这两点都非常重要。特别是第二点，虽然听起来有点矫情，但是，真正用电子设备读过古籍的人恐怕都能心领神会吧。</p>
+<p>所以，还得买实体书，只是，要控制着买就是了。不过，也正是如此，买的那几本才能真正去读完。</p>
+<p>可以说，在“逃离北上广”之前，Kindle陪我在地铁上度过了很多无聊的时间，想想现在在柜子里安静地“睡大觉”的它，不禁唏嘘不已。</p>
+<p>狼狈“逃”回来后，相对稳定了，于是，又走上了购买实体书的不归路。</p>
+<p>然而随着购买书籍的增多，读书速度慢的问题也逐渐凸显出来了。</p>
+<p>读书慢，一是有的书快不了，这无可非议；二是没时间，没有充足的读书时间，想要按预定计划读完一本书自然是不可能的，这也是客观事实，自然也无可厚非；三是对读书的兴趣貌似被生活逐渐给磨去了，读书后的那种满足与欣喜感正在逐渐消失，而任务感却在与日俱增，甚至可以说，只是因为自己“读书人”的身份在强迫着自己继续读下去。</p>
+<p>这最后一种现象才是最可怕的，然而，事实上，我却并没有因此而停下自己买书的步伐。</p>
+<p>近两三年来，除了日常的购买外（因为有京东plus，所以，不必考虑凑单免运费），每年的“618”和“双十一”都会批量购买，总感觉不能错过这样的机会。尽管其中不少书确实都是自己喜欢的，然而，也只是机械地在购买而已，真正拿起来读的却少。</p>
+<p>比如，很早就“立誓”今生一定要拥有的《金庸作品集》终于购买了，然而，买回来之后，却连一部都没有完整地看完，想来，购买这部书恐怕完全是出于情怀了。前段时间，老先生仙逝时，曾想过对他老人家最好的祭奠莫过于重读他的全部作品了吧，然而，终究还是没有表达出自己最大的敬意。</p>
+<p>再比如，大学时读过的《约翰·克里斯朵夫》总想要重读，于是，专门购买了当年阅读过的傅雷先生译本（出版社不同，找不到），可终究还是情怀的成分更多。</p>
+<p>面对这样的情况，接下来还要不要继续买书就需要认真考虑考虑了，毕竟，我从来都很鄙弃那种拿书来装点门面的人。</p>
+<p>我怎能成为自己所讨厌的那种人呢？</p>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+        <tag>阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读余华《我只知道人是什么》</title>
+    <url>/2018/11/22/%E8%AF%BB%E4%BD%99%E5%8D%8E%E3%80%8A%E6%88%91%E5%8F%AA%E7%9F%A5%E9%81%93%E4%BA%BA%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%8B/</url>
+    <content><![CDATA[<p>书17号到手，18号开始读，利用了五天工作之外的时间读完，算是近期除《侠隐》之外读得最快的一本了。</p>
+<p>这是余华的一本散文集，或者说是演讲集也可以。</p>
+<p>作为散文集，本书的语言平易近人，完全口语化，和余华小说的语言风格可以说是截然不同。不过这丝毫也不令人吃惊，因为小说本来就是创作出来的，而演讲则不然。</p>
+<p>我想很多喜欢文学的人估计和我一样，很喜欢听这些真正搞创作的人出来分享自己的阅读与创作历程了，因为我们总盼望从他们身上发现一些可以让我们受益的东西。当然，这也并不是每次都能如愿以偿的，但是，我们依然爱之如故，因为仅仅听他们谈谈我们就知足了啊，我们才会发现自己的文学梦并没有远去，自己依然会为了文学而热血沸腾，意识到这一点，本身就是一种幸福。</p>
+<p>余华是我非常喜欢的一位当代作家，所以我更加喜欢听他“闲聊”。</p>
+<p>由于众所周知的原因，我对当代大陆文学始终保持着敬而远之的态度，不敢随便触碰。如果大学里的当代文学课不用考试，那么很可能出现的情况就是，我对当代文学的了解会是一片空白，或者仅仅停留在听说过“伤痕文学”、“反思文学”、“寻根文学”等等几个陌生的概念之上，而不会有任何具体而深入的体会。</p>
+<p>然而，即便是为了考试我曾在短期内阅读了相当数量的当代文学代表作，甚至有时也会读得相当投入，可是，我依然没有爱上它们，因为，应试本身就是个噩梦，它能扼杀掉一个人对一件事物所有的兴趣。就像余华在这本书中所说的那样，他虽然在后来非常推崇鲁迅，可是在他成长的学生时代里，却非常讨厌鲁迅，因为当时国家毁掉了几乎所有的文学类书籍而仅仅保留了鲁迅，这种用力过猛的宣传自热很容易令人生厌。应试教育和这个并没有本质差别。</p>
+<p>从时间上算，余华当然是当代作家，按照我对当代文学的成见（客观上讲，肯定有成见的成分在里面），我是不可能去看他的书的，可是就像茨维格《人类的群星闪耀时》所说的那样，其实很多影响后世的事情都是偶然发生的。如果没有记错的话，我是在舍友的书桌上偶然翻到余华的作品的，然后就被他那种独特的叙述风格给吸引过去了，以至于完全没有考虑什么当代不当代、政治不政治的问题了。</p>
+<p>所以说，好的文学作品应该都是好看的，只有好看了读者才能看下去，只有看下去才有可能读懂你要表达的到底是什么，否则，总想着”文以载道“，但是写出来的东西根本没人去瞧，你说你载再多的道又有什么意义，又能化育谁？</p>
+<p>对于年轻人来说，总不喜欢太过”正统“的东西，似乎这表现不了他们的叛逆，所以总想接触新的事物，而余华的作品对于总在阅读经典的我们（当然不会只有我了）来说真是太独特了，虽然有时候你会感觉到到有一股寒意从心底升起，可是，这本身就是独特且刺激的啊。</p>
+<p>再回到这本书上，余华也说自己的小说在当时被归为”先锋派“，但是接着说，在当时无论看起来多么离经叛道的作品到了一定时间都会变成传统的东西，这话不错，只是有些人总能走在时代前列，而有些人却始终不能。这就是人与人的差别。而我接触他的时候正是需要他走在前面的时候，不得不说是一种幸运。</p>
+<p>最后想说，除了给人启迪的文学创作方面的内容，这本书中我最喜欢是余华谈论到的自己当初和莫言、马原、格非等在一起的那些岁月。当我知道这些名家们彼此认识甚至还是好朋友的时候，就像我第一次知道李白和杜甫生活在一个年代、而且还给彼此写过”情诗“时一样激动。</p>
+]]></content>
+      <tags>
+        <tag>随想</tag>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>重置windows网络命令</title>
+    <url>/2024/09/26/%E9%87%8D%E7%BD%AEwindows%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>保存备用<br><code>netsh int ip reset</code><br><code>netsh winsock reset</code><br><code>ipconfig /flushdns</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>黑苹果添加内存条出现End InitBootStruct的解决办法</title>
+    <url>/2019/07/24/%E9%BB%91%E8%8B%B9%E6%9E%9C%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AD%98%E6%9D%A1%E5%87%BA%E7%8E%B0End-InitBootStruct%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>实在禁受不住内存降价的诱惑，在京东上入了一根8G的内存条，可是如果知道在黑苹果上添加内存竟会这么麻烦的话，恐怕无论如何也不会下手了，反正现在的8g内存对我来说也完全够用。</p>
+<p>拆机安装上之后竟然卡在白苹果界面，加v进入啰嗦模式，出现了End InitBootStruct的提示，如下：<img src="https://s2.ax1x.com/2019/07/24/eVbujK.jpg" alt="eVbujK.jpg"></p>
+<p>先是怀疑内存条是否有问题，于是切换到Windows和Ubuntu下查看，都能正常读取新内存，那肯定是黑苹果自身的问题了，在中文环境下搜不到有效的解决办法，直接Google了一下End InitBootStruct，第一条竟然就解决了问题，当然过程也没那么顺利，反复拆卸安装了好几次。</p>
+]]></content>
+      <tags>
+        <tag>黑苹果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>鼠须管卸载方法</title>
+    <url>/2019/01/08/%E9%BC%A0%E9%A1%BB%E7%AE%A1%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>鼠须管卸载方法如下：</p>
+<p>1、打开系统偏好设置-键盘-输入法，移除鼠须管。</p>
+<p>2、退出登录当前用户并重新登录</p>
+<p>3、打开Finder，按command+shift+G 前往 <code>/Library/Input Methods</code>，把鼠须管.app移动到废纸篓。</p>
+<p>4、按command+shift+G 前往<code>~/Library</code>,移除鼠须管用户设置文件夹Rime。</p>
+<p>5、退出登录当前用户并重新登录。</p>
+]]></content>
+      <tags>
+        <tag>macos</tag>
+        <tag>输入法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>鼠须管挂接小鹤双拼</title>
+    <url>/2018/11/11/%E9%BC%A0%E9%A1%BB%E7%AE%A1%E6%8C%82%E6%8E%A5%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC/</url>
+    <content><![CDATA[<p>尽管MacOS已经原生支持双拼，但是却没有我想要的小鹤方案，所以不得不借助于<a href="https://rime.im/">鼠须管</a>。</p>
+<h2 id="安装鼠须管"><a href="#安装鼠须管" class="headerlink" title="安装鼠须管"></a>安装鼠须管</h2><p>可以直接下载安装，地址在<a href="https://rime.im/download/">这里</a>,</p>
+<p>或者通过Homebrew:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew cask install squirrel</span><br></pre></td></tr></table></figure>
+<h2 id="安装配置工具东风破"><a href="#安装配置工具东风破" class="headerlink" title="安装配置工具东风破"></a>安装配置工具<a href="https://github.com/rime/plum">东风破</a></h2><p>终端输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bash</span><br></pre></td></tr></table></figure>
+<p>有个命令可以使用，需要切换到plum目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> plum</span><br><span class="line">bash rime-install ...</span><br></pre></td></tr></table></figure>
+<h2 id="小鹤挂接"><a href="#小鹤挂接" class="headerlink" title="小鹤挂接"></a>小鹤挂接</h2><p>1、下载双拼方案，<a href="https://github.com/rime/rime-double-pinyin">地址</a></p>
+<p>2、解压后放到“用户设定”文件夹，此文件夹可通过点击右上角输入法logo找到。</p>
+<p>或者直接命令安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash rime-install double-pinyin</span><br></pre></td></tr></table></figure>
+
+<p>3、在“用户设定”文件夹，找到default.yaml文件，用文本编辑器打开，找到 schema_list，按照格式在方案下面加入小鹤双拼方案：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- schema: double_pinyin_flypy</span><br></pre></td></tr></table></figure>
+
+<p>保存，重新部署。</p>
+<h2 id="切换方案"><a href="#切换方案" class="headerlink" title="切换方案"></a>切换方案</h2><p><strong>Control + &#96;</strong> 切换输入方式，选择小鹤双拼，可以根据需要选择繁简等。</p>
+]]></content>
+      <tags>
+        <tag>macos</tag>
+        <tag>输入法</tag>
+      </tags>
+  </entry>
+</search>
