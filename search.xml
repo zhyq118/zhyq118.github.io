@@ -1970,4 +1970,34 @@
         <tag>输入法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>在windows中安装android fastboot驱动</title>
+    <url>/2025/04/21/%E5%9C%A8windows%E4%B8%AD%E5%AE%89%E8%A3%85fastboot%E9%A9%B1%E5%8A%A8/</url>
+    <content><![CDATA[<p>在windows中安装fastboot驱动一直比较头疼，默认的android fastboot驱动总是处于不可用状态，尤其是重新安装系统后，总要经过一番折腾。<br>默认就像这样，黄色感叹号。<br><img src="https://zpic.zhyq118.com/file/1745243338059_1.png" alt="1.png"><br>输入<code>fastboot devices</code>后没有反应。需要手动安装，步骤如下：</p>
+<ul>
+<li>1、打开设备管理器，找到上面的黄色感叹号Android，右键“更新驱动程序”，选择“浏览我的电脑以查找驱动程序”<br><img src="https://zpic.zhyq118.com/file/1745243702138_2.png" alt="2.png"></li>
+<li>2、继续，让我从计算机上的可用驱动程序列表中选取</li>
+</ul>
+<p><img src="https://zpic.zhyq118.com/file/1745243910869_3.png" alt="3.png"></p>
+<ul>
+<li><p>3、显示所有设备<br><img src="https://zpic.zhyq118.com/file/1745244021305_4.png" alt="4.png"></p>
+</li>
+<li><p>4、下一步，选择“从磁盘安装”<br><img src="https://zpic.zhyq118.com/file/1745244115292_5.png" alt="5.png"></p>
+</li>
+<li><p>5、浏览，找到自己存放驱动的位置，选择android_winusb，后缀应该是inf，不过你的可能不显示。<br><img src="https://zpic.zhyq118.com/file/1745244247919_6.png" alt="6.png"><br><img src="https://zpic.zhyq118.com/file/1745244271382_7.png" alt="7.png"></p>
+</li>
+<li><p>6、下一步选择“Android Bootloader Interface”<br><img src="https://zpic.zhyq118.com/file/1745244364072_8.png" alt="8.png"><br>弹出警告信息后选“是”就可以安装成功了，如图<br><img src="https://zpic.zhyq118.com/file/1745244438083_10.png" alt="10.png"><br>如上，就完成了，回到设备管理器，查看状态<br><img src="https://zpic.zhyq118.com/file/1745244505098_11.png" alt="11.png"></p>
+</li>
+</ul>
+<p>大功告成。</p>
+<p>需要下载的驱动建议<a href="https://developer.android.com/studio/run/win-usb">官网</a>下载。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
 </search>
