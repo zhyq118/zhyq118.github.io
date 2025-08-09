@@ -2085,16 +2085,10 @@
 <li><p>在内核参数（<code>cmdline</code>）中添加 <strong><code>console=ttyS0,115200n8</code></strong> 或 <strong><code>console=tty0</code></strong>（强制指定输出到第一个串口或虚拟终端）。</p>
 </li>
 <li><p>或添加 <strong><code>ignore_loglevel</code></strong> 参数抑制串口初始化错误（临时方案）：</p>
-<p>  bash</p>
-</li>
-</ul>
-</li>
-<li><ul>
-<li>“extra_cmdline”: {<br>   …,<br>   “console”: “ttyS0,115200n8”,  # 指定串口<br>   “ignore_loglevel”: “1”         # 忽略日志级别错误（部分情况有效）<br>   }</li>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;extra_cmdline&quot;</span>: &#123;</span><br><span class="line">    ...,</span><br><span class="line">    <span class="string">&quot;console&quot;</span>: <span class="string">&quot;ttyS0,115200n8&quot;</span>,  <span class="comment"># 指定串口</span></span><br><span class="line">    <span class="string">&quot;ignore_loglevel&quot;</span>: <span class="string">&quot;1&quot;</span>         <span class="comment"># 忽略日志级别错误（部分情况有效）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="💎-总结"><a href="#💎-总结" class="headerlink" title="💎 总结"></a>💎 <strong>总结</strong></h3><table>
 <thead>
 <tr>
