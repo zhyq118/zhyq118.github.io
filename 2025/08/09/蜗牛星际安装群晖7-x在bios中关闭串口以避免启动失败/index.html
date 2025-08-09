@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/manifest.json">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.css" integrity="sha256-zM8WXtG4eUn7dKKNMTuoWZub++VnSfaOpA/8PJfvTBo=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zhyq118.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="在蜗牛星际的 BIOS 中关闭串口（Serial Port&#x2F;COM Port），通常是为了避免与黑群晖引导程序冲突（尤其是使用 TinyCore RedPill 等引导时，未使用的串口可能导致内核报错或干扰正常启动）。以下是详细步骤：  📌 关闭串口的 BIOS 操作步骤 开机进入 BIOS：  将显示器、键盘连接到蜗牛星际主板。  开机后立即反复按 Delete 键 或 F2 键（具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蜗牛星际安装群晖7.x在bios中关闭串口以避免启动失败">
+<meta property="og:url" content="https://zhyq118.github.io/2025/08/09/%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85%E5%AE%89%E8%A3%85%E7%BE%A4%E6%99%967-x%E5%9C%A8bios%E4%B8%AD%E5%85%B3%E9%97%AD%E4%B8%B2%E5%8F%A3%E4%BB%A5%E9%81%BF%E5%85%8D%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/index.html">
+<meta property="og:site_name" content="ZHYQ118">
+<meta property="og:description" content="在蜗牛星际的 BIOS 中关闭串口（Serial Port&#x2F;COM Port），通常是为了避免与黑群晖引导程序冲突（尤其是使用 TinyCore RedPill 等引导时，未使用的串口可能导致内核报错或干扰正常启动）。以下是详细步骤：  📌 关闭串口的 BIOS 操作步骤 开机进入 BIOS：  将显示器、键盘连接到蜗牛星际主板。  开机后立即反复按 Delete 键 或 F2 键（具">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-09T09:04:41.000Z">
+<meta property="article:modified_time" content="2025-08-09T09:07:58.055Z">
+<meta property="article:author" content="zhyq118">
+<meta property="article:tag" content="nas">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhyq118.github.io/2025/08/09/%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85%E5%AE%89%E8%A3%85%E7%BE%A4%E6%99%967-x%E5%9C%A8bios%E4%B8%AD%E5%85%B3%E9%97%AD%E4%B8%B2%E5%8F%A3%E4%BB%A5%E9%81%BF%E5%85%8D%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhyq118.github.io/2025/08/09/%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85%E5%AE%89%E8%A3%85%E7%BE%A4%E6%99%967-x%E5%9C%A8bios%E4%B8%AD%E5%85%B3%E9%97%AD%E4%B8%B2%E5%8F%A3%E4%BB%A5%E9%81%BF%E5%85%8D%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/","path":"2025/08/09/蜗牛星际安装群晖7-x在bios中关闭串口以避免启动失败/","title":"蜗牛星际安装群晖7.x在bios中关闭串口以避免启动失败"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>蜗牛星际安装群晖7.x在bios中关闭串口以避免启动失败 | ZHYQ118</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.36/fancybox/fancybox.umd.js" integrity="sha256-hiUEBwFEpLF6DlB8sGXlKo4kPZ46Ui4qGpd0vrVkOm4=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZHYQ118</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个太过正常的人的自白</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">47</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%93%8C-%E5%85%B3%E9%97%AD%E4%B8%B2%E5%8F%A3%E7%9A%84-BIOS-%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">📌 关闭串口的 BIOS 操作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9A%A0%EF%B8%8F-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.</span> <span class="nav-text">⚠️ 注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%94%A7-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%EF%BC%88%E8%8B%A5-BIOS-%E6%97%A0%E5%85%B3%E9%97%AD%E9%80%89%E9%A1%B9%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">🔧 替代方案（若 BIOS 无关闭选项）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%8E-%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">💎 总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zhyq118"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">zhyq118</p>
+  <div class="site-description" itemprop="description">我见青山多妩媚，料青山见我应如是。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhyq118" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zhyq118" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/zhyq118" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/zhyq118" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;zhyq118" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+        <div class="pjax">
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    相关文章
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2023/02/07/Debian-11-Bullseye-%E9%85%8D%E7%BD%AEfcitx%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95/" rel="bookmark">
+        <time class="popular-posts-time">2023-02-07</time>
+        <br>
+      Debian 11 (Bullseye) 配置fcitx中文输入法
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+        </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2025/08/09/%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85%E5%AE%89%E8%A3%85%E7%BE%A4%E6%99%967-x%E5%9C%A8bios%E4%B8%AD%E5%85%B3%E9%97%AD%E4%B8%B2%E5%8F%A3%E4%BB%A5%E9%81%BF%E5%85%8D%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhyq118">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZHYQ118">
+      <meta itemprop="description" content="我见青山多妩媚，料青山见我应如是。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="蜗牛星际安装群晖7.x在bios中关闭串口以避免启动失败 | ZHYQ118">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          蜗牛星际安装群晖7.x在bios中关闭串口以避免启动失败
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-08-09 17:04:41 / 修改时间：17:07:58" itemprop="dateCreated datePublished" datetime="2025-08-09T17:04:41+08:00">2025-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>761</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在蜗牛星际的 BIOS 中关闭串口（Serial Port&#x2F;COM Port），通常是为了<strong>避免与黑群晖引导程序冲突</strong>（尤其是使用 TinyCore RedPill 等引导时，未使用的串口可能导致内核报错或干扰正常启动）。以下是详细步骤：</p>
+<hr>
+<h3 id="📌-关闭串口的-BIOS-操作步骤"><a href="#📌-关闭串口的-BIOS-操作步骤" class="headerlink" title="📌 关闭串口的 BIOS 操作步骤"></a>📌 <strong>关闭串口的 BIOS 操作步骤</strong></h3><ol>
+<li><p><strong>开机进入 BIOS：</strong></p>
+<ul>
+<li><p>将显示器、键盘连接到蜗牛星际主板。</p>
+</li>
+<li><p>开机后立即反复按 <strong><code>Delete</code> 键</strong> 或 <strong><code>F2</code> 键</strong>（具体按键需看开机画面提示，通常是 <code>Del</code> 或 <code>F2</code>）进入 BIOS 设置界面。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>定位串口设置选项：</strong></p>
+<ul>
+<li><p>在 BIOS 主界面，使用 <strong>方向键</strong> 切换到 <strong><code>Advanced</code>（高级）</strong> 选项卡。</p>
+</li>
+<li><p>找到 <strong><code>Super IO Configuration</code></strong> 或 <strong><code>Serial Port Configuration</code></strong> 选项（不同 BIOS 名称可能略有差异，重点找 <code>Serial</code>、<code>COM</code> 字样）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>禁用串口：</strong></p>
+<ul>
+<li><p>进入 <code>Super IO Configuration</code> 后，你会看到类似以下选项：</p>
+<ul>
+<li><p><code>Serial Port 1</code> 或 <code>COM1</code>（对应主板背板的 DB9 接口）</p>
+</li>
+<li><p><code>Serial Port 2</code> 或 <code>COM2</code>（对应主板上的排针接口）</p>
+</li>
+</ul>
+</li>
+<li><p>将需要关闭的串口状态设置为 <strong><code>Disabled</code></strong>：</p>
+<ul>
+<li><p>选中 <code>Serial Port 1</code> → 按 <code>Enter</code> → 选择 <strong><code>Disabled</code></strong>。</p>
+</li>
+<li><p>同理关闭 <code>Serial Port 2</code>（如果存在）。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>保存并退出：</strong></p>
+<ul>
+<li><p>按 <strong><code>F10</code></strong> 键 → 选择 <strong><code>Yes</code></strong> 保存设置并退出 BIOS。</p>
+</li>
+<li><p>系统将自动重启。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="⚠️-注意事项"><a href="#⚠️-注意事项" class="headerlink" title="⚠️ 注意事项"></a>⚠️ <strong>注意事项</strong></h3><ol>
+<li><p><strong>安全操作：</strong></p>
+<ul>
+<li><p>修改 BIOS 前建议断开所有硬盘数据线（避免意外损坏数据）。</p>
+</li>
+<li><p>操作时保持主板供电稳定（防止 BIOS 设置丢失）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>串口位置：</strong></p>
+<ul>
+<li><p><strong><code>COM1</code></strong> 一般对应蜗牛星际机箱背部的 <strong>DB9 串口</strong>（大号梯形接口）。</p>
+</li>
+<li><p><strong><code>COM2</code></strong> 通常对应主板上的 <strong>4针&#x2F;9针排针</strong>（需用线缆扩展，默认可能未使用）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>黑群晖兼容性：</strong></p>
+<ul>
+<li>关闭串口后，可减少引导时出现 <code>ttyS*</code> 相关内核错误（如 <code>&quot;Could not set serial console&quot;</code>），提升黑群晖启动稳定性。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="🔧-替代方案（若-BIOS-无关闭选项）"><a href="#🔧-替代方案（若-BIOS-无关闭选项）" class="headerlink" title="🔧 替代方案（若 BIOS 无关闭选项）"></a>🔧 <strong>替代方案（若 BIOS 无关闭选项）</strong></h3><p>极少部分精简版 BIOS 可能隐藏串口设置，此时可通过 <strong>修改引导参数</strong> 强制忽略串口：</p>
+<ol>
+<li><p><strong>适用于 TinyCore RedPill &#x2F; RR 引导：</strong></p>
+<ul>
+<li><p>编辑引导盘的 <code>grub.cfg</code> 或 <code>user_config.json</code> 文件。</p>
+</li>
+<li><p>在内核参数（<code>cmdline</code>）中添加 <strong><code>console=ttyS0,115200n8</code></strong> 或 <strong><code>console=tty0</code></strong>（强制指定输出到第一个串口或虚拟终端）。</p>
+</li>
+<li><p>或添加 <strong><code>ignore_loglevel</code></strong> 参数抑制串口初始化错误（临时方案）：</p>
+<p>  bash</p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li>“extra_cmdline”: {<br>   …,<br>   “console”: “ttyS0,115200n8”,  # 指定串口<br>   “ignore_loglevel”: “1”         # 忽略日志级别错误（部分情况有效）<br>   }</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="💎-总结"><a href="#💎-总结" class="headerlink" title="💎 总结"></a>💎 <strong>总结</strong></h3><table>
+<thead>
+<tr>
+<th><strong>步骤</strong></th>
+<th><strong>操作要点</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 进入 BIOS</td>
+<td>开机按 <code>Del</code> 或 <code>F2</code></td>
+</tr>
+<tr>
+<td>2. 定位串口设置</td>
+<td><code>Advanced</code> → <code>Super IO Configuration</code></td>
+</tr>
+<tr>
+<td>3. 禁用串口</td>
+<td>设置 <code>Serial Port 1/2</code> 为 <code>Disabled</code></td>
+</tr>
+<tr>
+<td>4. 保存退出</td>
+<td>按 <code>F10</code> → <code>Yes</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>✅ <strong>关闭串口是优化蜗牛星际运行黑群晖的关键步骤之一</strong>，配合正确的引导驱动（如网卡驱动）和 VID&#x2F;PID 设置，可显著减少启动故障。如仍有问题，建议结合 上一篇回复 中的网络驱动排查方法综合解决。</p>
+</blockquote>
+<p>补充说明：在蜗牛星际主板中<strong>关闭所有串口（Serial Port）不会影响 USB 启动盘的正常工作</strong>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/nas/" rel="tag"># nas</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/04/21/%E5%9C%A8windows%E4%B8%AD%E5%AE%89%E8%A3%85fastboot%E9%A9%B1%E5%8A%A8/" rel="prev" title="在windows中安装android fastboot驱动">
+                  <i class="fa fa-angle-left"></i> 在windows中安装android fastboot驱动
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zhyq118</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">22k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:20</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"zhyq118","repo":"zhyq118.github.io","client_id":"Ov23lita5L2AQH4Ekl5y","client_secret":"30c172c3545779d7e3ab23511a129f0635205519","admin_user":"zhyq118","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"dd18af2ec53ae312184e57a109b6bed1"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>
