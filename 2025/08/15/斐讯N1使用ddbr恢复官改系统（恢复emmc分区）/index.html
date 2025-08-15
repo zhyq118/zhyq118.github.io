@@ -22,27 +22,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhyq118.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="安装 debian 后，中文环境下home目录下文件夹显示的是中文，不方便使用cd命令，用到的软件xdg-user-dirs-gtk(Gnome 环境已默认安装),可以方便更改为英文。 123456#临时转换系统语言为英文，重启后会自动恢复原值的export LANG&#x3D;en_US#执行转换命令，弹出的窗口中会询问是否将目录转化为英文路径，同意并关闭xdg-user-dirs-gtk-update#">
+    <meta name="description" content="前几天准备将openwrt升级时，发现无法写入emmc，尝试了几种方法都没有解决，最后觉得最大的问题可能是emmc分区乱掉了，遂决定来个彻底恢复。方法也比较简单，但长时间不操作了容易忘，记录一下： 制作一个能够从U盘正常启动的armbian系统测试过几个版本之后，只有这个版本最简单好用，不需要修改任何内容，直接把镜像通过写盘软件写入优盘即可，下载链接Armbian_5.44_S9xxx_Ubunt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装 debian 后，中文环境下将home目录下文件夹更改为对应的英文">
-<meta property="og:url" content="https://zhyq118.github.io/2025/04/12/%E5%AE%89%E8%A3%85-debian-%E5%90%8E%EF%BC%8C%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%B0%86home%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E8%8B%B1%E6%96%87/index.html">
+<meta property="og:title" content="斐讯N1使用ddbr恢复官改系统（恢复emmc分区）">
+<meta property="og:url" content="https://zhyq118.github.io/2025/08/15/%E6%96%90%E8%AE%AFN1%E4%BD%BF%E7%94%A8ddbr%E6%81%A2%E5%A4%8D%E5%AE%98%E6%94%B9%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%81%A2%E5%A4%8Demmc%E5%88%86%E5%8C%BA%EF%BC%89/index.html">
 <meta property="og:site_name" content="ZHYQ118">
-<meta property="og:description" content="安装 debian 后，中文环境下home目录下文件夹显示的是中文，不方便使用cd命令，用到的软件xdg-user-dirs-gtk(Gnome 环境已默认安装),可以方便更改为英文。 123456#临时转换系统语言为英文，重启后会自动恢复原值的export LANG&#x3D;en_US#执行转换命令，弹出的窗口中会询问是否将目录转化为英文路径，同意并关闭xdg-user-dirs-gtk-update#">
+<meta property="og:description" content="前几天准备将openwrt升级时，发现无法写入emmc，尝试了几种方法都没有解决，最后觉得最大的问题可能是emmc分区乱掉了，遂决定来个彻底恢复。方法也比较简单，但长时间不操作了容易忘，记录一下： 制作一个能够从U盘正常启动的armbian系统测试过几个版本之后，只有这个版本最简单好用，不需要修改任何内容，直接把镜像通过写盘软件写入优盘即可，下载链接Armbian_5.44_S9xxx_Ubunt">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-12T14:39:24.000Z">
-<meta property="article:modified_time" content="2025-04-12T14:46:02.113Z">
+<meta property="og:image" content="https://zpic.zhyq118.com/file/1755251196277_1.jpg">
+<meta property="og:image" content="https://zpic.zhyq118.com/file/1755251277421_2.jpg">
+<meta property="og:image" content="https://zpic.zhyq118.com/file/1755251338608_3.jpg">
+<meta property="article:published_time" content="2025-08-15T10:18:00.000Z">
+<meta property="article:modified_time" content="2025-08-15T10:18:39.925Z">
 <meta property="article:author" content="zhyq118">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="n1">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zpic.zhyq118.com/file/1755251196277_1.jpg">
 
 
-<link rel="canonical" href="https://zhyq118.github.io/2025/04/12/%E5%AE%89%E8%A3%85-debian-%E5%90%8E%EF%BC%8C%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%B0%86home%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E8%8B%B1%E6%96%87/">
+<link rel="canonical" href="https://zhyq118.github.io/2025/08/15/%E6%96%90%E8%AE%AFN1%E4%BD%BF%E7%94%A8ddbr%E6%81%A2%E5%A4%8D%E5%AE%98%E6%94%B9%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%81%A2%E5%A4%8Demmc%E5%88%86%E5%8C%BA%EF%BC%89/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhyq118.github.io/2025/04/12/%E5%AE%89%E8%A3%85-debian-%E5%90%8E%EF%BC%8C%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%B0%86home%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E8%8B%B1%E6%96%87/","path":"2025/04/12/安装-debian-后，中文环境下将home目录下文件夹更改为对应的英文/","title":"安装 debian 后，中文环境下将home目录下文件夹更改为对应的英文"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhyq118.github.io/2025/08/15/%E6%96%90%E8%AE%AFN1%E4%BD%BF%E7%94%A8ddbr%E6%81%A2%E5%A4%8D%E5%AE%98%E6%94%B9%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%81%A2%E5%A4%8Demmc%E5%88%86%E5%8C%BA%EF%BC%89/","path":"2025/08/15/斐讯N1使用ddbr恢复官改系统（恢复emmc分区）/","title":"斐讯N1使用ddbr恢复官改系统（恢复emmc分区）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>安装 debian 后，中文环境下将home目录下文件夹更改为对应的英文 | ZHYQ118</title>
+<title>斐讯N1使用ddbr恢复官改系统（恢复emmc分区） | ZHYQ118</title>
   
 
 
@@ -152,7 +156,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -165,6 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E8%83%BD%E5%A4%9F%E4%BB%8EU%E7%9B%98%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E7%9A%84armbian%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">制作一个能够从U盘正常启动的armbian系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5armbian%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8ddbr%E6%81%A2%E5%A4%8D%E5%88%86%E5%8C%BA"><span class="nav-number">2.</span> <span class="nav-text">进入armbian系统使用ddbr恢复分区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E8%BF%9B%E5%85%A5armbian"><span class="nav-number">2.1.</span> <span class="nav-text">1、进入armbian</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%B8%8B%E8%BD%BDddbr%E5%8E%9F%E7%89%88%E6%81%A2%E5%A4%8D%E5%8C%85"><span class="nav-number">2.2.</span> <span class="nav-text">2、下载ddbr原版恢复包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81ddbr%E6%81%A2%E5%A4%8D"><span class="nav-number">2.3.</span> <span class="nav-text">3、ddbr恢复</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -227,10 +232,10 @@
   </div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/2023/02/07/Debian-11-Linux-bullseye-%E5%8F%AF%E7%94%A8%E7%9A%84%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/" rel="bookmark">
-        <time class="popular-posts-time">2023-02-07</time>
+      <a class="popular-posts-link" href="/2020/11/08/%E7%BE%A4%E6%99%96%E9%BB%98%E8%AE%A4%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E5%A4%A7%E5%85%A8/" rel="bookmark">
+        <time class="popular-posts-time">2020-11-08</time>
         <br>
-      Debian 11 Linux(bullseye) 可用的国内镜像源
+      群晖默认常用端口大全
       </a>
     </li>
   </ul>
@@ -254,7 +259,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2025/04/12/%E5%AE%89%E8%A3%85-debian-%E5%90%8E%EF%BC%8C%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%B0%86home%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E8%8B%B1%E6%96%87/">
+    <link itemprop="mainEntityOfPage" href="https://zhyq118.github.io/2025/08/15/%E6%96%90%E8%AE%AFN1%E4%BD%BF%E7%94%A8ddbr%E6%81%A2%E5%A4%8D%E5%AE%98%E6%94%B9%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%81%A2%E5%A4%8Demmc%E5%88%86%E5%8C%BA%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -267,12 +272,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="安装 debian 后，中文环境下将home目录下文件夹更改为对应的英文 | ZHYQ118">
+      <meta itemprop="name" content="斐讯N1使用ddbr恢复官改系统（恢复emmc分区） | ZHYQ118">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          安装 debian 后，中文环境下将home目录下文件夹更改为对应的英文
+          斐讯N1使用ddbr恢复官改系统（恢复emmc分区）
         </h1>
 
         <div class="post-meta-container">
@@ -284,7 +289,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-04-12 22:39:24 / 修改时间：22:46:02" itemprop="dateCreated datePublished" datetime="2025-04-12T22:39:24+08:00">2025-04-12</time>
+      <time title="创建时间：2025-08-15 18:18:00 / 修改时间：18:18:39" itemprop="dateCreated datePublished" datetime="2025-08-15T18:18:00+08:00">2025-08-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -310,14 +315,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>186</span>
+      <span>526</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -327,9 +332,25 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>安装 debian 后，中文环境下home目录下文件夹显示的是中文，不方便使用cd命令，用到的软件xdg-user-dirs-gtk(Gnome 环境已默认安装),可以方便更改为英文。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#临时转换系统语言为英文，重启后会自动恢复原值的</span></span><br><span class="line"><span class="built_in">export</span> LANG=en_US</span><br><span class="line"><span class="comment">#执行转换命令，弹出的窗口中会询问是否将目录转化为英文路径，同意并关闭</span></span><br><span class="line">xdg-user-dirs-gtk-update</span><br><span class="line"><span class="comment">#转换回系统语言为中文，也可以不执行下面的命令，直接重启也一样的</span></span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN</span><br></pre></td></tr></table></figure>
-<p>下次进入系统后，会提示是否把目录转化为中文，选择不，并选择不再提示，并取消修改。</p>
+    <div class="post-body" itemprop="articleBody"><p>前几天准备将openwrt升级时，发现无法写入emmc，尝试了几种方法都没有解决，最后觉得最大的问题可能是emmc分区乱掉了，遂决定来个彻底恢复。方法也比较简单，但长时间不操作了容易忘，记录一下：</p>
+<h2 id="制作一个能够从U盘正常启动的armbian系统"><a href="#制作一个能够从U盘正常启动的armbian系统" class="headerlink" title="制作一个能够从U盘正常启动的armbian系统"></a>制作一个能够从U盘正常启动的armbian系统</h2><p>测试过几个版本之后，只有这个版本最简单好用，不需要修改任何内容，直接把镜像通过写盘软件写入优盘即可，下载链接<a target="_blank" rel="noopener" href="https://1drv.ms/u/c/6c57cc7666508db7/EaLuSFZZiAdEhLJOrPJJv04BPzkQmqbeJ5HXEjQ0ewSd9g?e=ErtveE">Armbian_5.44_S9xxx_Ubuntu_bionic_3.14.29_server_20180729.zip</a></p>
+<h2 id="进入armbian系统使用ddbr恢复分区"><a href="#进入armbian系统使用ddbr恢复分区" class="headerlink" title="进入armbian系统使用ddbr恢复分区"></a>进入armbian系统使用ddbr恢复分区</h2><h3 id="1、进入armbian"><a href="#1、进入armbian" class="headerlink" title="1、进入armbian"></a>1、进入armbian</h3><p>启动盘制作好后插入N1机身，然后插上网线后通电，正常情况下就可以直接启动了，到路由器中找出新出现的有线设备（一般带一个aml后缀的设备），复制ip地址，使用终端ssh进入armbian，用户名root，密码1234，进入系统后后要求强制修改。修改好后reboot设备再次进入系统即可。</p>
+<h3 id="2、下载ddbr原版恢复包"><a href="#2、下载ddbr原版恢复包" class="headerlink" title="2、下载ddbr原版恢复包"></a>2、下载ddbr原版恢复包</h3><p>地址如下</p>
+<p><a target="_blank" rel="noopener" href="https://1drv.ms/u/c/6c57cc7666508db7/EQpk1ygoFNFCoEUlmOniKVcBMP8cqD0psg26yNWCvoTAKQ?e=OiBpbW">-emmc.img.gz</a></p>
+<h3 id="3、ddbr恢复"><a href="#3、ddbr恢复" class="headerlink" title="3、ddbr恢复"></a>3、ddbr恢复</h3><p>进入系统后使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ddbr</span><br></pre></td></tr></table></figure>
+
+<p>然后输入b（backup），在进度条开始后即可Ctrl+C取消，这样可以获取到ddbr备份的文件的名称。</p>
+<p><img src="https://zpic.zhyq118.com/file/1755251196277_1.jpg" alt="1.jpg"></p>
+<p>打开winscp用sftp加你的ssh登录信息登陆，进入&#x2F;ddbr目录，可以看到一个*-emmc.img.gz文件，将它的文件名复制下来然后删除该文件。把从网盘下载的原版系统ddbr包上传到该目录，上传完成后把文件名改成刚才复制的文件名。</p>
+<p><img src="https://zpic.zhyq118.com/file/1755251277421_2.jpg" alt="2.jpg"></p>
+<p>然后回到终端，输入ddbr指令，这回键入r（restore），它会询问你是否使用了压缩（DID YOU USED COMPRESSION），选择y即可</p>
+<p><img src="https://zpic.zhyq118.com/file/1755251338608_3.jpg" alt="3.jpg"></p>
+<p>成功后，输入poweroff关机，大功告成。</p>
+<p>然后可以继续用优盘制作openwrt启动盘，插入启动，写入emmc，一切就像新的一样丝滑。</p>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://luotianyi.vc/1306.html">斐讯N1探索手记#1</a></p>
+<p><a target="_blank" rel="noopener" href="https://luotianyi.vc/1346.html">斐讯N1探索手记#2</a></p>
 
     </div>
 
@@ -339,21 +360,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/n1/" rel="tag"># n1</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/01/21/Hexo%20Next%E4%B8%BB%E9%A2%98%E6%89%93%E5%BC%80Gitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" rel="prev" title="Hexo Next主题打开Gitalk评论系统">
-                  <i class="fa fa-angle-left"></i> Hexo Next主题打开Gitalk评论系统
+                <a href="/2025/08/09/%E8%9C%97%E7%89%9B%E6%98%9F%E9%99%85%E5%AE%89%E8%A3%85%E7%BE%A4%E6%99%967-x%E5%9C%A8bios%E4%B8%AD%E5%85%B3%E9%97%AD%E4%B8%B2%E5%8F%A3%E4%BB%A5%E9%81%BF%E5%85%8D%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5/" rel="prev" title="蜗牛星际安装群晖7.x在bios中关闭串口以避免启动失败">
+                  <i class="fa fa-angle-left"></i> 蜗牛星际安装群晖7.x在bios中关闭串口以避免启动失败
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/04/21/%E5%9C%A8windows%E4%B8%AD%E5%AE%89%E8%A3%85fastboot%E9%A9%B1%E5%8A%A8/" rel="next" title="在windows中安装android fastboot驱动">
-                  在windows中安装android fastboot驱动 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -434,7 +452,7 @@
 </noscript>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"zhyq118","repo":"zhyq118.github.io","client_id":"Ov23lita5L2AQH4Ekl5y","client_secret":"30c172c3545779d7e3ab23511a129f0635205519","admin_user":"zhyq118","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a3b9ce9f775183f3f640cfe26543e0ab"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"zhyq118","repo":"zhyq118.github.io","client_id":"Ov23lita5L2AQH4Ekl5y","client_secret":"30c172c3545779d7e3ab23511a129f0635205519","admin_user":"zhyq118","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4609c8bea17eaffd6f8ecd31627fb33b"}</script>
 <script src="/js/third-party/comments/gitalk.js" defer></script>
 
 </body>

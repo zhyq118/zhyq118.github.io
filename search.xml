@@ -2125,4 +2125,34 @@
         <tag>nas</tag>
       </tags>
   </entry>
+  <entry>
+    <title>斐讯N1使用ddbr恢复官改系统（恢复emmc分区）</title>
+    <url>/2025/08/15/%E6%96%90%E8%AE%AFN1%E4%BD%BF%E7%94%A8ddbr%E6%81%A2%E5%A4%8D%E5%AE%98%E6%94%B9%E7%B3%BB%E7%BB%9F%EF%BC%88%E6%81%A2%E5%A4%8Demmc%E5%88%86%E5%8C%BA%EF%BC%89/</url>
+    <content><![CDATA[<p>前几天准备将openwrt升级时，发现无法写入emmc，尝试了几种方法都没有解决，最后觉得最大的问题可能是emmc分区乱掉了，遂决定来个彻底恢复。方法也比较简单，但长时间不操作了容易忘，记录一下：</p>
+<h2 id="制作一个能够从U盘正常启动的armbian系统"><a href="#制作一个能够从U盘正常启动的armbian系统" class="headerlink" title="制作一个能够从U盘正常启动的armbian系统"></a>制作一个能够从U盘正常启动的armbian系统</h2><p>测试过几个版本之后，只有这个版本最简单好用，不需要修改任何内容，直接把镜像通过写盘软件写入优盘即可，下载链接<a href="https://1drv.ms/u/c/6c57cc7666508db7/EaLuSFZZiAdEhLJOrPJJv04BPzkQmqbeJ5HXEjQ0ewSd9g?e=ErtveE">Armbian_5.44_S9xxx_Ubuntu_bionic_3.14.29_server_20180729.zip</a></p>
+<h2 id="进入armbian系统使用ddbr恢复分区"><a href="#进入armbian系统使用ddbr恢复分区" class="headerlink" title="进入armbian系统使用ddbr恢复分区"></a>进入armbian系统使用ddbr恢复分区</h2><h3 id="1、进入armbian"><a href="#1、进入armbian" class="headerlink" title="1、进入armbian"></a>1、进入armbian</h3><p>启动盘制作好后插入N1机身，然后插上网线后通电，正常情况下就可以直接启动了，到路由器中找出新出现的有线设备（一般带一个aml后缀的设备），复制ip地址，使用终端ssh进入armbian，用户名root，密码1234，进入系统后后要求强制修改。修改好后reboot设备再次进入系统即可。</p>
+<h3 id="2、下载ddbr原版恢复包"><a href="#2、下载ddbr原版恢复包" class="headerlink" title="2、下载ddbr原版恢复包"></a>2、下载ddbr原版恢复包</h3><p>地址如下</p>
+<p><a href="https://1drv.ms/u/c/6c57cc7666508db7/EQpk1ygoFNFCoEUlmOniKVcBMP8cqD0psg26yNWCvoTAKQ?e=OiBpbW">-emmc.img.gz</a></p>
+<h3 id="3、ddbr恢复"><a href="#3、ddbr恢复" class="headerlink" title="3、ddbr恢复"></a>3、ddbr恢复</h3><p>进入系统后使用命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ddbr</span><br></pre></td></tr></table></figure>
+
+<p>然后输入b（backup），在进度条开始后即可Ctrl+C取消，这样可以获取到ddbr备份的文件的名称。</p>
+<p><img src="https://zpic.zhyq118.com/file/1755251196277_1.jpg" alt="1.jpg"></p>
+<p>打开winscp用sftp加你的ssh登录信息登陆，进入&#x2F;ddbr目录，可以看到一个*-emmc.img.gz文件，将它的文件名复制下来然后删除该文件。把从网盘下载的原版系统ddbr包上传到该目录，上传完成后把文件名改成刚才复制的文件名。</p>
+<p><img src="https://zpic.zhyq118.com/file/1755251277421_2.jpg" alt="2.jpg"></p>
+<p>然后回到终端，输入ddbr指令，这回键入r（restore），它会询问你是否使用了压缩（DID YOU USED COMPRESSION），选择y即可</p>
+<p><img src="https://zpic.zhyq118.com/file/1755251338608_3.jpg" alt="3.jpg"></p>
+<p>成功后，输入poweroff关机，大功告成。</p>
+<p>然后可以继续用优盘制作openwrt启动盘，插入启动，写入emmc，一切就像新的一样丝滑。</p>
+<p>参考链接：</p>
+<p><a href="https://luotianyi.vc/1306.html">斐讯N1探索手记#1</a></p>
+<p><a href="https://luotianyi.vc/1346.html">斐讯N1探索手记#2</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>n1</tag>
+      </tags>
+  </entry>
 </search>
