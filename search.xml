@@ -11,56 +11,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Debian 11 Linux(bullseye) 可用的国内镜像源</title>
-    <url>/2023/02/07/Debian-11-Linux-bullseye-%E5%8F%AF%E7%94%A8%E7%9A%84%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</url>
-    <content><![CDATA[<p><a href="https://www.zzxworld.com/posts/available-cn-mirrors-for-debian-linux">原文链接</a></p>
-<p><img src="https://www.zzxworld.com/resource/posts/202208/1661740805.577.jpg" alt="Debian 11 Linux(bullseye) 可用的国内镜像源"></p>
-<p>Debian 默认的软件源在国外，使用默认源安装软件速度感人，浪费大量不必要的等待时间。所以在安装完 Deiban 系统后的首要事情就是更换为国内的镜像源，能显著提高软件安装和系统更新速度。本文收集了 8 个能用的 Debian 国内镜像源以供选择。</p>
-<blockquote>
-<p>如果不熟悉 Debian 镜像源的使用和配置，请直接翻到最后。文末提供了手动和命令式的两种镜像源配置方式。</p>
-</blockquote>
-<h2 id="可用的国内源"><a href="#可用的国内源" class="headerlink" title="可用的国内源"></a>可用的国内源</h2><p>由阿里云提供的 Debian 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.aliyun.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
-
-<p>由腾讯提供的 Debian 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.tencent.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.tencent.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.tencent.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
-
-<p>由北京清华大学提供的 Debian 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free</span><br></pre></td></tr></table></figure>
-
-<p>由中国科学技术大学提供的 Debian 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br></pre></td></tr></table></figure>
-
-<p>由上海交通大学提供的 Debian 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br></pre></td></tr></table></figure>
-
-<p>由北京外国语大学提供的 Debian 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian-security bullseye-security main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian-security bullseye-security main contrib non-free</span><br></pre></td></tr></table></figure>
-
-<p>由华为提供的 Deiban 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
-
-<p>由网易提供的 Debian 镜像源：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.163.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.163.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.163.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.163.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.163.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
-
-<h2 id="手动更换镜像源"><a href="#手动更换镜像源" class="headerlink" title="手动更换镜像源"></a>手动更换镜像源</h2><p>手动更换 Debian 镜像源配置主要分为以下三步：</p>
-<ol>
-<li>用熟悉的文本编辑器打开 <code>/etc/apt/sources.list</code> 文件（需要 <code>sudo</code> 权限），或是直接执行 <code>sudo apt edit-sources</code> 命令。</li>
-<li>替换文件内容为上面任意一个镜像站的源配置代码并保存。</li>
-<li>运行 <code>sudo apt-get update</code> 命令更新软件索引。</li>
-</ol>
-<h2 id="命令更换镜像源"><a href="#命令更换镜像源" class="headerlink" title="命令更换镜像源"></a>命令更换镜像源</h2><p>使用命令替换镜像源更为快捷。比如在没有更换过数据源的情况下，要使用阿里云的 Debian 镜像源：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo sed -i &#x27;s/deb.debian.org/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<p>这样就完成了默认源到阿里云镜像源的配置。接下来同样需要执行一下 <code>sudo apt-get update</code> 命令更新软件索引。</p>
-<p>上面这个命令的原理在镜像源的地址上。不同的镜像源通常只是域名有所区别，其他部分大致类似。所以之需要通过 <code>sed</code> 命令来修改 <code>/etc/apt/sources.list</code> 这个源配置文件中的域名地址就足够了。</p>
-<p>但这意味着使用这个命令方式修改镜像源的配置时需要格外注意。如果输入的匹配地址或替换地址有误，有可能不会生效，或是导致镜像源异常。遇到这种情况，可以选择上面手动更换镜像源的方式来解决。</p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Debian 11 添加用户到sudoers 中</title>
     <url>/2023/02/07/Debian-11-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E5%88%B0sudoers-%E4%B8%AD/</url>
     <content><![CDATA[<p>针对“普通用户提示用户名不在sudoers文件中，此事将被报告“，如此解决：</p>
@@ -256,6 +206,56 @@
 <p>此时，在磁盘管理界面会发现U盘已经变成黑色的未分配状态。</p>
 <p>下面新建简单卷即可。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Debian 11 Linux(bullseye) 可用的国内镜像源</title>
+    <url>/2023/02/07/Debian-11-Linux-bullseye-%E5%8F%AF%E7%94%A8%E7%9A%84%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</url>
+    <content><![CDATA[<p><a href="https://www.zzxworld.com/posts/available-cn-mirrors-for-debian-linux">原文链接</a></p>
+<p><img src="https://www.zzxworld.com/resource/posts/202208/1661740805.577.jpg" alt="Debian 11 Linux(bullseye) 可用的国内镜像源"></p>
+<p>Debian 默认的软件源在国外，使用默认源安装软件速度感人，浪费大量不必要的等待时间。所以在安装完 Deiban 系统后的首要事情就是更换为国内的镜像源，能显著提高软件安装和系统更新速度。本文收集了 8 个能用的 Debian 国内镜像源以供选择。</p>
+<blockquote>
+<p>如果不熟悉 Debian 镜像源的使用和配置，请直接翻到最后。文末提供了手动和命令式的两种镜像源配置方式。</p>
+</blockquote>
+<h2 id="可用的国内源"><a href="#可用的国内源" class="headerlink" title="可用的国内源"></a>可用的国内源</h2><p>由阿里云提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.aliyun.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>由腾讯提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.tencent.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.tencent.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.tencent.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.tencent.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>由北京清华大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由中国科学技术大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由上海交通大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye main contrib non-free</span><br><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line">deb http://mirrors.sjtu.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br><span class="line">deb-src http://mirrors.sjtu.edu.cn/debian bullseye-proposed-updates main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由北京外国语大学提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye-updates main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian/ bullseye-backports main contrib non-free</span><br><span class="line">deb https://mirrors.bfsu.edu.cn/debian-security bullseye-security main contrib non-free</span><br><span class="line">deb-src https://mirrors.bfsu.edu.cn/debian-security bullseye-security main contrib non-free</span><br></pre></td></tr></table></figure>
+
+<p>由华为提供的 Deiban 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.huaweicloud.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>由网易提供的 Debian 镜像源：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.163.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye main non-free contrib</span><br><span class="line">deb https://mirrors.163.com/debian-security/ bullseye-security main</span><br><span class="line">deb-src https://mirrors.163.com/debian-security/ bullseye-security main</span><br><span class="line">deb https://mirrors.163.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye-updates main non-free contrib</span><br><span class="line">deb https://mirrors.163.com/debian/ bullseye-backports main non-free contrib</span><br><span class="line">deb-src https://mirrors.163.com/debian/ bullseye-backports main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<h2 id="手动更换镜像源"><a href="#手动更换镜像源" class="headerlink" title="手动更换镜像源"></a>手动更换镜像源</h2><p>手动更换 Debian 镜像源配置主要分为以下三步：</p>
+<ol>
+<li>用熟悉的文本编辑器打开 <code>/etc/apt/sources.list</code> 文件（需要 <code>sudo</code> 权限），或是直接执行 <code>sudo apt edit-sources</code> 命令。</li>
+<li>替换文件内容为上面任意一个镜像站的源配置代码并保存。</li>
+<li>运行 <code>sudo apt-get update</code> 命令更新软件索引。</li>
+</ol>
+<h2 id="命令更换镜像源"><a href="#命令更换镜像源" class="headerlink" title="命令更换镜像源"></a>命令更换镜像源</h2><p>使用命令替换镜像源更为快捷。比如在没有更换过数据源的情况下，要使用阿里云的 Debian 镜像源：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo sed -i &#x27;s/deb.debian.org/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了默认源到阿里云镜像源的配置。接下来同样需要执行一下 <code>sudo apt-get update</code> 命令更新软件索引。</p>
+<p>上面这个命令的原理在镜像源的地址上。不同的镜像源通常只是域名有所区别，其他部分大致类似。所以之需要通过 <code>sed</code> 命令来修改 <code>/etc/apt/sources.list</code> 这个源配置文件中的域名地址就足够了。</p>
+<p>但这意味着使用这个命令方式修改镜像源的配置时需要格外注意。如果输入的匹配地址或替换地址有误，有可能不会生效，或是导致镜像源异常。遇到这种情况，可以选择上面手动更换镜像源的方式来解决。</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
   </entry>
   <entry>
     <title>Vim Cheat Sheet(转载）</title>
